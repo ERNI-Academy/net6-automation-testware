@@ -1,0 +1,29 @@
+{
+  "Configurations": [
+    {
+      "Tag": "Appiumdriver",
+      "Capabilities": [
+        {
+          "Name": "Appiumdriver",
+          "AppiumUrl": "http://127.0.0.1:4723/wd/hub",
+          "ApkUrl": "https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/Android.SauceLabs.Mobile.Sample.app.2.7.1.apk",
+          "ApkPath": "C:\\workspace\\services\\AutomationFramework\\AutomationFramework.DataEntities\\Binaries\\SwagLabs.apk",
+          "CommandTimeOutInMinutes": 5,
+          "DeviceName": "emulator-5554",
+          "PlatformName": "Android",
+          "Options": {
+            "fullReset": false,
+            "noReset": true,
+            "appActivity": "com.swaglabsmobileapp.MainActivity",
+            "unicodeKeyboard": true,
+            "resetKeyboard": true,
+            "autoAcceptAlerts": true,
+            "autoGrantPermissions": true,
+            "newCommandTimeout": 500
+          }
+        }
+      ]
+    }
+  ],
+  "TestResultPath": "C:\\workspace\\ERNI\\results\\"
+}

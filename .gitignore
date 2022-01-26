@@ -1,0 +1,37 @@
+**/artifacts/**
+**/bin/**
+**/build/**/*
+**/obj/**
+/**/*.vs/*
+**/.sonarqube/**
+ 
+/code/**/obj/*
+/code/**/bin/*
+/code/**/TestResults/*
+
+/models/**/*.backup
+/models/**/*_trace.csv
+/models/**/*_Results/**
+/models/**/*Files/**/Results/**
+/models/**/*OperationalPlanning*Gantt*.xml
+
+/models_dev/**/.backup
+/models_dev/**/*_trace.csv
+/models_dev/**/*_Results/**
+/models_dev/**/*Files/**/Results/**
+/models_dev/**/*OperationalPlanning*Gantt*.xml
+
+# NuGet Packages
+*.nupkg
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+# Uncomment if necessary however generally it will be regenerated when needed
+#!**/packages/repositories.config
+# NuGet v3's project.json files produces more ignoreable files
+*.nuget.props
+*.nuget.targets
+
+#Specflow files
+**/*.feature.cs
