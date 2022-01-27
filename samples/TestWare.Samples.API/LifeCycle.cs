@@ -4,34 +4,33 @@ using TestWare.Core.Configuration;
 using TestWare.Core.Interfaces;
 using TestWare.Engines.Restsharp;
 
-namespace TestWare.Samples.API
+namespace TestWare.Samples.API;
+
+internal class LifeCycle : AutomationLifeCycleBase
 {
-    internal class LifeCycle : AutomationLifeCycleBase
+    protected override IEnumerable<Assembly> GetTestWareComponentAssemblies()
     {
-        protected override IEnumerable<Assembly> GetTestWareComponentAssemblies()
+        IEnumerable<Assembly> assemblies = new[]
         {
-            IEnumerable<Assembly> assemblies = new[]
-            {
-                typeof(Hook).Assembly
-            };
+            typeof(Hook).Assembly
+        };
 
-            return assemblies;
-        }
+        return assemblies;
+    }
 
-        protected override IEnumerable<IEngineManager> GetTestWareEngines()
+    protected override IEnumerable<IEngineManager> GetTestWareEngines()
+    {
+        IEnumerable<IEngineManager> engines = new[]
         {
-            IEnumerable<IEngineManager> engines = new[]
-            {
-                new RestSharpManager()
-            };
+            new RestSharpManager()
+        };
 
-            return engines;
-        }
+        return engines;
+    }
 
-        protected override TestConfiguration GetConfiguration()
-        {
-            var configManager = new ConfigurationManager();
-            return configManager.ReadConfigurationFile("TestConfiguration.API.json");
-        }
+    protected override TestConfiguration GetConfiguration()
+    {
+        var configManager = new ConfigurationManager();
+        return configManager.ReadConfigurationFile("TestConfiguration.API.json");
     }
 }

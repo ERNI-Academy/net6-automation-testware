@@ -4,34 +4,33 @@ using TestWare.Core.Configuration;
 using TestWare.Core.Interfaces;
 using TestWare.Engines.Selenium;
 
-namespace TestWare.Samples.Selenium.Web
+namespace TestWare.Samples.Selenium.Web;
+
+internal class LifeCycle : AutomationLifeCycleBase
 {
-    internal class LifeCycle : AutomationLifeCycleBase
+    protected override IEnumerable<Assembly> GetTestWareComponentAssemblies()
     {
-        protected override IEnumerable<Assembly> GetTestWareComponentAssemblies()
+        IEnumerable<Assembly> assemblies = new[]
         {
-            IEnumerable<Assembly> assemblies = new[]
-            {
-                typeof(Hook).Assembly
-            };
+            typeof(Hook).Assembly
+        };
 
-            return assemblies;
-        }
+        return assemblies;
+    }
 
-        protected override IEnumerable<IEngineManager> GetTestWareEngines()
+    protected override IEnumerable<IEngineManager> GetTestWareEngines()
+    {
+        IEnumerable<IEngineManager> engines = new[]
         {
-            IEnumerable<IEngineManager> engines = new[]
-            {
-                new SeleniumManager()
-            };
+            new SeleniumManager()
+        };
 
-            return engines;
-        }
+        return engines;
+    }
 
-        protected override TestConfiguration GetConfiguration()
-        {
-            var configManager = new ConfigurationManager();
-            return configManager.ReadConfigurationFile("TestConfiguration.Web.json");
-        }
+    protected override TestConfiguration GetConfiguration()
+    {
+        var configManager = new ConfigurationManager();
+        return configManager.ReadConfigurationFile("TestConfiguration.Web.json");
     }
 }

@@ -1,13 +1,12 @@
 ﻿using TestWare.Core.Interfaces;
 
-namespace TestWare.Samples.WinAppDriver.Desktop.POM.Notepad
+namespace TestWare.Samples.WinAppDriver.Desktop.POM.Notepad;
+
+internal interface INotepadPage : ITestWareComponent
 {
-    internal interface INotepadPage : ITestWareComponent
-    {
-        void WriteText(string textToWrite);
+    void WriteText(string textToWrite);
 
-        void CheckText(string textToVerify);
+    void CheckText(string textToVerify);
 
-        void DeleteCharacters(int charsToDelete);
-    }
+    void DeleteCharacters(int charsToDelete);
 }

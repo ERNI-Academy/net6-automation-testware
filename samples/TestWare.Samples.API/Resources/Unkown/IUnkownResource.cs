@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TestWare.Core.Interfaces;
 
-namespace TestWare.Samples.API.Resources.Unkown
+namespace TestWare.Samples.API.Resources.Unkown;
+
+internal interface IUnkownResource: ITestWareComponent
 {
-    internal interface IUnkownResource: ITestWareComponent
-    {
-        public RestResponse<UnkownResponse> Operate();
-    }
+    public RestResponse<UnkownResponse> Operate();
 }
