@@ -1,4 +1,7 @@
 # About 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 Testware is a flexible solution that implement the interaction with different automation engines. Providing a robust and scalable core that could be shared by different automation projects
 
 By using this testware any automation project abstract the automation implementation. The automation project that uses the testware only need to focus on its business needs.
@@ -193,6 +196,19 @@ Erni Services  - [@ERNI](https://twitter.com/ERNI) - esp-services@betterask.erni
 ## Contributors ✨
 
 
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/LopezMDidac"><img src="https://avatars.githubusercontent.com/u/20030140?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Didac Lopez</b></sub></a><br /><a href="https://github.com/ERNI-Academy/net6-automation-testware/commits?author=LopezMDidac" title="Code">💻</a> <a href="#content-LopezMDidac" title="Content">🖋</a> <a href="https://github.com/ERNI-Academy/net6-automation-testware/commits?author=LopezMDidac" title="Documentation">📖</a> <a href="#design-LopezMDidac" title="Design">🎨</a> <a href="#ideas-LopezMDidac" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-LopezMDidac" title="Maintenance">🚧</a> <a href="https://github.com/ERNI-Academy/net6-automation-testware/commits?author=LopezMDidac" title="Tests">⚠️</a> <a href="#example-LopezMDidac" title="Examples">💡</a> <a href="https://github.com/ERNI-Academy/net6-automation-testware/pulls?q=is%3Apr+reviewed-by%3ALopezMDidac" title="Reviewed Pull Requests">👀</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
