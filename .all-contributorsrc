@@ -1,0 +1,32 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "LopezMDidac",
+      "name": "Didac Lopez",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20030140?v=4",
+      "profile": "https://github.com/LopezMDidac",
+      "contributions": [
+        "code",
+        "content",
+        "doc",
+        "design",
+        "ideas",
+        "maintenance",
+        "test",
+        "example",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "net6-automation-testware",
+  "projectOwner": "ERNI-Academy",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
