@@ -77,8 +77,8 @@ jobs:
       - name: Replace Driver at TestConfiguration.json
         shell: pwsh
         run: |
-          Write-Host "${ChromeWebDriver}"
-          $driverPath = "${ChromeWebDriver}".Replace("\","\\")
+          Write-Host ${ChromeWebDriver}
+          $driverPath = "C:\SeleniumWebDrivers\ChromeDriver".Replace("\","\\")
 
           $content = '{
             "Configurations": [
