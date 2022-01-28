@@ -1,6 +1,9 @@
 name: Continous-Integration
 
-on: [push, pull_request] 
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -15,3 +18,9 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
+      - name: Archive Testing artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: archive-testing-artifacts
+          path: |
+            ${{ github.workspace }}
