@@ -1,6 +1,6 @@
 name: Continuous-Integration
 
-on: workflow_dispatch
+on:
   push:
     branches:
       - main
