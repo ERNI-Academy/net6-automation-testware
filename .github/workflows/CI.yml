@@ -72,6 +72,7 @@ jobs:
           name: testing-artifact-selenium-web
       - name: Replace Driver at TestConfiguration.json
         shell: pwsh
+        run: |
           Write-Host "$(CHROMEWEBDRIVER)"
           $driverPath = "$(CHROMEWEBDRIVER)".Replace("\","\\")
 
