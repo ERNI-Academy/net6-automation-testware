@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
 using System.Text.Json;
@@ -25,7 +26,7 @@ public class AppiumManager : EngineManagerBase, IEngineManager
                 {
                     throw new ArgumentException("AppiumDriver null configuration");
                 }
-                var capabilities = configuration.Capabilities.Select(x => x.Deserialize<Capabilities>());
+                var capabilities = configuration.Capabilities.Select(x => JsonConvert.DeserializeObject<Capabilities>(x.ToJsonString()));
                 var capability = capabilities.FirstOrDefault(x => tags.Contains(x.Name));
 
                 if (!ContainerManager.ExistsType(typeof(AppiumDriverFactory)))

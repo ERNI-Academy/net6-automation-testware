@@ -11,7 +11,7 @@ internal class Capabilities
 
     public string PlatformName {get; set;}
 
-    public CapabilityOptions Options { get; set; } = new CapabilityOptions();
+    public IEnumerable<CapabilityOption<object>> Options { get; set; }
 
 }
 
