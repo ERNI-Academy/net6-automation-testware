@@ -104,6 +104,7 @@ jobs:
       - name: Run tests
         run: dotnet test TestWare.Samples.Selenium.Web.dll
       - name: Archive WEB (Chrome) screenshots
+        if: always()
         uses: actions/upload-artifact@v2
         with:
           name: web-chrome-screenshots
