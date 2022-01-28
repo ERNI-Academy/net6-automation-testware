@@ -8,23 +8,22 @@ using System.Web;
 using TestWare.Engines.Restsharp.Factory;
 using TestWare.Engines.Restsharp.Resources;
 
-namespace TestWare.Samples.API.Resources.Derive
+namespace TestWare.Samples.API.Resources.Derive;
+
+internal class DeriveResource: ApiResource, IDeriveResource
 {
-    internal class DeriveResource: ApiResource, IDeriveResource
+    private const string _resourceName = "derive";
+
+    public DeriveResource(IApiClient client) : base(client)
     {
-        private const string _resourceName = "derive";
+        ResourceName = _resourceName;
+    }
 
-        public DeriveResource(IApiClient client) : base(client)
-        {
-            ResourceName = _resourceName;
-        }
-
-        public RestResponse<DeriveResponse> Derive(string formula)
-        {
-            var encodedUrl = HttpUtility.UrlEncode(formula);
-            var req = new RestRequest($"{ResourceName}/{encodedUrl}");
-            var response = ExecuteRequest<DeriveResponse>(req);
-            return response;
-        }
+    public RestResponse<DeriveResponse> Derive(string formula)
+    {
+        var encodedUrl = HttpUtility.UrlEncode(formula);
+        var req = new RestRequest($"{ResourceName}/{encodedUrl}");
+        var response = ExecuteRequest<DeriveResponse>(req);
+        return response;
     }
 }

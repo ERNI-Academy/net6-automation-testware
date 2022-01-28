@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TestWare.Core.Interfaces;
 
-namespace TestWare.Samples.API.Resources.Sine
+namespace TestWare.Samples.API.Resources.Sine;
+
+internal interface ISineResource: ITestWareComponent
 {
-    internal interface ISineResource: ITestWareComponent
-    {
-        public RestResponse<SineResponse> Sine(string operation);
-    }
+    public RestResponse<SineResponse> Sine(string operation);
 }

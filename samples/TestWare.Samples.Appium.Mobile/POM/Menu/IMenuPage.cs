@@ -1,13 +1,12 @@
 ﻿using TestWare.Core.Interfaces;
 
-namespace TestWare.Samples.Appium.Mobile.POM.Menu
+namespace TestWare.Samples.Appium.Mobile.POM.Menu;
+
+public interface IMenuPage : ITestWareComponent
 {
-    public interface IMenuPage : ITestWareComponent
-    {
-        void CheckMenuIsVisible();
+    void CheckMenuIsVisible();
 
-        void OpenMenu();
+    void OpenMenu();
 
-        void ClickLogoutButton();
-    }
+    void ClickLogoutButton();
 }

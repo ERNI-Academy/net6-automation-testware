@@ -1,3 +1,4 @@
+[![Continous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
 # About 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
@@ -143,16 +144,40 @@ Evidence collection:
             "CommandTimeOutInMinutes": 5,
             "DeviceName": "emulator-5554",
             "PlatformName": "Android",
-            "Options": {
-                "fullReset": false,
-                "noReset": true,
-                "appActivity": "com.swaglabsmobileapp.MainActivity",
-                "unicodeKeyboard": true,
-                "resetKeyboard": true,
-                "autoAcceptAlerts": true,
-                "autoGrantPermissions": true,
-                "newCommandTimeout": 500
-            }
+            "Options": [
+                {
+                "Name": "fullReset",
+                "Value": false
+                },
+                {
+                "Name": "noReset",
+                "Value": true
+                },
+                {
+                "Name": "appActivity",
+                "Value": "com.swaglabsmobileapp.MainActivity"
+                },
+                {
+                "Name": "unicodeKeyboard",
+                "Value": true
+                },
+                {
+                "Name": "resetKeyboard",
+                "Value": true
+                },
+                {
+                "Name": "autoAcceptAlerts",
+                "Value": true
+                },
+                {
+                "Name": "autoGrantPermissions",
+                "Value": true
+                },
+                {
+                "Name": "newCommandTimeout",
+                "Value": 500
+                }
+            ]
         },
         {
             "Tag": "WinAppDriver",
@@ -202,6 +227,7 @@ Erni Services  - [@ERNI](https://twitter.com/ERNI) - esp-services@betterask.erni
 <table>
   <tr>
     <td align="center"><a href="https://github.com/LopezMDidac"><img src="https://avatars.githubusercontent.com/u/20030140?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Didac Lopez</b></sub></a><br /><a href="https://github.com/ERNI-Academy/net6-automation-testware/commits?author=LopezMDidac" title="Code">💻</a> <a href="#content-LopezMDidac" title="Content">🖋</a> <a href="https://github.com/ERNI-Academy/net6-automation-testware/commits?author=LopezMDidac" title="Documentation">📖</a> <a href="#design-LopezMDidac" title="Design">🎨</a> <a href="#ideas-LopezMDidac" title="Ideas, Planning, & Feedback">🤔</a> <a href="#maintenance-LopezMDidac" title="Maintenance">🚧</a> <a href="https://github.com/ERNI-Academy/net6-automation-testware/commits?author=LopezMDidac" title="Tests">⚠️</a> <a href="#example-LopezMDidac" title="Examples">💡</a> <a href="https://github.com/ERNI-Academy/net6-automation-testware/pulls?q=is%3Apr+reviewed-by%3ALopezMDidac" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/mg-diego"><img src="https://avatars.githubusercontent.com/u/39908763?v=4?s=100" width="100px;" alt=""/><br /><sub><b>mg-diego</b></sub></a><br /><a href="https://github.com/ERNI-Academy/net6-automation-testware/commits?author=mg-diego" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Rabosa616"><img src="https://avatars.githubusercontent.com/u/12774781?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rabosa616</b></sub></a><br /><a href="https://github.com/ERNI-Academy/net6-automation-testware/commits?author=Rabosa616" title="Code">💻</a></td>
   </tr>
 </table>

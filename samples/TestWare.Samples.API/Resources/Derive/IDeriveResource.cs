@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TestWare.Core.Interfaces;
 
-namespace TestWare.Samples.API.Resources.Derive
+namespace TestWare.Samples.API.Resources.Derive;
+
+internal interface IDeriveResource : ITestWareComponent
 {
-    internal interface IDeriveResource : ITestWareComponent
-    {
-        public RestResponse<DeriveResponse> Derive(string formula);
-    }
+    public RestResponse<DeriveResponse> Derive(string formula);
 }

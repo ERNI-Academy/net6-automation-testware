@@ -1,6 +1,5 @@
-﻿namespace TestWare.Engines.Appium.Extras
+﻿namespace TestWare.Engines.Appium.Extras;
+
+public class PageFactory : Selenium.Extras.PageFactory
 {
-    public class PageFactory : Selenium.Extras.PageFactory
-    {
-    }
 }

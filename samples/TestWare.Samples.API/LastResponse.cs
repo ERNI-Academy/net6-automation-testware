@@ -5,20 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestWare.Samples.API
+namespace TestWare.Samples.API;
+
+public class LastResponse
 {
-    public class LastResponse
+    private Dictionary<Type, object> _lastResponseDict = new();
+
+    public void AddResponse<T>(RestResponse<T> response)
     {
-        private Dictionary<Type, object> _lastResponseDict = new();
+        _lastResponseDict[typeof(T)] = response;
+    }
 
-        public void AddResponse<T>(RestResponse<T> response)
-        {
-            _lastResponseDict[typeof(T)] = response;
-        }
-
-        public RestResponse<T> GetResponse<T>()
-        {
-            return (RestResponse<T>)_lastResponseDict[typeof(T)];
-        }
+    public RestResponse<T> GetResponse<T>()
+    {
+        return (RestResponse<T>)_lastResponseDict[typeof(T)];
     }
 }

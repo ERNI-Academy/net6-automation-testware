@@ -1,11 +1,10 @@
 ﻿using TestWare.Core.Interfaces;
 
-namespace TestWare.Samples.Appium.Mobile.POM.Product
+namespace TestWare.Samples.Appium.Mobile.POM.Product;
+
+public interface IProductPage : ITestWareComponent
 {
-    public interface IProductPage : ITestWareComponent
-    {
-        void ClickViewToggle();
-        void AddProductToCartByButton(string productName);
-        void AddProductToCartByDragging(string productName);
-    }
+    void ClickViewToggle();
+    void AddProductToCartByButton(string productName);
+    void AddProductToCartByDragging(string productName);
 }

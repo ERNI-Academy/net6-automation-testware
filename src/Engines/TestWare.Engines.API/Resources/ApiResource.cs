@@ -6,15 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TestWare.Engines.Restsharp.Factory;
 
-namespace TestWare.Engines.Restsharp.Resources
-{
-    public class ApiResource : ResourceBase
-    {
-        protected string ResourceName { get; set; }
+namespace TestWare.Engines.Restsharp.Resources;
 
-        public ApiResource(IApiClient client) : base()
-        {
-            Client = (ApiClient)client;
-        }
+public class ApiResource : ResourceBase
+{
+    protected string ResourceName { get; set; }
+
+    public ApiResource(IApiClient client) : base()
+    {
+        Client = (ApiClient)client;
     }
 }
