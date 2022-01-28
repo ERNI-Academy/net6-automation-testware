@@ -1,29 +1,41 @@
 [![Continous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
+
 # About 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-Testware is a flexible solution that implement the interaction with different automation engines. Providing a robust and scalable core that could be shared by different automation projects
 
-By using this testware any automation project abstract the automation implementation. The automation project that uses the testware only need to focus on its business needs.
+[Automation Testware](https://github.com/ERNI-Academy/net6-automation-testware) is a flexible solution that implements the interaction and management of the main automation engines for Web _(Selenium)_, Mobile _(Appium)_ and Desktop _(WinAppDriver)_ environments. 
 
-This solution comes from the need to standarize and reuse the common usage and extension of the different automation engines. With this action the maintenance decrease and the robustness increase.
+TestWare provides a robust and scalable core that can be reused by any automation project in order to abstract the core automation implementation focusing only on its business needs.
+
+This solution comes from the need to standarize and reuse the common usage and extension of the different automation engines. 
+
+With this action the maintenance decreases and the robustness increases.
 
 ## Built With
- - .net 6.0
- - Selenium 4.+
- - appium 5.+
- - restsharp 107.+
+ - [.net 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+ - [Selenium 4.+](https://www.selenium.dev/documentation/webdriver/getting_started/upgrade_to_selenium_4/)
+ - [Appium 5.+](https://appium.io/)
+ - [Restsharp 107.+](https://restsharp.dev/v107/#restsharp-v107)
 
 
 # Features
 Testware provides capabilities to automate:
- - Websites (using selenium)
- - Mobile Applications (using appium)
- - Windows Desktop applications (using winappdriver)
- - Apis Rest (using restsharp)
+ - **Websites** (using Selenium)
 
-Testware provide capabilities to report:
+    - Supported Browsers:
+
+        <img src="https://github.com/devicons/devicon/blob/master/icons/chrome/chrome-original-wordmark.svg" title="Chrome" alt="Chrome" width="40" height="40"/>&nbsp;
+        <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>&nbsp;
+        <img src="https://github.com/devicons/devicon/blob/master/icons/ie10/ie10-original.svg" title="IE" alt="IE" width="40" height="40"/>&nbsp;        
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" title="Edge" alt="Edge" width="40" height="40"/>&nbsp;
+
+ - **Mobile Applications** (using Appium)
+ - **Windows Desktop applications** (using WinAppDriver)
+ - **API Rest** (using Restsharp)
+
+Testware provides capabilities to report:
  - HTML (using extent report)
 
 Evidence collection:
@@ -38,10 +50,14 @@ Evidence collection:
 ## Start automation project
 
 1. Create a test project using any desired runner.
-2. Implement a class for handle the execution life cycle
+2. Implement a **LifeCycle** handler class
+    - It should inherit from **AutomationLifeCycleBase**.
+    - **GetTestWareComponentAssemblies:** Returns the assemblies list that contains the TestWareComponents.
+    - **GetTestWareEngines:** Returns the engines instances that will be used at the current Automation project.
+    - **GetConfiguration:** Returns the [configuration](#configuration) object defined at .json file. 
 
 ```cs
- class LifeCycle : AutomationLifeCycleBase
+ public class LifeCycle : AutomationLifeCycleBase
     {
         protected override IEnumerable<Assembly> GetTestWareComponentAssemblies()
         {
@@ -71,23 +87,20 @@ Evidence collection:
     }
 ```
 
-- it should inherit from AutomationLifeCycleBase
-- GetTestWareComponentAssemblies: return the list of the assemblies that contains the testwarecomponents
-- GetTestWareEngines: Return the instances of the engines that will be used by this automation project
-- GetConfiguration: Return a configuration object for the whole project
 
 3. Add calls to the lifecycle class on the execution life cycles according
-- BeginTestExecution: Once at the very begining of execution. It initialize the core.
-- BeginTestSuite: Once at the begining of the test suite/feature (optional)
-- BeginTestCase: Once at the begining of a test case. It Initialize the Engines
-- BeginTestStep: Once at the begining of test step (optional)
-- EndTestStep: Once at the end of test step. It generate evidences of execution (optional)
-- EndTestCase: Once at the end of test case. It dispose the engine
-- EndTestSuite: Once at the end of test suite.
-- EndTestExecution: Once at the end of the execution
+    - **BeginTestExecution:** Once at the very begining of execution. It initializes the Core.
+        - **BeginTestSuite _(optional)_:** Once at the begining of the test suite/feature. 
+            - **BeginTestCase:** Once at the begining of a test case. It Initialize the Engines
+                - **BeginTestStep _(optional)_:** Once at the begining of test step.
+                - **EndTestStep _(optional)_:** Once at the end of test step. It generate evidences of execution (optional)
+            - **EndTestCase:** Once at the end of test case. It dispose the engine
+        - **EndTestSuite:** Once at the end of test suite.
+    - **EndTestExecution:** Once at the end of the execution
+    
 
-4. Implement business automation objects (i.e pages)
-
+4. Implement business automation objects _(i.e Pages)_
+    - Components should inherit from ITestWareComponent in order to be registered
 ```cs
  public interface IBusinessPage : ITestWareComponent
     {
@@ -95,9 +108,9 @@ Evidence collection:
         void BusinessAssertion();
     }
 ```
-- Components should inherit from ITestWareComponent in order to be registered
 
-5. Design test cases. At any place is it possible to resolve to business objects
+
+5. Design test cases. _(Is it possible to access the business objects resolving from the ContainerManager)_
 ```cs
         using (var scope = ContainerManager.Container.BeginLifetimeScope())
         {
@@ -106,7 +119,7 @@ Evidence collection:
         }
 ```
 
-
+<a name="configuration"></a>
 ## Configuration file example
 
 ```json
