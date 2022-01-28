@@ -44,6 +44,7 @@ jobs:
           name: testing-artifact-winappdriver
           path: |
             ${{ github.workspace }}/samples/TestWare.Samples.WinAppDriver/bin/Release/net6.0
+
   test-api:
     needs: build
     name: Run API tests
@@ -60,6 +61,7 @@ jobs:
           name: testing-artifact-api
       - name: Run tests
         run: dotnet test TestWare.Samples.API.dll
+
   test-chrome:
     needs: build
     name: Run WEB (Chrome) tests
@@ -77,7 +79,6 @@ jobs:
       - name: Replace Driver at TestConfiguration.json
         shell: pwsh
         run: |
-          Write-Host $ChromeWebDriver
           $driverPath = "C:\SeleniumWebDrivers\ChromeDriver".Replace("\","\\")
 
           $content = '{
@@ -108,5 +109,155 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: web-chrome-screenshots
+          path: |
+            C:\workspace\ERNI\results\
+
+  test-edge:
+    needs: build
+    name: Run WEB (Edge) tests
+    runs-on: windows-2022
+    steps:
+      - name: Ubuntu GitHub Actions environment variables List
+        run: env
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - uses: actions/download-artifact@v2
+        with:
+          name: testing-artifact-selenium-web
+      - name: Replace Driver at TestConfiguration.json
+        shell: pwsh
+        run: |
+          $driverPath = "C:\SeleniumWebDrivers\EdgeDriver".Replace("\","\\")
+
+          $content = '{
+            "Configurations": [
+              {
+                "Tag": "WebDriver",
+                  "Capabilities": [
+                      {
+                          "Name": "WebDriver",
+                          "Path": "' + $driverPath + '",
+                          "Driver": "Edge",
+                          "CommandTimeOutInMinutes": 5,
+                          "Arguments": [
+                              "--start-maximized"
+                          ]
+                      }
+                  ]
+              }
+            ],
+            "TestResultPath": "C:\\workspace\\ERNI\\results\\"
+          }'
+
+          Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
+      - name: Run tests
+        run: dotnet test TestWare.Samples.Selenium.Web.dll
+      - name: Archive WEB (Edge) screenshots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: web-edge-screenshots
+          path: |
+            C:\workspace\ERNI\results\
+
+  test-firefox:
+    needs: build
+    name: Run WEB (Firefox) tests
+    runs-on: windows-2022
+    steps:
+      - name: Ubuntu GitHub Actions environment variables List
+        run: env
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - uses: actions/download-artifact@v2
+        with:
+          name: testing-artifact-selenium-web
+      - name: Replace Driver at TestConfiguration.json
+        shell: pwsh
+        run: |
+          $driverPath = "C:\SeleniumWebDrivers\GeckoDriver".Replace("\","\\")
+
+          $content = '{
+            "Configurations": [
+              {
+                "Tag": "WebDriver",
+                  "Capabilities": [
+                      {
+                          "Name": "WebDriver",
+                          "Path": "' + $driverPath + '",
+                          "Driver": "Firefox",
+                          "CommandTimeOutInMinutes": 5,
+                          "Arguments": [
+                              "--start-maximized"
+                          ]
+                      }
+                  ]
+              }
+            ],
+            "TestResultPath": "C:\\workspace\\ERNI\\results\\"
+          }'
+
+          Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
+      - name: Run tests
+        run: dotnet test TestWare.Samples.Selenium.Web.dll
+      - name: Archive WEB (Firefox) screenshots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: web-firefox-screenshots
+          path: |
+            C:\workspace\ERNI\results\
+
+  test-ie:
+    needs: build
+    name: Run WEB (IE) tests
+    runs-on: windows-2022
+    steps:
+      - name: Ubuntu GitHub Actions environment variables List
+        run: env
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - uses: actions/download-artifact@v2
+        with:
+          name: testing-artifact-selenium-web
+      - name: Replace Driver at TestConfiguration.json
+        shell: pwsh
+        run: |
+          $driverPath = "C:\SeleniumWebDrivers\IEDriver".Replace("\","\\")
+
+          $content = '{
+            "Configurations": [
+              {
+                "Tag": "WebDriver",
+                  "Capabilities": [
+                      {
+                          "Name": "WebDriver",
+                          "Path": "' + $driverPath + '",
+                          "Driver": "InternetExplorer",
+                          "CommandTimeOutInMinutes": 5,
+                          "Arguments": [
+                              "--start-maximized"
+                          ]
+                      }
+                  ]
+              }
+            ],
+            "TestResultPath": "C:\\workspace\\ERNI\\results\\"
+          }'
+
+          Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
+      - name: Run tests
+        run: dotnet test TestWare.Samples.Selenium.Web.dll
+      - name: Archive WEB (IE) screenshots
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: web-IE-screenshots
           path: |
             C:\workspace\ERNI\results\
