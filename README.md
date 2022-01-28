@@ -1,7 +1,7 @@
 [![Continous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
 # About 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 Testware is a flexible solution that implement the interaction with different automation engines. Providing a robust and scalable core that could be shared by different automation projects
 
