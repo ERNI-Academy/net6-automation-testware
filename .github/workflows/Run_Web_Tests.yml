@@ -1,0 +1,50 @@
+parameters:
+  driverPath: ''
+  driverType: ''
+  testResultsPath: ''
+
+steps:
+  - name: Setup .NET
+    uses: actions/setup-dotnet@v1
+    with:
+      dotnet-version: 6.0.x
+  - uses: actions/download-artifact@v2
+    with:
+      name: testing-artifact-selenium-web
+  - name: Replace Driver at TestConfiguration.json
+    shell: pwsh
+    run: |
+      $driverPath = "${{ parameters.driverPath }}'r".Replace("\","\\")
+      $testResultsPath = "${{ parameters.testResultsPath }}'r".Replace("\","\\")
+
+      $content = '{
+        "Configurations": [
+          {
+            "Tag": "WebDriver",
+              "Capabilities": [
+                  {
+                      "Name": "WebDriver",
+                      "Path": "' + $driverPath + '",
+                      "Driver": "${{ parameters.driverType }}",
+                      "CommandTimeOutInMinutes": 5,
+                      "Arguments": [
+                          "--start-maximized"
+                      ]
+                  }
+              ]
+          }
+        ],
+        "TestResultPath": "' + $testResultsPath + '"
+      }'
+
+      Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
+  - name: Run tests
+    run: dotnet test TestWare.Samples.Selenium.Web.dll
+  - name: Archive WEB (${{ parameters.driverType }}) screenshots
+    if: always()
+    uses: actions/upload-artifact@v2
+    with:
+      name: web-${{ parameters.driverType }}-screenshots
+      path: |
+        ${{ parameters.testResultsPath }}
+  
