@@ -44,6 +44,7 @@ jobs:
           path: |
             ${{ github.workspace }}/samples/TestWare.Samples.WinAppDriver/bin/Release/net6.0
   test:
+    needs: build
     name: Run API test
     runs-on: ubuntu-latest
     steps:
@@ -56,4 +57,3 @@ jobs:
           name: testing-artifact-api
       - name: Run tests
         run: dotnet test TestWare.Samples.API.dll
-        
