@@ -49,6 +49,8 @@ jobs:
     name: Run API tests
     runs-on: ubuntu-latest
     steps:
+      - name: Ubuntu GitHub Actions environment variables List
+        run: env
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -63,6 +65,8 @@ jobs:
     name: Run WEB (Chrome) tests
     runs-on: windows-2022
     steps:
+      - name: Ubuntu GitHub Actions environment variables List
+        run: env
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
