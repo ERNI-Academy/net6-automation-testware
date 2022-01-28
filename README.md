@@ -24,12 +24,12 @@ With this action the maintenance decreases and the robustness increases.
 Testware provides capabilities to automate:
  - **Websites** (using Selenium)
 
-    - Browsers supported:
+    - Supported Browsers:
 
         <img src="https://github.com/devicons/devicon/blob/master/icons/chrome/chrome-original-wordmark.svg" title="Chrome" alt="Chrome" width="40" height="40"/>&nbsp;
         <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>&nbsp;
         <img src="https://github.com/devicons/devicon/blob/master/icons/ie10/ie10-original.svg" title="IE" alt="IE" width="40" height="40"/>&nbsp;        
-        <img src="https://commons.wikimedia.org/wiki/File:Microsoft_Edge_logo_(2019).svg" title="Edge" alt="Edge" width="40" height="40"/>&nbsp;
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" title="Edge" alt="Edge" width="40" height="40"/>&nbsp;
 
  - **Mobile Applications** (using Appium)
  - **Windows Desktop applications** (using WinAppDriver)
