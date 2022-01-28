@@ -1,4 +1,4 @@
-[![Continous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
+[![Continuous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
 
 # About 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
