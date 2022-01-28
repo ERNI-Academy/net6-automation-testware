@@ -18,9 +18,27 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
-      - name: Archive Testing artifacts
+      - name: Archive Testing artifacts - API
         uses: actions/upload-artifact@v2
         with:
-          name: archive-testing-artifacts
+          name: testing-artifact-api
           path: |
-            ${{ github.workspace }}
+            ${{ github.workspace }}/samples/TestWare.Samples.API/bin/Release/net6.0
+      - name: Archive Testing artifacts - Appium Mobile
+        uses: actions/upload-artifact@v2
+        with:
+          name: testing-artifact-appium-mobile
+          path: |
+            ${{ github.workspace }}/samples/TestWare.Samples.Appium.Mobile/bin/Release/net6.0
+      - name: Archive Testing artifacts - Selenium Web
+        uses: actions/upload-artifact@v2
+        with:
+          name: testing-artifact-selenium-web
+          path: |
+            ${{ github.workspace }}/samples/TestWare.Samples.Selenium.Web/bin/Release/net6.0
+      - name: Archive Testing artifacts - WinAppDriver
+        uses: actions/upload-artifact@v2
+        with:
+          name: testing-artifact-winappdriver
+          path: |
+            ${{ github.workspace }}/samples/TestWare.Samples.WinAppDriver/bin/Release/net6.0
