@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TestWare.Core.Interfaces;
 
-namespace TestWare.Samples.API.Resources.Factor
+namespace TestWare.Samples.API.Resources.Factor;
+
+internal interface IFactorResource: ITestWareComponent
 {
-    internal interface IFactorResource: ITestWareComponent
-    {
-        RestResponse<FactorResponse> Factor(string formula);
-    }
+    RestResponse<FactorResponse> Factor(string formula);
 }

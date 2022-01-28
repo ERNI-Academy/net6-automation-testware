@@ -2,9 +2,8 @@
 
 using RestSharp;
 
-namespace TestWare.Engines.Restsharp.Factory
+namespace TestWare.Engines.Restsharp.Factory;
+
+public interface IApiClient
 {
-    public interface IApiClient
-    {
-    }
 }

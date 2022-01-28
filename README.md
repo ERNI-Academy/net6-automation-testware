@@ -1,3 +1,4 @@
+[![Continous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
 # About 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
@@ -143,16 +144,40 @@ Evidence collection:
             "CommandTimeOutInMinutes": 5,
             "DeviceName": "emulator-5554",
             "PlatformName": "Android",
-            "Options": {
-                "fullReset": false,
-                "noReset": true,
-                "appActivity": "com.swaglabsmobileapp.MainActivity",
-                "unicodeKeyboard": true,
-                "resetKeyboard": true,
-                "autoAcceptAlerts": true,
-                "autoGrantPermissions": true,
-                "newCommandTimeout": 500
-            }
+            "Options": [
+                {
+                "Name": "fullReset",
+                "Value": false
+                },
+                {
+                "Name": "noReset",
+                "Value": true
+                },
+                {
+                "Name": "appActivity",
+                "Value": "com.swaglabsmobileapp.MainActivity"
+                },
+                {
+                "Name": "unicodeKeyboard",
+                "Value": true
+                },
+                {
+                "Name": "resetKeyboard",
+                "Value": true
+                },
+                {
+                "Name": "autoAcceptAlerts",
+                "Value": true
+                },
+                {
+                "Name": "autoGrantPermissions",
+                "Value": true
+                },
+                {
+                "Name": "newCommandTimeout",
+                "Value": 500
+                }
+            ]
         },
         {
             "Tag": "WinAppDriver",
