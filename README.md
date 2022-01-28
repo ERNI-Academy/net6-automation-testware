@@ -1,13 +1,17 @@
 [![Continous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
+
 # About 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-Testware is a flexible solution that implement the interaction with different automation engines. Providing a robust and scalable core that could be shared by different automation projects
 
-By using this testware any automation project abstract the automation implementation. The automation project that uses the testware only need to focus on its business needs.
+Testware is a flexible solution that implements the interaction with different automation engines. Providing a robust and scalable core that could be shared by different automation projects.
 
-This solution comes from the need to standarize and reuse the common usage and extension of the different automation engines. With this action the maintenance decrease and the robustness increase.
+By using this Testware solution any automation project can abstract the automation implementation, focusing only on its business needs.
+
+This solution comes from the need to standarize and reuse the common usage and extension of the different automation engines. 
+
+With this action the maintenance decrease and the robustness increase.
 
 ## Built With
  - .net 6.0
@@ -71,20 +75,22 @@ Evidence collection:
     }
 ```
 
-- it should inherit from AutomationLifeCycleBase
-- GetTestWareComponentAssemblies: return the list of the assemblies that contains the testwarecomponents
-- GetTestWareEngines: Return the instances of the engines that will be used by this automation project
-- GetConfiguration: Return a configuration object for the whole project
+- It should inherit from AutomationLifeCycleBase
+- **GetTestWareComponentAssemblies:** return the list of the assemblies that contains the testwarecomponents
+- **GetTestWareEngines:** Return the instances of the engines that will be used by this automation project
+- **GetConfiguration:** Return a configuration object for the whole project
+
 
 3. Add calls to the lifecycle class on the execution life cycles according
-- BeginTestExecution: Once at the very begining of execution. It initialize the core.
-- BeginTestSuite: Once at the begining of the test suite/feature (optional)
-- BeginTestCase: Once at the begining of a test case. It Initialize the Engines
-- BeginTestStep: Once at the begining of test step (optional)
-- EndTestStep: Once at the end of test step. It generate evidences of execution (optional)
-- EndTestCase: Once at the end of test case. It dispose the engine
-- EndTestSuite: Once at the end of test suite.
-- EndTestExecution: Once at the end of the execution
+    - **BeginTestExecution:** Once at the very begining of execution. It initialize the core.
+        - **BeginTestSuite _(optional)_:** Once at the begining of the test suite/feature. 
+            - **BeginTestCase:** Once at the begining of a test case. It Initialize the Engines
+                - **BeginTestStep _(optional)_:** Once at the begining of test step.
+                - **EndTestStep _(optional)_:** Once at the end of test step. It generate evidences of execution (optional)
+            - **EndTestCase:** Once at the end of test case. It dispose the engine
+        - **EndTestSuite:** Once at the end of test suite.
+    - **EndTestExecution:** Once at the end of the execution
+    
 
 4. Implement business automation objects (i.e pages)
 
