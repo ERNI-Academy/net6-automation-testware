@@ -20,4 +20,4 @@ jobs:
         with:
           name: archive-testing-artifacts
           path: |
-            $GITHUB_WORKSPACE
+            GITHUB_WORKSPACE
