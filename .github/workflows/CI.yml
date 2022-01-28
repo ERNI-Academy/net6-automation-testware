@@ -77,7 +77,7 @@ jobs:
       - name: Replace Driver at TestConfiguration.json
         shell: pwsh
         run: |
-          Write-Host ${ChromeWebDriver}
+          Write-Host $ChromeWebDriver
           $driverPath = "C:\SeleniumWebDrivers\ChromeDriver".Replace("\","\\")
 
           $content = '{
@@ -103,3 +103,9 @@ jobs:
           Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
       - name: Run tests
         run: dotnet test TestWare.Samples.Selenium.Web.dll
+      - name: Archive WEB (Chrome) screenshots
+        uses: actions/upload-artifact@v2
+        with:
+          name: web-chrome-screenshots
+          path: |
+            C:\workspace\ERNI\results\
