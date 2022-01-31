@@ -65,9 +65,9 @@ jobs:
   web-tests:
     needs: build
     strategy:
-    matrix:
-      os: [windows-2022]
-      browser: [chrome, firefox, edge, internetexplorer]
+      matrix:
+        os: [windows-2022]
+        browser: [chrome, firefox, edge, internetexplorer]
     runs-on: ${{ matrix.os }}
     uses: ./.github/workflows/Run_web_tests.yml
     with:
