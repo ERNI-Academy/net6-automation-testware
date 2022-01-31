@@ -73,10 +73,10 @@ jobs:
     steps:
       - shell: pwsh
         run: |
-        dir 
-        echo "-----------------------"
-        cd ./.github/workflows
-        dir
+          dir 
+          echo "-----------------------"
+          cd ./.github/workflows
+          dir
       - uses: ./.github/workflows/Run_web_tests.yml@ci-tests
         with:
           driver_type: ${{ matrix.browser }}
