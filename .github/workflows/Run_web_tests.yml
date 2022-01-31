@@ -15,7 +15,6 @@ on:
 
 jobs:
   web-tests:
-      name: Run WEB (${{ inputs.driver_type }}) tests
       runs-on: windows-2022
       steps:
         - name: Ubuntu GitHub Actions environment variables List
@@ -30,10 +29,6 @@ jobs:
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
-            Write-Host ${{ inputs.driver_path }}
-            Write-Host ${{ inputs.test_results_path }}
-            Write-Host ${{ inputs.driver_type }}
-
             $driverPath = "${{ inputs.driver_path }}".Replace("\","\\")
             $testResultsPath = "${{ inputs.test_results_path }}".Replace("\","\\")
 

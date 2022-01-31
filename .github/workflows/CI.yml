@@ -63,6 +63,7 @@ jobs:
         run: dotnet test TestWare.Samples.API.dll
 
   test-chrome:
+    name: Run WEB (Chrome) tests
     needs: build
     uses: ./.github/workflows/Run_web_tests.yml
     with:
@@ -71,6 +72,7 @@ jobs:
       test_results_path: 'C:\workspace\ERNI\results'
 
   test-edge:
+    name: Run WEB (Edge) tests
     needs: build
     uses: ./.github/workflows/Run_web_tests.yml
     with:
@@ -79,6 +81,7 @@ jobs:
       test_results_path: 'C:\workspace\ERNI\results'
 
   test-firefox:
+    name: Run WEB (Firefox) tests
     needs: build
     uses: ./.github/workflows/Run_web_tests.yml
     with:
@@ -87,6 +90,7 @@ jobs:
       test_results_path: 'C:\workspace\ERNI\results'
 
   test-ie:
+    name: Run WEB (IE) tests
     needs: build
     uses: ./.github/workflows/Run_web_tests.yml
     with:
