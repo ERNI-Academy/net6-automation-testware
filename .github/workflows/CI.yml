@@ -62,22 +62,34 @@ jobs:
       - name: Run tests
         run: dotnet test TestWare.Samples.API.dll
 
-  web-tests:
+  test-chrome:
+    name: Run WEB (Chrome) tests
     needs: build
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-2022]
-        browser: [chrome, firefox, edge, internetexplorer]
-    runs-on: ${{ matrix.os }}
-    steps:
-      - shell: pwsh
-        run: |
-          dir
-      - shell: pwsh
-        run: |
-          cd ./.github/workflows
-      - uses: ./.github/workflows/Run_web_tests.yml@ci-tests
-        with:
-          driver_type: ${{ matrix.browser }}
-          test_results_path: 'C:\workspace\ERNI\results'
+    uses: ./.github/workflows/Run_web_tests.yml
+    with:
+      driver_type: 'Chrome'
+      test_results_path: 'C:\workspace\ERNI\results'
+
+  test-edge:
+    name: Run WEB (Edge) tests
+    needs: build
+    uses: ./.github/workflows/Run_web_tests.yml
+    with:
+      driver_type: 'Edge'
+      test_results_path: 'C:\workspace\ERNI\results'
+
+  test-firefox:
+    name: Run WEB (Firefox) tests
+    needs: build
+    uses: ./.github/workflows/Run_web_tests.yml
+    with:
+      driver_type: 'Firefox'
+      test_results_path: 'C:\workspace\ERNI\results'
+
+  test-ie:
+    name: Run WEB (IE) tests
+    needs: build
+    uses: ./.github/workflows/Run_web_tests.yml
+    with:
+      driver_type: 'InternetExplorer'
+      test_results_path: 'C:\workspace\ERNI\results'
