@@ -42,16 +42,6 @@ public class LoginPage : WebPage, ILoginPage
         => ClickElement(LoginButton);
 
     /// <inheritdoc cref="ILoginPage" />
-    public void CheckUserIsAtHomepage()
-    {
-        RetryPolicies.ExecuteActionWithRetries(
-            () =>
-            {
-                this.Driver.Url.Should().Be("https://www.saucedemo.com/inventory.html");
-            });
-    }
-
-    /// <inheritdoc cref="ILoginPage" />
     public void CheckUserIsAtLoginpage()
     {
         RetryPolicies.ExecuteActionWithRetries(

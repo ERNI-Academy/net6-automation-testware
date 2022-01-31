@@ -48,12 +48,6 @@ public sealed class LoginSteps
         loginPage.ClickLoginButton();
     }
 
-    [Then(@"the user can login")]
-    public void ThenTheUserCanLogin()
-    {
-        loginPage.CheckUserIsAtHomepage();
-    }
-
     [Then(@"the user is at Login page")]
     public void UserIsAtLoginPage()
     {

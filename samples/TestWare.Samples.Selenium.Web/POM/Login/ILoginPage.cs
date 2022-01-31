@@ -25,11 +25,6 @@ public interface ILoginPage : ITestWareComponent
     void ClickLoginButton();
 
     /// <summary>
-    /// Script to check that the user is at Manager/homepage tab
-    /// </summary>
-    void CheckUserIsAtHomepage();
-
-    /// <summary>
     /// Check that the user is at Login Page
     /// </summary>
     void CheckUserIsAtLoginpage();
