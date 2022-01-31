@@ -7,15 +7,15 @@ namespace TestWare.Samples.Selenium.Web.POM.Login;
 
 public class LoginPage : WebPage, ILoginPage
 {
-    private const string LoginUrl = "https://demo.guru99.com/V4/index.php";
+    private const string LoginUrl = "https://www.saucedemo.com/";
 
-    [FindsBy(How = How.Name, Using = "uid")]
+    [FindsBy(How = How.Name, Using = "user-name")]
     private IWebElement UserIdTextBox { get; set; }
 
     [FindsBy(How = How.Name, Using = "password")]
     private IWebElement UserPasswordTextBox { get; set; }
 
-    [FindsBy(How = How.Name, Using = "btnLogin")]
+    [FindsBy(How = How.Name, Using = "login-button")]
     private IWebElement LoginButton { get; set; }
 
     public LoginPage(IWebDriver driver) : base(driver)
@@ -47,7 +47,7 @@ public class LoginPage : WebPage, ILoginPage
         RetryPolicies.ExecuteActionWithRetries(
             () =>
             {
-                this.Driver.Url.Should().Be("https://demo.guru99.com/V4/manager/Managerhomepage.php");
+                this.Driver.Url.Should().Be("https://www.saucedemo.com/inventory.html");
             });
     }
 
@@ -57,15 +57,7 @@ public class LoginPage : WebPage, ILoginPage
         RetryPolicies.ExecuteActionWithRetries(
             () =>
             {
-                this.Driver.Url.Should().Be("https://demo.guru99.com/V4/index.php");
+                this.Driver.Url.Should().Be(LoginUrl);
             });
-    }
-
-    public void AcceptLogoutAlert()
-    {
-        var content = AcceptDialog();
-
-        content.Should().Be("You Have Succesfully Logged Out!!");
-
     }
 }

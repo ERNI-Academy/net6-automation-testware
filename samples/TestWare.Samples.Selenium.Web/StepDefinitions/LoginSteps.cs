@@ -1,7 +1,5 @@
-﻿
-using Autofac;
+﻿using Autofac;
 using TestWare.Core;
-using TestWare.Samples.Selenium.Web.POM.CookieManager;
 using TestWare.Samples.Selenium.Web.POM.Login;
 
 namespace TestWare.Samples.Selenium.Web.StepDefinitions;
@@ -14,21 +12,13 @@ namespace TestWare.Samples.Selenium.Web.StepDefinitions;
 public sealed class LoginSteps
 {
     private readonly ILoginPage loginPage;
-    private readonly ICookiePage cookiePage;
 
     public LoginSteps()
     {
         using (var scope = ContainerManager.Container.BeginLifetimeScope())
         {
             loginPage = scope.Resolve<ILoginPage>() ?? throw new ArgumentNullException(nameof(ILoginPage));
-            cookiePage = scope.Resolve<ICookiePage>() ?? throw new ArgumentException(nameof(ICookiePage));
         }
-    }
-
-    [Given(@"Cookies have been accepted")]
-    public void GivenCookiesHaveBeenAccpted()
-    {
-        cookiePage.ClickAcceptAllCookiesButton();   
     }
 
     [Given(@"the user enters username '([^']*)'")]
@@ -37,25 +27,18 @@ public sealed class LoginSteps
         loginPage.EnterUserName(userName);
     }
 
-    [When(@"the user confirms the logout popup")]
-    public void ConfirmLogoutPopup()
-    {
-        loginPage.ConfirmLogoutPopup();
-    }
-
     [Given(@"the user enters password '([^']*)'")]
     public void GivenTheUserEntersValidPassword(string password)
     {
         loginPage.EnterUserPassword(password);
     }
 
-    [Given(@"user '([^']*)' is logged with '([^']*)' into Guru99")]
-    public void GivenUserIsLogedWithIntoGuru(string userName, string password)
+    [Given(@"user '([^']*)' is logged with '([^']*)' into SwagLabs")]
+    public void GivenUserIsLogedWithIntoSwagLabs(string userName, string password)
     {
         GivenTheUserEntersUsername(userName);
         GivenTheUserEntersValidPassword(password);
-        WhenTheUserClicksSubmit();
-    }
+        WhenTheUserClicksSubmit();    }
 
 
     [Given(@"the user clicks submit")]
@@ -76,11 +59,4 @@ public sealed class LoginSteps
     {
         loginPage.CheckUserIsAtLoginpage();
     }
-
-    [When(@"user exit notification is accepted")]
-    public void WhenUserExitNotificationIsAccepted()
-    {
-        loginPage.AcceptLogoutAlert();
-    }
-
 }

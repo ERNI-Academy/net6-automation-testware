@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestWare.Core.Interfaces;
+﻿using TestWare.Core.Interfaces;
 
 namespace TestWare.Samples.Selenium.Web.POM.Login;
 
@@ -38,11 +33,4 @@ public interface ILoginPage : ITestWareComponent
     /// Check that the user is at Login Page
     /// </summary>
     void CheckUserIsAtLoginpage();
-
-    /// <summary>
-    /// Confirm logout pop-up element
-    /// </summary>
-    void ConfirmLogoutPopup();
-
-    void AcceptLogoutAlert();
 }
