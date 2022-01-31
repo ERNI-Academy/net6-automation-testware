@@ -71,7 +71,7 @@ jobs:
         browser: [chrome, firefox, edge, internetexplorer]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: ./.github/workflows/Run_web_tests.yml
+      - uses: ./.github/workflows/Run_web_tests.yml@ci-tests
         with:
           driver_type: ${{ matrix.browser }}
           test_results_path: 'C:\workspace\ERNI\results'
