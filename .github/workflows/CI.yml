@@ -62,38 +62,14 @@ jobs:
       - name: Run tests
         run: dotnet test TestWare.Samples.API.dll
 
-  test-chrome:
-    name: Run WEB (Chrome) tests
+  web-tests:
     needs: build
+    strategy:
+    matrix:
+      os: [windows-2022]
+      browser: [chrome, firefox, edge, internetexplorer]
+    runs-on: ${{ matrix.os }}
     uses: ./.github/workflows/Run_web_tests.yml
     with:
-      driver_path: 'C:\SeleniumWebDrivers\ChromeDriver'
-      driver_type: 'Chrome'
-      test_results_path: 'C:\workspace\ERNI\results'
-
-  test-edge:
-    name: Run WEB (Edge) tests
-    needs: build
-    uses: ./.github/workflows/Run_web_tests.yml
-    with:
-      driver_path: 'C:\SeleniumWebDrivers\EdgeDriver'
-      driver_type: 'Edge'
-      test_results_path: 'C:\workspace\ERNI\results'
-
-  test-firefox:
-    name: Run WEB (Firefox) tests
-    needs: build
-    uses: ./.github/workflows/Run_web_tests.yml
-    with:
-      driver_path: 'C:\SeleniumWebDrivers\GeckoDriver'
-      driver_type: 'Firefox'
-      test_results_path: 'C:\workspace\ERNI\results'
-
-  test-ie:
-    name: Run WEB (IE) tests
-    needs: build
-    uses: ./.github/workflows/Run_web_tests.yml
-    with:
-      driver_path: 'C:\SeleniumWebDrivers\IEDriver'
-      driver_type: 'InternetExplorer'
+      driver_type: ${{ matrix.browser }}
       test_results_path: 'C:\workspace\ERNI\results'

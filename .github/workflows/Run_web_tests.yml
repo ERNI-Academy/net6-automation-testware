@@ -3,9 +3,6 @@ name: Run-web-tests
 on:
   workflow_call:
     inputs:
-      driver_path:
-        required: true
-        type: string
       driver_type:
         required: true
         type: string
@@ -13,16 +10,24 @@ on:
         required: true
         type: string
 
+env:
+  DRIVER_PATH: ''
+
 jobs:
   web-tests:
-      runs-on: windows-2022
       steps:
         - name: Ubuntu GitHub Actions environment variables List
           run: env
-        - name: echo ${{ env.ChromeWebDriver }}
-          run:  |
-            echo $ChromeWebDriver
-            echo ${{ env.ChromeWebDriver }}
+
+        - run: echo "$env:GeckoWebDriver" >> $DRIVER_PATH
+          if: ${{ inputs.driver_type }} == 'firefox'          
+        - run: echo "$env:EdgeWebDriver" >> $DRIVER_PATH
+          if: ${{ inputs.driver_type }} == 'edge'
+        - run: echo "$env:ChromeWebDriver" >> $DRIVER_PATH
+          if: ${{ inputs.driver_type }} == 'chrome'
+        - run: echo "$env:IEWebDriver" >> $DRIVER_PATH
+          if: ${{ inputs.driver_type }} == 'internetexplorer'
+
         - name: Setup .NET
           uses: actions/setup-dotnet@v1
           with:
@@ -33,7 +38,7 @@ jobs:
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
-            $driverPath = "${{ inputs.driver_path }}".Replace("\","\\")
+            $driverPath = $DRIVER_PATH.Replace("\","\\")
             $testResultsPath = "${{ inputs.test_results_path }}".Replace("\","\\")
 
             $content = '{
