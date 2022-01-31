@@ -39,7 +39,7 @@ jobs:
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
-            $driverPath = $DRIVER_PATH.Replace("\","\\")
+            $driverPath = "${{ env.DRIVER_PATH }}".Replace("\","\\")
             $testResultsPath = "${{ inputs.test_results_path }}".Replace("\","\\")
 
             $content = '{
