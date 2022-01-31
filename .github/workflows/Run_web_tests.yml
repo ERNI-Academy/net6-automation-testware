@@ -14,8 +14,7 @@ on:
         type: string
 
 jobs:
-  test-chrome:
-      needs: build
+  web-tests:
       name: Run WEB (${{ inputs.driver_type }}) tests
       runs-on: windows-2022
       steps:
