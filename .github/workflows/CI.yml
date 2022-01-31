@@ -65,11 +65,13 @@ jobs:
   web-tests:
     needs: build
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-2022]
         browser: [chrome, firefox, edge, internetexplorer]
     runs-on: ${{ matrix.os }}
-    uses: ./.github/workflows/Run_web_tests.yml
-    with:
-      driver_type: ${{ matrix.browser }}
-      test_results_path: 'C:\workspace\ERNI\results'
+    steps:
+      - uses: ./.github/workflows/Run_web_tests.yml
+        with:
+          driver_type: ${{ matrix.browser }}
+          test_results_path: 'C:\workspace\ERNI\results'
