@@ -71,7 +71,12 @@ jobs:
         browser: [chrome, firefox, edge, internetexplorer]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - shell: pwsh
+        run: |
+        dir 
+        echo "-----------------------"
+        cd ./.github/workflows
+        dir
       - uses: ./.github/workflows/Run_web_tests.yml@ci-tests
         with:
           driver_type: ${{ matrix.browser }}
