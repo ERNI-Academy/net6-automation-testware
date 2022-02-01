@@ -34,21 +34,21 @@ jobs:
             npm install -g appium --unsafe-perm=true --allow-root
             appium -v
         - name: Run Appium Server
-          run: start appium --log ${{ inputs.test_results_path }}/appium.log -a 127.0.0.1 -p 4723
+          run: start appium --log ${{ inputs.test_results_path }}/appium.log --address 127.0.0.1 --port 5321 
           shell: cmd
         - name: Sleep for 30 seconds
           run: Start-Sleep -s 30
           shell: powershell
-        # - name: Healthcheck appium
-        #   id: AppiumStatus
-        #   uses: fjogeleit/http-request-action@master
-        #   with:
-        #     url: 'http://0.0.0.0:4723/wd/hub/status'
-        #     method: 'GET'
-        # - name: Show Response
-        #   run: echo ${{ steps.AppiumStatus.outputs.response }}
+        - name: Healthcheck appium
+          id: AppiumStatus
+          uses: fjogeleit/http-request-action@master
+          with:
+            url: 'http://0.0.0.0:5321/wd/hub/status'
+            method: 'GET'
+        - name: Show Response
+          run: echo ${{ steps.AppiumStatus.outputs.response }}
         - name: Run Appium Server
-          run: start appium --log ${{ inputs.test_results_path }}/appium2.log -a 127.0.0.1 -p 4723
+          run: start appium --log ${{ inputs.test_results_path }}/appium2.log --address 127.0.0.1 --port 4723 
           shell: cmd
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
