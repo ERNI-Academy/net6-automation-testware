@@ -48,7 +48,7 @@ jobs:
         # - name: Show Response
         #   run: echo ${{ steps.AppiumStatus.outputs.response }}
         - name: Run Appium Server
-          run: start appium --log ${{ inputs.test_results_path }}/appium.log
+          run: start appium --log ${{ inputs.test_results_path }}/appium2.log
           shell: cmd
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
