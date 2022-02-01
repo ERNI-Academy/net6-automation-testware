@@ -28,10 +28,11 @@ jobs:
           with:
             name: testing-artifact-selenium-web
 
-        - name: Install Appium Server
-          run: npm install -g appium
-        - name: Run Appium Server
-          run: start appium --port 4723    
+        - name: Install & Run Appium Server
+          run: |
+            npm install -g appium
+            appium -v
+            appium
         - name: Check Appium Server is running
           run: TASKLIST /FI "IMAGENAME eq cmd.exe" /V
 
