@@ -86,8 +86,8 @@ jobs:
           with:
             files: '.\TestConfiguration.Web.json'
           env:
-            Configurations[0].Capabilities[0].Path: $driverPathRaw
-            Configurations[0].Capabilities[0].Driver: ${{ matrix.browser }}
+            Configurations.0.Capabilities.0.Path: $driverPathRaw
+            Configurations.0.Capabilities.0.Driver: ${{ matrix.browser }}
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Archive config json
           if: always()
