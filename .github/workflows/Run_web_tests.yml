@@ -81,6 +81,6 @@ jobs:
           uses: dorny/test-reporter@v1
           if: success() || failure()
           with:
-            name: MSTest Tests
+            name: Web Tests - (${{ matrix.browser }})
             path: ${{ inputs.test_results_path }}/results.trx
             reporter: dotnet-trx
