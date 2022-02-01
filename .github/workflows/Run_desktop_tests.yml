@@ -36,7 +36,10 @@ jobs:
           run: start appium --log ${{ inputs.test_results_path }}/appium.log
           shell: cmd
         - name: Check Appium Server is running
-          run: Get-Process -Name node
+          run: |
+            Sleep 30
+            Get-Process -Name node
+            
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
