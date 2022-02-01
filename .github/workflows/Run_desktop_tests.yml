@@ -34,7 +34,7 @@ jobs:
             npm install -g appium --unsafe-perm=true --allow-root
             appium -v
         - name: Run Appium Server
-          run: start appium --log ${{ inputs.test_results_path }}/appium.log
+          run: start appium --log ${{ inputs.test_results_path }}/appium.log -a 127.0.0.1 -p 4723
           shell: cmd
         - name: Sleep for 30 seconds
           run: Start-Sleep -s 30
@@ -48,7 +48,7 @@ jobs:
         # - name: Show Response
         #   run: echo ${{ steps.AppiumStatus.outputs.response }}
         - name: Run Appium Server
-          run: start appium --log ${{ inputs.test_results_path }}/appium2.log
+          run: start appium --log ${{ inputs.test_results_path }}/appium2.log -a 127.0.0.1 -p 4723
           shell: cmd
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
