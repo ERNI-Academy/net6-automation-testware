@@ -33,7 +33,8 @@ jobs:
             npm install -g appium
             appium -v
         - name: Run Appium Server
-          run: Start-Job -ScriptBlock { appium }
+          run: start /min appium
+          shell: cmd
 
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
