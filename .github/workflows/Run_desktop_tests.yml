@@ -30,12 +30,13 @@ jobs:
 
         - name: Install Appium Server
           run: |
-            npm install -g appium
+            npm install -g appium --unsafe-perm=true --allow-root
             appium -v
         - name: Run Appium Server
-          run: start /min appium
+          run: start appium --log ${{ inputs.test_results_path }}/appium.log
           shell: cmd
-
+        - name: Check Appium Server is running
+          run: Get-Process -Name node
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
