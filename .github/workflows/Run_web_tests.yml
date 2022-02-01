@@ -20,14 +20,14 @@ jobs:
         - name: Ubuntu GitHub Actions environment variables List
           run: env
 
-        - run: echo $env:GeckoWebDriver >> $DRIVER_PATH
-          if: ${{ inputs.driver_type }} == 'firefox'          
-        - run: echo $env:EdgeWebDriver >> $DRIVER_PATH
-          if: ${{ inputs.driver_type }} == 'edge'
+        - run: echo $env:GeckoWebDriver >> >> $DRIVER_PATH
+          if: inputs.driver_type == 'Firefox'          
+        - run: echo $env:EdgeWebDriver >> >> $DRIVER_PATH
+          if: inputs.driver_type == 'Edge'
         - run: echo $env:ChromeWebDriver >> $DRIVER_PATH
-          if: ${{ inputs.driver_type }} == 'chrome'
+          if: inputs.driver_type == 'Chrome'
         - run: echo $env:IEWebDriver >> $DRIVER_PATH
-          if: ${{ inputs.driver_type }} == 'internetexplorer'
+          if: inputs.driver_type == 'InternetExplorer'
 
         - name: Setup .NET
           uses: actions/setup-dotnet@v1
@@ -39,7 +39,7 @@ jobs:
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
-            $driverPath = $env:CHROMEWEBDRIVER.Replace("\","\\")
+            $driverPath = $DRIVER_PATH.Replace("\","\\")
             $testResultsPath = "${{ inputs.test_results_path }}".Replace("\","\\")
 
             $content = '{
