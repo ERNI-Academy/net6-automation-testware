@@ -16,7 +16,6 @@ jobs:
       steps:
         - name: Ubuntu GitHub Actions environment variables List
           run: env
-        - run: echo "${{ env:CHROMEWEBDRIVER }}" 
         - run: echo "$env:CHROMEWEBDRIVER"
         - run: echo "${env:CHROMEWEBDRIVER}"
         - run: echo "DRIVER_PATH=$Env:GeckoWebDriver" >> $GITHUB_ENV        
