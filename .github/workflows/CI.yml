@@ -69,8 +69,9 @@ jobs:
       matrix:
         os: [windows-2022]
         browser: [Chrome, Firefox, Edge, InternetExplorer]
-    runs-on: ${{ matrix.os }}
+
     uses: ./.github/workflows/Run_web_tests.yml
     with:
+      environment: ${{ matrix.os }}
       driver_type: ${{ matrix.browser }}
       test_results_path: 'C:\workspace\ERNI\results'

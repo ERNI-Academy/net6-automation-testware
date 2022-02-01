@@ -9,9 +9,12 @@ on:
       test_results_path:
         required: true
         type: string
-
+      environment:
+        required: true
+        type: string
 jobs:
   web-tests:
+    runs-on: ${{ inputs.environment }}
       steps:
         - name: Ubuntu GitHub Actions environment variables List
           run: env          
