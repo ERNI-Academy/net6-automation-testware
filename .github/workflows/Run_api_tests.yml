@@ -1,0 +1,27 @@
+name: Run-api-tests
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+jobs:
+  api-tests:      
+      strategy:
+        matrix:
+          os: ${{fromJson(inputs.environment)}}  
+
+      name: Run API (${{ matrix.os }}) tests
+      runs-on: ${{ matrix.os }}
+
+      steps:
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 6.0.x
+        - uses: actions/download-artifact@v2
+          with:
+            name: testing-artifact-api
+        - name: Run tests
+          run: dotnet test TestWare.Samples.API.dll

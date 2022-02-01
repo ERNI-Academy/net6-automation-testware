@@ -19,7 +19,7 @@ jobs:
           os: ${{fromJson(inputs.environment)}}
           browser: ${{fromJson(inputs.driver_type)}}   
 
-      name: Run WEB (${{ matrix.browser }}) tests
+      name: Run WEB (${{ matrix.browser }}) tests - ${{ matrix.os }}
       runs-on: ${{ matrix.os }}
 
       steps:

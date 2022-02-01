@@ -45,22 +45,12 @@ jobs:
           path: |
             ${{ github.workspace }}/samples/TestWare.Samples.WinAppDriver/bin/Release/net6.0
 
-  test-api:
+  api-tests:
     needs: build
-    name: Run API tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ubuntu GitHub Actions environment variables List
-        run: env
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 6.0.x
-      - uses: actions/download-artifact@v2
-        with:
-          name: testing-artifact-api
-      - name: Run tests
-        run: dotnet test TestWare.Samples.API.dll
+    uses: ./.github/workflows/Run_api_tests.yml
+    with:
+      environment: >-
+        ["windows-2022", "ubuntu-latest", "macOs-latest"]
 
   web-tests:
     needs: build
