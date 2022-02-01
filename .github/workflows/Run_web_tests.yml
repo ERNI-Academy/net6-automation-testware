@@ -31,6 +31,8 @@ jobs:
         - uses: actions/download-artifact@v2
           with:
             name: testing-artifact-selenium-web
+        - name: Run git init
+          run: git init
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
@@ -76,7 +78,7 @@ jobs:
             path: |
               ${{ inputs.test_results_path }}
         - name: Test Report
-          uses: dorny/test-reporter@v1.5.0
+          uses: dorny/test-reporter@v1
           if: success() || failure()
           with:
             name: MSTest Tests
