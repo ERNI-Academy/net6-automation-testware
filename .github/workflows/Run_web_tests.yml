@@ -27,7 +27,7 @@ jobs:
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
-            switch ( ${{ inputs.driver_type }}.ToLower() )
+            switch ( "${{ inputs.driver_type }}".ToLower() )
             {
                 "chrome" { $driverPathRaw = "$env:CHROMEWEBDRIVER"    }
                 "firefox" { $driverPathRaw = "$env:GeckoWebDriver"    }
