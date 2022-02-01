@@ -26,7 +26,7 @@ jobs:
             dotnet-version: 6.0.x
         - uses: actions/download-artifact@v2
           with:
-            name: testing-artifact-selenium-web
+            name: testing-artifact-winappdriver
 
         - name: Install Appium Server
           run: |
@@ -34,8 +34,6 @@ jobs:
             appium -v
         - name: Run Appium Server
           run: Start-Job -ScriptBlock { appium }
-        - name: Check Appium Server is running
-          run: TASKLIST /FI "IMAGENAME eq cmd.exe" /V
 
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
