@@ -27,8 +27,14 @@ jobs:
         - uses: actions/download-artifact@v2
           with:
             name: testing-artifact-selenium-web
-        - name: Install and Run Appium Server
-          uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
+
+        - name: Install Appium Server
+          run: npm install -g appium
+        - name: Run Appium Server
+          run: start appium -p 4723    
+        - name: Check Appium Server is running
+          run: TASKLIST /FI "IMAGENAME eq cmd.exe" /V
+
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
