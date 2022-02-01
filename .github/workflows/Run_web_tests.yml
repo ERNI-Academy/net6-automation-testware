@@ -35,9 +35,17 @@ jobs:
         - name: Run git init
           run: git init
         - name: Configuration overwrite
-          run: echo "this is the ${driver}"
-          env: 
-            driver: $CHROMEWEBDRIVER
+          run: |
+            switch ( "${{ matrix.browser }}".ToLower() )
+            {
+                "chrome" { $driverPathRaw = "$env:CHROMEWEBDRIVER"    }
+                "firefox" { $driverPathRaw = "$env:GeckoWebDriver"    }
+                "edge" { $driverPathRaw = "$env:EdgeWebDriver"   }
+                "internetexplorer" { $driverPathRaw = "$env:IEWebDriver" }
+            }
+        - name: Configuration print
+          run: |
+            echo $driverPathRaw
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
