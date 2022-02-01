@@ -81,6 +81,14 @@ jobs:
             }'
 
             Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
+        - name: config replacement
+          uses: microsoft/variable-substitution@v1 
+          with:
+            files: '.\TestConfiguration.Web.json'
+          env:
+            Configurations[0].Capabilities[0].Path: $driverPathRaw
+            Configurations[0].Capabilities[0].Driver: ${{ matrix.browser }}
+            TestResultPath: ${{ inputs.test_results_path }}
         - name: Archive config json
           if: always()
           uses: actions/upload-artifact@v2
