@@ -9,5 +9,5 @@ namespace TestWare.Samples.Selenium.Web.POM.Menu;
 public interface IMenuPage : ITestWareComponent
 {
     void ClickLogoutButton();
-    void NavigateToNewCustomerTab();
+    void ClickOpenMenuButton();
 }

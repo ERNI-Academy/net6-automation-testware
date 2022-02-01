@@ -3,15 +3,12 @@ Feature: Login
 
 @NominalTest
 Scenario: Login 
-    Given Cookies have been accepted
-	And the user enters username 'mngr379661'
-	And the user enters password 'rybepyq'
+	Given the user enters username 'standard_user'
+	And the user enters password 'secret_sauce'
 	When the user clicks submit
 	Then the user can login
 
 Scenario: Logout
-    Given Cookies have been accepted
-	And user 'mngr379661' is logged with 'rybepyq' into Guru99
+	Given user 'standard_user' is logged with 'secret_sauce' into SwagLabs
 	When the user clicks Logout button
-	And user exit notification is accepted
 	Then the user is at Login page

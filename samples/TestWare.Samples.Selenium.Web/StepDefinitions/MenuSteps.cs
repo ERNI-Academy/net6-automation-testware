@@ -24,6 +24,7 @@ public sealed class MenuSteps
     [When(@"the user clicks Logout button")]
     public void WhenTheUserClicksLogoutButton()
     {
+        menuPage.ClickOpenMenuButton();
         menuPage.ClickLogoutButton();
     }
 }
