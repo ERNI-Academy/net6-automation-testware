@@ -31,7 +31,7 @@ jobs:
         - name: Install Appium Server
           run: npm install -g appium
         - name: Run Appium Server
-          run: start appium -p 4723    
+          run: npm start appium -p 4723    
         - name: Check Appium Server is running
           run: TASKLIST /FI "IMAGENAME eq cmd.exe" /V
 
