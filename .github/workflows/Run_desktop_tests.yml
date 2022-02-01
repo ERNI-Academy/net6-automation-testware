@@ -39,14 +39,17 @@ jobs:
         - name: Sleep for 30 seconds
           run: Start-Sleep -s 30
           shell: powershell
-        - name: Healthcheck appium
-          id: AppiumStatus
-          uses: fjogeleit/http-request-action@master
-          with:
-            url: 'http://0.0.0.0:4723/wd/hub/status'
-            method: 'GET'
-        - name: Show Response
-          run: echo ${{ steps.AppiumStatus.outputs.response }}
+        # - name: Healthcheck appium
+        #   id: AppiumStatus
+        #   uses: fjogeleit/http-request-action@master
+        #   with:
+        #     url: 'http://0.0.0.0:4723/wd/hub/status'
+        #     method: 'GET'
+        # - name: Show Response
+        #   run: echo ${{ steps.AppiumStatus.outputs.response }}
+        - name: Run Appium Server
+          run: start appium --log ${{ inputs.test_results_path }}/appium.log
+          shell: cmd
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
