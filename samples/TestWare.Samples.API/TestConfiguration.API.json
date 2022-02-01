@@ -6,7 +6,7 @@
             {
                 "Name":  "API",
                 "BaseUrl": "https://newton.vercel.app/api/v2/",
-                "Timeout": 3000
+                "Timeout": 5000
             }
         ]
     }
