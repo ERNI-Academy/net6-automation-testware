@@ -61,3 +61,11 @@ jobs:
       driver_type: >-
         ["Chrome", "Firefox", "Edge", "InternetExplorer"]
       test_results_path: 'C:\workspace\ERNI\results'
+
+  desktop-tests:
+    needs: build
+    uses: ./.github/workflows/Run_desktop_tests.yml
+    with:
+      environment: >-
+        ["windows-2022", "windows-2019"]
+      test_results_path: 'C:\workspace\ERNI\results'
