@@ -15,20 +15,7 @@ jobs:
       runs-on: windows-2022
       steps:
         - name: Ubuntu GitHub Actions environment variables List
-          run: env
-        - run: echo "$env:CHROMEWEBDRIVER"
-        - run: echo "${env:CHROMEWEBDRIVER}"
-        - run: echo "DRIVER_PATH=$Env:GeckoWebDriver" >> $GITHUB_ENV        
-          if: inputs.driver_type == 'Firefox'          
-        - run: echo "DRIVER_PATH=$Env:EdgeWebDriver" >> $GITHUB_ENV         
-          if: inputs.driver_type == 'Edge'
-        - run: echo "DRIVER_PATH=$Env:CHROMEWEBDRIVER" >> $GITHUB_ENV        
-          if: inputs.driver_type == 'Chrome'
-        - run: echo "DRIVER_PATH=$Env:IEWebDriver" >> $GITHUB_ENV
-          if: inputs.driver_type == 'InternetExplorer'
-        - run: echo "${{ env.DRIVER_PATH }}"
-
-          
+          run: env          
 
         - name: Setup .NET
           uses: actions/setup-dotnet@v1
@@ -40,7 +27,15 @@ jobs:
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
-            $driverPath = $env:DRIVER_PATH.Replace("\","\\")
+            switch ( ${{ inputs.driver_type }}.ToLower() )
+            {
+                "chrome" { $driverPathRaw = "$env:CHROMEWEBDRIVER"    }
+                "firefox" { $driverPathRaw = "$env:GeckoWebDriver"    }
+                "edge" { $driverPathRaw = "$env:EdgeWebDriver"   }
+                "internetexplorer" { $driverPathRaw = "$env:IEWebDriver" }
+            }
+
+            $driverPath = $driverPathRaw.Replace("\","\\")
             $testResultsPath = "${{ inputs.test_results_path }}".Replace("\","\\")
 
             $content = '{
