@@ -9,14 +9,12 @@ on:
 
 jobs:
   api-tests:
-    needs: build
     uses: ./.github/workflows/Run_api_tests.yml
     with:
       environment: >-
         ["windows-2022", "ubuntu-latest", "macOs-latest"]
 
   web-tests:
-    needs: build
     uses: ./.github/workflows/Run_web_tests.yml
     with:
       environment: >-
@@ -26,7 +24,6 @@ jobs:
       test_results_path: './results'
 
   desktop-tests:
-    needs: build
     uses: ./.github/workflows/Run_desktop_tests.yml
     with:
       environment: >-
