@@ -60,7 +60,7 @@ jobs:
         ["windows-2022"]
       driver_type: >-
         ["Chrome", "Firefox", "Edge", "InternetExplorer"]
-      test_results_path: 'C:\workspace\ERNI\results'
+      test_results_path: './results'
 
   desktop-tests:
     needs: build
@@ -68,4 +68,4 @@ jobs:
     with:
       environment: >-
         ["windows-2022", "windows-2019"]
-      test_results_path: 'C:\workspace\ERNI\results'
+      test_results_path: './results'

@@ -10,7 +10,7 @@ on:
         required: true
         type: string
 jobs:
-  web-tests:      
+  desktop-tests:      
       strategy:
         matrix:
           os: ${{fromJson(inputs.environment)}}
