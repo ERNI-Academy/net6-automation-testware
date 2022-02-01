@@ -10,20 +10,20 @@ namespace TestWare.Samples.Selenium.Web.POM.Menu;
 /// </summary>
 public class MenuPage : WebPage, IMenuPage
 {
-    [FindsBy(How = How.PartialLinkText, Using = "Log out")]
-    private IWebElement LogoutButton { get; set; }
+    [FindsBy(How = How.Id, Using = "react-burger-menu-btn")]
+    private IWebElement OpenMenuButton { get; set; }
 
-    [FindsBy(How = How.LinkText, Using = "New Customer")]
-    private IWebElement NewCustomerMenuButton { get; set; }
+    [FindsBy(How = How.Id, Using = "logout_sidebar_link")]
+    private IWebElement LogoutButton { get; set; }
 
     public MenuPage(IWebDriver driver)
         : base(driver)
     {
     }
 
+    public void ClickOpenMenuButton()
+        => ClickElement(OpenMenuButton);
+
     public void ClickLogoutButton()
         => ClickElement(LogoutButton);
-
-    public void NavigateToNewCustomerTab()
-        => ClickElement(NewCustomerMenuButton);
 }
