@@ -11,6 +11,7 @@ jobs:
       strategy:
         matrix:
           os: ${{fromJson(inputs.environment)}}  
+        fail-fast: false
 
       name: Run API (${{ matrix.os }}) tests
       runs-on: ${{ matrix.os }}
