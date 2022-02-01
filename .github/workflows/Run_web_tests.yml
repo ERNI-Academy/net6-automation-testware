@@ -28,9 +28,11 @@ jobs:
           uses: actions/setup-dotnet@v1
           with:
             dotnet-version: 6.0.x
-        - uses: actions/download-artifact@v2
+        - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
           with:
+            workflow: CI.yml
             name: testing-artifact-selenium-web
+            
         - name: Run git init
           run: git init
         - name: Replace Driver at TestConfiguration.json
