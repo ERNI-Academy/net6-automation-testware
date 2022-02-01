@@ -63,15 +63,11 @@ jobs:
         run: dotnet test TestWare.Samples.API.dll
 
   web-tests:
-    name: Run WEB (${{ matrix.browser }}) tests
     needs: build
-    strategy:
-      matrix:
-        os: [windows-2022]
-        browser: [Chrome, Firefox, Edge, InternetExplorer]
-
-    uses: ./.github/workflows/Run_web_tests.yml
-    with:
-      environment: ${{ matrix.os }}
-      driver_type: ${{ matrix.browser }}
-      test_results_path: 'C:\workspace\ERNI\results'
+    steps:
+      uses: ./.github/workflows/Run_web_tests.yml
+      with:
+        environment: windows-2022
+        driver_type: >-
+          ["Chrome", "Firefox", "Edge", "InternetExplorer"]
+        test_results_path: 'C:\workspace\ERNI\results'

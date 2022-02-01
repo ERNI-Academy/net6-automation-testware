@@ -14,6 +14,7 @@ on:
         type: string
 jobs:
   web-tests:
+      name: Run WEB (${{ inputs.driver_type }}) tests
       runs-on: ${{ inputs.environment }}
       steps:
         - name: Ubuntu GitHub Actions environment variables List
