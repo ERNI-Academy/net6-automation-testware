@@ -36,7 +36,13 @@ jobs:
         - name: Run Appium Server
           run: start appium --log ${{ inputs.test_results_path }}/appium.log
           shell: cmd
-            
+        - name: config replacement
+          uses: microsoft/variable-substitution@v1 
+          with:
+            files: '.\TestConfiguration.Desktop.json'
+          env:
+            Configurations.0.Capabilities.0.WinAppDriverUrl: "http://localhost:4723/wd/hub"
+            Configurations.0.Capabilities.1.WinAppDriverUrl: "http://localhost:4723/wd/hub" 
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
