@@ -34,7 +34,7 @@ jobs:
             name: testing-artifact-selenium-web
         - name: Run git init
           run: git init
-        - name: Configuration overwrite
+        - name: Get Driver path
           run: |
             switch ( "${{ matrix.browser }}".ToLower() )
             {
@@ -43,50 +43,14 @@ jobs:
                 "edge" { $driverPathRaw = "$env:EdgeWebDriver"   }
                 "internetexplorer" { $driverPathRaw = "$env:IEWebDriver" }
             }
-        - name: Configuration print
-          run: |
-            echo $driverPathRaw
-        # - name: Replace Driver at TestConfiguration.json
-        #   shell: pwsh
-        #   run: |
-        #     switch ( "${{ matrix.browser }}".ToLower() )
-        #     {
-        #         "chrome" { $driverPathRaw = "$env:CHROMEWEBDRIVER"    }
-        #         "firefox" { $driverPathRaw = "$env:GeckoWebDriver"    }
-        #         "edge" { $driverPathRaw = "$env:EdgeWebDriver"   }
-        #         "internetexplorer" { $driverPathRaw = "$env:IEWebDriver" }
-        #     }
-
-        #     $driverPath = $driverPathRaw.Replace("\","\\")
-        #     $testResultsPath = "${{ inputs.test_results_path }}".Replace("\","\\")
-
-        #     $content = '{
-        #       "Configurations": [
-        #         {
-        #           "Tag": "WebDriver",
-        #             "Capabilities": [
-        #                 {
-        #                     "Name": "WebDriver",
-        #                     "Path": "' + $driverPath + '",
-        #                     "Driver": "${{ matrix.browser }}",
-        #                     "CommandTimeOutInMinutes": 5,
-        #                     "Arguments": [
-        #                         "--start-maximized"
-        #                     ]
-        #                 }
-        #             ]
-        #         }
-        #       ],
-        #       "TestResultPath": "' + $testResultsPath + '"
-        #     }'
-
-        #     Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
+            echo "driverPathRaw=$driverPathRaw" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+          shell: pwsh
         - name: config replacement
           uses: microsoft/variable-substitution@v1 
           with:
             files: '.\TestConfiguration.Web.json'
           env:
-            Configurations.0.Capabilities.0.Path: $driverPathRaw
+            Configurations.0.Capabilities.0.Path: ${{ env.driverPathRaw }}
             Configurations.0.Capabilities.0.Driver: ${{ matrix.browser }}
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Archive config json
