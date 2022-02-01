@@ -35,7 +35,7 @@ jobs:
         - name: Run git init
           run: git init
         - name: Configuration overwrite
-          run: echo "${driver}"
+          run: echo "this is the ${driver}"
           env: 
             driver: $CHROMEWEBDRIVER
         - name: Replace Driver at TestConfiguration.json
@@ -73,6 +73,13 @@ jobs:
             }'
 
             Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
+        - name: Archive config json
+          if: always()
+          uses: actions/upload-artifact@v2
+          with:
+            name: web-${{ matrix.browser }}-config
+            path: |
+              .\TestConfiguration.Web.json
         - name: Run tests
           run: dotnet test TestWare.Samples.Selenium.Web.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive WEB (${{ matrix.browser }}) screenshots
