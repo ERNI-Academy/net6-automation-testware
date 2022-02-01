@@ -39,6 +39,11 @@ jobs:
         - name: Sleep for 30 seconds
           run: Start-Sleep -s 30
           shell: powershell
+        - name: Deploy Stage
+          uses: fjogeleit/http-request-action@master
+          with:
+            url: 'http://127.0.0.1:4723/wd/hub/status'
+            method: 'GET'
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
