@@ -55,7 +55,7 @@ jobs:
                         {
                             "Name": "WebDriver",
                             "Path": "' + $driverPath + '",
-                            "Driver": "${{ inputs.driver_type }}",
+                            "Driver": "${{ matrix.browser }}",
                             "CommandTimeOutInMinutes": 5,
                             "Arguments": [
                                 "--start-maximized"
@@ -70,10 +70,10 @@ jobs:
             Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
         - name: Run tests
           run: dotnet test TestWare.Samples.Selenium.Web.dll
-        - name: Archive WEB (${{ inputs.driver_type }}) screenshots
+        - name: Archive WEB (${{ matrix.browser }}) screenshots
           if: always()
           uses: actions/upload-artifact@v2
           with:
-            name: web-${{ inputs.driver_type }}-screenshots
+            name: web-${{ matrix.browser }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
