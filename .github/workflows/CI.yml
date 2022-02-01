@@ -59,7 +59,7 @@ jobs:
       environment: >-
         ["windows-2022"]
       driver_type: >-
-        ["Chrome", "Firefox", "Edge", "InternetExplorer"]
+        ["Chrome", "Firefox", "Edge"]
       test_results_path: './results'
 
   desktop-tests:

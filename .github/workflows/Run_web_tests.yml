@@ -67,7 +67,7 @@ jobs:
 
             Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
         - name: Run tests
-          run: dotnet test TestWare.Samples.Selenium.Web.dll
+          run: dotnet test TestWare.Samples.Selenium.Web.dll --logger "trx;LogFileName= ${{ inputs.test_results_path }}/results.trx"
         - name: Archive WEB (${{ matrix.browser }}) screenshots
           if: always()
           uses: actions/upload-artifact@v2
@@ -75,3 +75,10 @@ jobs:
             name: web-${{ matrix.browser }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
+        - name: Test Report
+          uses: dorny/test-reporter@v1
+          if: success() || failure()
+          with:
+            name: MSTest Tests
+            path: ${{ inputs.test_results_path }}/*.trx
+            reporter: dotnet-trx
