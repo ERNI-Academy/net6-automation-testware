@@ -32,9 +32,12 @@ jobs:
           with:
             workflow: CI.yml
             name: testing-artifact-selenium-web
-            
         - name: Run git init
           run: git init
+        - name: Configuration overwrite
+          run: echo "${driver}"
+          env: 
+            driver: $CHROMEWEBDRIVER
         - name: Replace Driver at TestConfiguration.json
           shell: pwsh
           run: |
