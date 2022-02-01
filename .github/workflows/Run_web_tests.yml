@@ -46,41 +46,41 @@ jobs:
         - name: Configuration print
           run: |
             echo $driverPathRaw
-        - name: Replace Driver at TestConfiguration.json
-          shell: pwsh
-          run: |
-            switch ( "${{ matrix.browser }}".ToLower() )
-            {
-                "chrome" { $driverPathRaw = "$env:CHROMEWEBDRIVER"    }
-                "firefox" { $driverPathRaw = "$env:GeckoWebDriver"    }
-                "edge" { $driverPathRaw = "$env:EdgeWebDriver"   }
-                "internetexplorer" { $driverPathRaw = "$env:IEWebDriver" }
-            }
+        # - name: Replace Driver at TestConfiguration.json
+        #   shell: pwsh
+        #   run: |
+        #     switch ( "${{ matrix.browser }}".ToLower() )
+        #     {
+        #         "chrome" { $driverPathRaw = "$env:CHROMEWEBDRIVER"    }
+        #         "firefox" { $driverPathRaw = "$env:GeckoWebDriver"    }
+        #         "edge" { $driverPathRaw = "$env:EdgeWebDriver"   }
+        #         "internetexplorer" { $driverPathRaw = "$env:IEWebDriver" }
+        #     }
 
-            $driverPath = $driverPathRaw.Replace("\","\\")
-            $testResultsPath = "${{ inputs.test_results_path }}".Replace("\","\\")
+        #     $driverPath = $driverPathRaw.Replace("\","\\")
+        #     $testResultsPath = "${{ inputs.test_results_path }}".Replace("\","\\")
 
-            $content = '{
-              "Configurations": [
-                {
-                  "Tag": "WebDriver",
-                    "Capabilities": [
-                        {
-                            "Name": "WebDriver",
-                            "Path": "' + $driverPath + '",
-                            "Driver": "${{ matrix.browser }}",
-                            "CommandTimeOutInMinutes": 5,
-                            "Arguments": [
-                                "--start-maximized"
-                            ]
-                        }
-                    ]
-                }
-              ],
-              "TestResultPath": "' + $testResultsPath + '"
-            }'
+        #     $content = '{
+        #       "Configurations": [
+        #         {
+        #           "Tag": "WebDriver",
+        #             "Capabilities": [
+        #                 {
+        #                     "Name": "WebDriver",
+        #                     "Path": "' + $driverPath + '",
+        #                     "Driver": "${{ matrix.browser }}",
+        #                     "CommandTimeOutInMinutes": 5,
+        #                     "Arguments": [
+        #                         "--start-maximized"
+        #                     ]
+        #                 }
+        #             ]
+        #         }
+        #       ],
+        #       "TestResultPath": "' + $testResultsPath + '"
+        #     }'
 
-            Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
+        #     Set-Content -Path '.\TestConfiguration.Web.json' -Value $content
         - name: config replacement
           uses: microsoft/variable-substitution@v1 
           with:
