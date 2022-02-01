@@ -34,7 +34,7 @@ jobs:
             name: testing-artifact-selenium-web
         - name: Run git init
           run: git init
-        - name: Get Driver path
+        - name: Get Driver path by browser
           run: |
             switch ( "${{ matrix.browser }}".ToLower() )
             {
@@ -53,13 +53,6 @@ jobs:
             Configurations.0.Capabilities.0.Path: ${{ env.driverPathRaw }}
             Configurations.0.Capabilities.0.Driver: ${{ matrix.browser }}
             TestResultPath: ${{ inputs.test_results_path }}
-        - name: Archive config json
-          if: always()
-          uses: actions/upload-artifact@v2
-          with:
-            name: web-${{ matrix.browser }}-config
-            path: |
-              .\TestConfiguration.Web.json
         - name: Run tests
           run: dotnet test TestWare.Samples.Selenium.Web.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive WEB (${{ matrix.browser }}) screenshots
