@@ -16,19 +16,19 @@ jobs:
       steps:
         - name: Ubuntu GitHub Actions environment variables List
           run: env
-
-        - run: echo "DRIVER_PATH=${{ env:GeckoWebDriver }}" >> $GITHUB_ENV        
+        - run: echo "${{ env:CHROMEWEBDRIVER }}" 
+        - run: echo "$env:CHROMEWEBDRIVER"
+        - run: echo "${env:CHROMEWEBDRIVER}"
+        - run: echo "DRIVER_PATH=$Env:GeckoWebDriver" >> $GITHUB_ENV        
           if: inputs.driver_type == 'Firefox'          
-        - run: echo "DRIVER_PATH=${{ env:EdgeWebDriver }}" >> $GITHUB_ENV         
+        - run: echo "DRIVER_PATH=$Env:EdgeWebDriver" >> $GITHUB_ENV         
           if: inputs.driver_type == 'Edge'
-        - run: echo "DRIVER_PATH=${{ env:CHROMEWEBDRIVER }}" >> $GITHUB_ENV        
+        - run: echo "DRIVER_PATH=$Env:CHROMEWEBDRIVER" >> $GITHUB_ENV        
           if: inputs.driver_type == 'Chrome'
-        - run: echo "DRIVER_PATH=${{ env:IEWebDriver }}" >> $GITHUB_ENV
+        - run: echo "DRIVER_PATH=$Env:IEWebDriver" >> $GITHUB_ENV
           if: inputs.driver_type == 'InternetExplorer'
         - run: echo "${{ env.DRIVER_PATH }}"
-        - run: echo "${{ env.CHROMEWEBDRIVER }}"
-        - run: echo "$env.CHROMEWEBDRIVER"
-        - run: echo "${env.CHROMEWEBDRIVER}"
+
           
 
         - name: Setup .NET
