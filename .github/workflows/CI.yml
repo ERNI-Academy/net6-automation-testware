@@ -64,10 +64,9 @@ jobs:
 
   web-tests:
     needs: build
-    steps:
-      uses: ./.github/workflows/Run_web_tests.yml
-      with:
-        environment: windows-2022
-        driver_type: >-
-          ["Chrome", "Firefox", "Edge", "InternetExplorer"]
-        test_results_path: 'C:\workspace\ERNI\results'
+    uses: ./.github/workflows/Run_web_tests.yml
+    with:
+      environment: windows-2022
+      driver_type: >-
+        ["Chrome", "Firefox", "Edge", "InternetExplorer"]
+      test_results_path: 'C:\workspace\ERNI\results'
