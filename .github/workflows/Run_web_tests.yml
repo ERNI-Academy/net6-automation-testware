@@ -12,7 +12,6 @@ on:
 
 jobs:
   web-tests:
-      runs-on: windows-2022
       steps:
         - name: Ubuntu GitHub Actions environment variables List
           run: env          
