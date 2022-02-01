@@ -45,8 +45,20 @@ jobs:
           with:
             url: 'http://127.0.0.1:5321/wd/hub/status'
             method: 'GET'
+          continue-on-error: true
         - name: Show Response
           run: echo ${{ steps.AppiumStatus.outputs.response }}
+          continue-on-error: true
+        - name: Healthcheck appium2
+          id: AppiumStatus
+          uses: fjogeleit/http-request-action@master
+          with:
+            url: 'http://127.0.0.1:5321/wd/hub/status'
+            method: 'GET'
+          continue-on-error: true
+        - name: Show Response2
+          run: echo ${{ steps.AppiumStatus.outputs.response }}
+          continue-on-error: true
         - name: Run Appium Server
           run: start appium --log ${{ inputs.test_results_path }}/appium2.log --address 127.0.0.1 --port 4723 
           shell: cmd
