@@ -38,12 +38,12 @@ jobs:
             npm install -g appium-doctor
         - name: Diagnostic Appium
           run: appium-doctor
-        - name: Run Appium Server
-          run: start appium --log ${{ inputs.test_results_path }}/appium.log --address 127.0.0.1 --port 5321 
-          shell: cmd
-        - name: Sleep for 30 seconds
-          run: Start-Sleep -s 30
-          shell: powershell
+        # - name: Run Appium Server
+        #   run: start appium --log ${{ inputs.test_results_path }}/appium.log --address 127.0.0.1 --port 5321 
+        #   shell: cmd
+        # - name: Sleep for 30 seconds
+        #   run: Start-Sleep -s 30
+        #   shell: powershell
         - name: Healthcheck appium
           id: AppiumStatus
           uses: fjogeleit/http-request-action@master
