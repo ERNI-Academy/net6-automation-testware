@@ -34,7 +34,7 @@ jobs:
             npm install -g appium --unsafe-perm=true --allow-root
             appium -v
         - name: Run Appium Server
-          run: start appium --log ${{ inputs.test_results_path }}/appium.log --address 127.0.0.1 --port 5321 
+          run: appium --log ${{ inputs.test_results_path }}/appium.log --address 127.0.0.1 --port 5321 & 
         - name: Healthcheck appium
           id: AppiumStatus
           uses: fjogeleit/http-request-action@master
