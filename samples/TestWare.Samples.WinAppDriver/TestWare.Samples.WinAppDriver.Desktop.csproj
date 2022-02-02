@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ExternalResources\calc.exe">
+    <None Update="ExternalResources\mini-calc.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="TestConfiguration.Desktop.json">

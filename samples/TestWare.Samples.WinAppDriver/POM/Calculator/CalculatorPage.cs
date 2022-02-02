@@ -14,27 +14,24 @@ public class CalculatorPage : WinAppDriverPage, ICalculatorPage
 {
     #nullable enable
 
-    [FindsBy(How = How.Name, Using = "Equals")]
+    [FindsBy(How = How.Name, Using = "=")]
     private IWebElement EqualsButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "Plus")]
+    [FindsBy(How = How.Name, Using = "+")]
     private IWebElement AdditionButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "Minus")]
+    [FindsBy(How = How.Name, Using = "-")]
     private IWebElement MinusButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "Multiply by")]
+    [FindsBy(How = How.Name, Using = "*")]
     private IWebElement MultiplyButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "Divide by")]
+    [FindsBy(How = How.Name, Using = "/")]
     private IWebElement DivideButton { get; set; }
 
-    [FindsBy(How = How.AccessibilityId, Using = "CalculatorResults")]
+    [FindsBy(How = How.AccessibilityId, Using = "2010")]
     private IWebElement ResultTextField { get; set; }
     #nullable disable
-
-
-    private readonly string numberLocator = "num{0}Button";
 
     public CalculatorPage(IWindowsDriver driver) : base(driver)
     {
@@ -59,14 +56,12 @@ public class CalculatorPage : WinAppDriverPage, ICalculatorPage
     {
         foreach (var digit in number.ToCharArray())
         {
-            var numberLocator = string.Format(this.numberLocator, digit);
-            ClickElement(Driver.FindElement(MobileBy.AccessibilityId(numberLocator)));
+            ClickElement(Driver.FindElement(MobileBy.Name(digit.ToString())));
         }
     }
 
     public void CheckResultIs(string expectedResult)
     {
-        var result = ResultTextField.Text.Replace("Display is ", "").Replace(",", "");
-        result.Should().Be(expectedResult);
+        ResultTextField.Text.Should().Be(expectedResult);
     }
 }

@@ -14,8 +14,8 @@
               },
               {
                 "Name": "Calculator",
-                "ApplicationPath": ".\\ExternalResources\\calc.exe",
-                "ApplicationName": "Calculator",
+                "ApplicationPath": ".\\ExternalResources\\mini-calc.exe",
+                "ApplicationName": "Mini Calculator Classic",
                 "ApplicationClassName": "",
                 "WinAppDriverUrl": "http://127.0.0.1:4723/wd/hub",
                 "CommandTimeOutInMinutes": 5
