@@ -54,7 +54,7 @@ jobs:
         - name: Start Device
           uses: reactivecircus/android-emulator-runner@v2
           with:
-            api-level: 30
+            api-level: 29
             script: ./gradlew connectedCheck
         - name: Run tests
           run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
