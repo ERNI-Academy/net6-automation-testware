@@ -13,6 +13,7 @@ jobs:
     with:
       environment: >-
         ["windows-2022", "ubuntu-latest", "macOs-latest"]
+      test_results_path: './results'
 
   web-tests:
     uses: ./.github/workflows/Run_web_tests.yml

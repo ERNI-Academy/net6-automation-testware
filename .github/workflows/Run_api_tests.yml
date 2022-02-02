@@ -6,6 +6,9 @@ on:
       environment:
         required: true
         type: string
+      test_results_path:
+        required: true
+        type: string
 jobs:
   api-tests:      
       strategy:
