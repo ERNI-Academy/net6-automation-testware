@@ -51,6 +51,11 @@ jobs:
             files: './TestConfiguration.Mobile.json'
           env:
             Configurations.0.Capabilities.0.ApkPath: "${{ env.GITHUB_WORKSPACE }}/ExternalResources/SwagLabs.apk"
+        - name: Start Device
+          uses: reactivecircus/android-emulator-runner@v2
+          with:
+            api-level: 30
+            script: ./gradlew connectedCheck
         - name: Run tests
           run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive Mobile (${{ matrix.os }}) screenshots
