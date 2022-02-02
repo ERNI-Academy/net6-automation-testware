@@ -35,5 +35,5 @@ jobs:
     uses: ./.github/workflows/Run_appium_tests.yml
     with:
       environment: >-
-        ["ubuntu-latest"]
+        ["macOs-latest]
       test_results_path: './results'
