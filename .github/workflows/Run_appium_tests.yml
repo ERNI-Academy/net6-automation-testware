@@ -35,8 +35,7 @@ jobs:
             npm install -g appium --unsafe-perm=true --allow-root
             appium -v
         - name: Run Appium Server
-          run: cmd /c "start appium --log ${{ inputs.test_results_path }}/appium.log"
-          shell: cmd
+          run: appium --log ${{ inputs.test_results_path }}/appium.log &
         - name: Healthcheck appium
           id: AppiumStatus
           uses: fjogeleit/http-request-action@master
