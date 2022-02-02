@@ -51,6 +51,7 @@ jobs:
           continue-on-error: true
         - name: Show Response
           run: echo ${{ steps.AppiumStatus2.outputs.response }}
+          continue-on-error: true
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
