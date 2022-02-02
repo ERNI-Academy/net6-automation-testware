@@ -14,7 +14,7 @@
               },
               {
                 "Name": "Calculator",
-                "ApplicationPath": "calc.exe",
+                "ApplicationPath": ".\\ExternalResources\\calc.exe",
                 "ApplicationName": "Calculator",
                 "ApplicationClassName": "",
                 "WinAppDriverUrl": "http://127.0.0.1:4723/wd/hub",
