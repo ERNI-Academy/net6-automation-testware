@@ -46,7 +46,7 @@ jobs:
         - name: Show Response
           run: echo "${{ steps.AppiumStatus.outputs.response }}"
           continue-on-error: true
-          - name: config replacement
+        - name: config replacement
           uses: microsoft/variable-substitution@v1 
           with:
             files: '.\TestConfiguration.Web.json'
@@ -65,6 +65,6 @@ jobs:
           uses: dorny/test-reporter@v1
           if: success() || failure()
           with:
-            name: Report - Desktop Tests - (${{ matrix.os }})
+            name: Report - Mobile Tests - (Android)
             path: ${{ inputs.test_results_path }}/results.trx
             reporter: dotnet-trx
