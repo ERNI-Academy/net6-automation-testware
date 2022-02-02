@@ -47,7 +47,7 @@ jobs:
           run: echo "${{ steps.AppiumStatus.outputs.response }}"
           continue-on-error: true
         - name: Run tests
-          run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
+          run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --settings ExternalResources/.runsettings
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
           if: always()
           uses: actions/upload-artifact@v2
