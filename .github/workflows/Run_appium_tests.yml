@@ -10,7 +10,7 @@ on:
         required: true
         type: string
 jobs:
-  desktop-tests:      
+  appium-tests:      
       strategy:
         matrix:
           os: ${{fromJson(inputs.environment)}}
@@ -62,7 +62,7 @@ jobs:
           if: always()
           uses: actions/upload-artifact@v2
           with:
-            name: desktop-${{ matrix.os }}-screenshots
+            name: appium-${{ matrix.os }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
         - name: Test Report
