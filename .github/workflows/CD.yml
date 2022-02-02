@@ -30,3 +30,10 @@ jobs:
       environment: >-
         ["windows-2022", "windows-2019"]
       test_results_path: './results'
+
+  android-tests:
+    uses: ./.github/workflows/Run_appium_tests.yml
+    with:
+      environment: >-
+        ["ubuntu-latest"]
+      test_results_path: './results'
