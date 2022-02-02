@@ -43,9 +43,8 @@ jobs:
           with:
             url: 'http://127.0.0.1:4723/wd/hub/status'
             method: 'GET'
-          continue-on-error: true
         - name: Show Response
-          run: echo ${{ steps.AppiumStatus.outputs.response }}
+          run: echo "${{ steps.AppiumStatus.outputs.response }}"
           continue-on-error: true
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
