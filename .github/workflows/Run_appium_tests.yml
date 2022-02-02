@@ -55,7 +55,7 @@ jobs:
           uses: reactivecircus/android-emulator-runner@v2
           with:
             api-level: 29
-            script: ./gradlew connectedCheck
+            script: echo "Generated AVD."
         - name: Run tests
           run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive Mobile (${{ matrix.os }}) screenshots
