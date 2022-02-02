@@ -27,7 +27,7 @@ jobs:
         - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
           with:
             workflow: CI.yml
-            name: testing-artifact-winappdriver
+            name: testing-artifact-appium-mobile
         - name: Run git init
           run: git init
         - name: Install Appium Server
