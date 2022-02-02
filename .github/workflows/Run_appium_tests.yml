@@ -51,7 +51,7 @@ jobs:
           with:
             files: '.\TestConfiguration.Web.json'
           env:
-            Configurations.0.Capabilities.0.ApkPath: "${{ env:GITHUB_WORKSPACE }}/ExternalResources/SwagLabs.apk"
+            Configurations.0.Capabilities.0.ApkPath: "${{ env.GITHUB_WORKSPACE }}/ExternalResources/SwagLabs.apk"
         - name: Run tests
           run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive Mobile (${{ matrix.os }}) screenshots
