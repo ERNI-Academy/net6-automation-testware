@@ -48,7 +48,7 @@ jobs:
         - name: config replacement
           uses: microsoft/variable-substitution@v1 
           with:
-            files: '.\TestConfiguration.Web.json'
+            files: '.\TestConfiguration.Mobile.json'
           env:
             Configurations.0.Capabilities.0.ApkPath: "${{ env.GITHUB_WORKSPACE }}/ExternalResources/SwagLabs.apk"
         - name: Run tests
