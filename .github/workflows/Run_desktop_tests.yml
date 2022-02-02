@@ -33,40 +33,24 @@ jobs:
           run: |
             npm install -g appium --unsafe-perm=true --allow-root
             appium -v
-        # - name: Install Appium Doctor
-        #   run: |
-        #     npm install -g appium-doctor
-        # - name: Diagnostic Appium
-        #   run: appium-doctor
         - name: Run Appium Server
-          run: cmd /c "start appium --log ${{ inputs.test_results_path }}/appium.log --address 127.0.0.1 --port 5321"
+          run: cmd /c "start appium --log ${{ inputs.test_results_path }}/appium.log"
           shell: cmd
-        - name: Sleep for 30 seconds
-          run: Start-Sleep -s 30
-          shell: powershell
         - name: Healthcheck appium
           id: AppiumStatus
           uses: fjogeleit/http-request-action@master
           with:
-            url: 'http://127.0.0.1:5321'
+            url: 'http://127.0.0.1:4723'
             method: 'GET'
-          continue-on-error: true
-        - name: Show Response
-          run: echo ${{ steps.AppiumStatus.outputs.response }}
-          continue-on-error: true
-        - name: Healthcheck appium2
+        - name: Healthcheck appium
           id: AppiumStatus2
           uses: fjogeleit/http-request-action@master
           with:
             url: 'http://127.0.0.1:5321/wd/hub/status'
             method: 'GET'
           continue-on-error: true
-        - name: Show Response2
+        - name: Show Response
           run: echo ${{ steps.AppiumStatus2.outputs.response }}
-          continue-on-error: true
-        - name: Run Appium Server
-          run: start appium --log ${{ inputs.test_results_path }}/appium2.log --address 127.0.0.1 --port 4723 
-          shell: cmd
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
