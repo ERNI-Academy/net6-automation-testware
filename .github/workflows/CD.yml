@@ -27,5 +27,5 @@ jobs:
     uses: ./.github/workflows/Run_desktop_tests.yml
     with:
       environment: >-
-        ["windows-2022", "windows-2019"]
+        ["ubuntu-latest"]
       test_results_path: './results'
