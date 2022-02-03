@@ -46,6 +46,12 @@ jobs:
         - name: Show Response
           run: echo "${{ steps.AppiumStatus.outputs.response }}"
           continue-on-error: true
+        - name: config replacement
+          uses: microsoft/variable-substitution@v1 
+          with:
+            files: '.\TestConfiguration.Web.json'
+          env:
+            TestResultPath: ${{ inputs.test_results_path }}
         - name: Run tests
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --settings ExternalResources/.runsettings
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots

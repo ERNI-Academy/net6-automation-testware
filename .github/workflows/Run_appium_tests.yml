@@ -51,12 +51,13 @@ jobs:
             files: './TestConfiguration.Mobile.json'
           env:
             Configurations.0.Capabilities.0.ApkPath: ${{ github.workspace }}/ExternalResources/SwagLabs.apk
+            TestResultPath: ${{ inputs.test_results_path }}
         - name: Start Device and run tests
           uses: reactivecircus/android-emulator-runner@v2
           with:
             api-level: 29
             force-avd-creation: false
-            emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+            emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
             disable-animations: true
             script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive Mobile (${{ matrix.os }}) screenshots
