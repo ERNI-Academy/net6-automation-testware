@@ -1,5 +1,7 @@
 [![Continuous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
 
+[![Continuous-Deployment](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CD.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CD.yml)
+
 # About 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
