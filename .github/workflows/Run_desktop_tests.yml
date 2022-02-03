@@ -49,7 +49,7 @@ jobs:
         - name: config replacement
           uses: microsoft/variable-substitution@v1 
           with:
-            files: '.\TestConfiguration.Web.json'
+            files: '.\TestConfiguration.Desktop.json'
           env:
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Run tests
