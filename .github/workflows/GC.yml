@@ -5,9 +5,9 @@ on: [pull_request]
 jobs:
   build:
     strategy:
-    matrix:
-      os: ["windows-latest", "ubuntu-latest", "macOs-latest"]
-    fail-fast: false
+      matrix:
+        os: ["windows-latest", "ubuntu-latest", "macOs-latest"]
+      fail-fast: false
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
