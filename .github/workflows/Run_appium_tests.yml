@@ -58,7 +58,7 @@ jobs:
             api-level: 29
             force-avd-creation: false
             emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-            disable-animations: true
+            disable-animations: false
             script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive Mobile (${{ matrix.os }}) screenshots
           if: always()
