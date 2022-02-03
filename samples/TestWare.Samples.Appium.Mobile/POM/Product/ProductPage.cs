@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
+using TestWare.Core.Libraries;
 using TestWare.Engines.Appium.Extras;
 using TestWare.Engines.Appium.Factory;
 using TestWare.Engines.Appium.Pages;
@@ -25,7 +26,18 @@ internal class ProductPage : MobilePage, IProductPage
     }
 
     public void ClickViewToggle()
-        => ClickElement(this.ViewToggle);
+    {
+        var initialAddToCartProductButton = AddToCartButtonList.FirstOrDefault();
+        var initialVAddToCartProductButtonText = initialAddToCartProductButton.FindElement(MobileBy.ClassName("android.widget.TextView")).Text;
+        ClickElement(this.ViewToggle);
+
+        RetryPolicies.ExecuteActionWithRetries(
+            () =>
+            {
+                AddToCartButtonList.FirstOrDefault().FindElement(MobileBy.ClassName("android.widget.TextView")).Text.Should().NotBe(initialVAddToCartProductButtonText);
+            },
+            numberOfRetries: 5);
+    }   
 
     public void AddProductToCartByButton(string productName)
         => ClickElement(AddToCartButtonList[GetProductListIndex(productName)]);
