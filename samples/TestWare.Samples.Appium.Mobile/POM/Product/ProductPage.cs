@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using TestWare.Engines.Appium.Extras;
 using TestWare.Engines.Appium.Factory;
 using TestWare.Engines.Appium.Pages;
@@ -11,9 +12,6 @@ internal class ProductPage : MobilePage, IProductPage
 
     [FindsBy(How = How.AccessibilityId, Using = "test-Toggle")]
     private IWebElement ViewToggle { get; set; }
-
-    [FindsBy(How = How.AccessibilityId, Using = "test-Item title")]
-    private IList<IWebElement> ProductTitleList { get; set; }
 
     [FindsBy(How = How.AccessibilityId, Using = "test-ADD TO CART")]
     private IList<IWebElement> AddToCartButtonList { get; set; }
@@ -37,8 +35,8 @@ internal class ProductPage : MobilePage, IProductPage
 
     private int GetProductListIndex(string productName)
     {
-        var a = ProductTitleList.Count();
-        var productListTextElements = ProductTitleList.Select(x => x.Text.ToLowerInvariant()).ToList();
+        var productTitleList = Driver.FindElements(MobileBy.AccessibilityId("test-Item title"));
+        var productListTextElements = productTitleList.Select(x => x.Text.ToLowerInvariant()).ToList();
         return productListTextElements.IndexOf(productName.ToLowerInvariant());
     }
 }
