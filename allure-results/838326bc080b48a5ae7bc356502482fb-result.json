@@ -1,0 +1,85 @@
+{
+  "uuid": "26f50a7557e940fe9e723013f57248b5",
+  "historyId": "d9b22f8d-57f3-407e-821f-dd1c84f00f8a",
+  "fullName": "wrong endpoint",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "RTCMW030651"
+    },
+    {
+      "name": "feature",
+      "value": "API"
+    },
+    {
+      "name": "tag",
+      "value": "API"
+    }
+  ],
+  "links": [],
+  "name": "wrong endpoint",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "Expected code to be 400, but found 0.",
+    "trace": "Microsoft.VisualStudio.TestTools.UnitTesting.AssertFailedException: Expected code to be 400, but found 0.\r\n   at FluentAssertions.Execution.LateBoundTestFramework.Throw(String message)\r\n   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)\r\n   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)\r\n   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)\r\n   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)\r\n   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)\r\n   at FluentAssertions.Numeric.NumericAssertions`2.Be(T expected, String because, Object[] becauseArgs)\r\n   at TestWare.Samples.API.StepDefinitions.ApiCodeSteps.ValidateReturnCode(RestResponse response, Int32 expectedCode) in D:\\REPOS\\ERNI\\net6-automation-testware\\samples\\TestWare.Samples.API\\StepDefinitions\\ApiCodeSteps.cs:line 68\r\n   at TestWare.Samples.API.StepDefinitions.ApiCodeSteps.ThenUnexpectedResponseStatusShouldBe(Int32 code) in D:\\REPOS\\ERNI\\net6-automation-testware\\samples\\TestWare.Samples.API\\StepDefinitions\\ApiCodeSteps.cs:line 61\r\n   at TechTalk.SpecFlow.Bindings.BindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan& duration)\r\n   at Allure.SpecFlowPlugin.AllureBindingInvoker.InvokeBinding(IBinding binding, IContextManager contextManager, Object[] arguments, ITestTracer testTracer, TimeSpan& duration)\r\n   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStepMatch(BindingMatch match, Object[] arguments, TimeSpan& duration)\r\n   at TechTalk.SpecFlow.Infrastructure.TestExecutionEngine.ExecuteStep(IContextManager contextManager, StepInstance stepInstance)"
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "When  inexistent endpoint is called",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898836810,
+      "stop": 1643898841813
+    },
+    {
+      "name": "Then  unexpected response status should be '400'",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898841814,
+      "stop": 1643898842053
+    },
+    {
+      "name": "And  unexpected response error is \"Unknown operation\"",
+      "status": "skipped",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898842054,
+      "stop": 1643898842055
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1643898836810,
+  "stop": 1643898842060
+}

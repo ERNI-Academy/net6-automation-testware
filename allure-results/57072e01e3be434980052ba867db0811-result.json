@@ -1,0 +1,83 @@
+{
+  "uuid": "b0410ed3d5be47b09a82db71eb966087",
+  "historyId": "8dbfa3fd-ea84-4e08-b1cc-5fb3551d37dc",
+  "fullName": "sine operation",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "RTCMW030651"
+    },
+    {
+      "name": "feature",
+      "value": "API"
+    },
+    {
+      "name": "tag",
+      "value": "API"
+    }
+  ],
+  "links": [],
+  "name": "sine operation",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "When  the operation sine is invoked with \"1/2pi\"",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898854666,
+      "stop": 1643898855086
+    },
+    {
+      "name": "Then  sine response status should be '200'",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898855087,
+      "stop": 1643898855087
+    },
+    {
+      "name": "And  sine response result is \"1\"",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898855088,
+      "stop": 1643898855088
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1643898854666,
+  "stop": 1643898855089
+}

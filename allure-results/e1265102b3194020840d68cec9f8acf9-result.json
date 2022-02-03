@@ -1,0 +1,83 @@
+{
+  "uuid": "a10478ad352c4fa1a9a00cb33ca4ff35",
+  "historyId": "3498e64f-ea0d-40c6-8350-ca53715323de",
+  "fullName": "wrong endpoint",
+  "labels": [
+    {
+      "name": "thread",
+      "value": ".NET Long Running Task"
+    },
+    {
+      "name": "host",
+      "value": "RTCMW030651"
+    },
+    {
+      "name": "feature",
+      "value": "API"
+    },
+    {
+      "name": "tag",
+      "value": "API"
+    }
+  ],
+  "links": [],
+  "name": "wrong endpoint",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "When  inexistent endpoint is called",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898855501,
+      "stop": 1643898855898
+    },
+    {
+      "name": "Then  unexpected response status should be '400'",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898855898,
+      "stop": 1643898855899
+    },
+    {
+      "name": "And  unexpected response error is \"Unknown operation\"",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1643898855899,
+      "stop": 1643898855900
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1643898855501,
+  "stop": 1643898855900
+}
