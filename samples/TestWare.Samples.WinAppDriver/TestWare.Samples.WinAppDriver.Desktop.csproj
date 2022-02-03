@@ -22,9 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ExternalResources\.runsettings">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="ExternalResources\mini-calc.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
