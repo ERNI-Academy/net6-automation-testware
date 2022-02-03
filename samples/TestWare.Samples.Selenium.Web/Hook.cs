@@ -43,7 +43,7 @@ public sealed class Hook
         _testContext.WriteLine($"Feature: {featureContext.FeatureInfo.Title}");
         _testContext.WriteLine($"   Scenario: {scenarioContext.ScenarioInfo.Title} \r\n");
 
-        _stepCounter = 0;
+        _stepCounter = 1;
         var tags = GetTags(featureContext, scenarioContext);
         _lifeCycle.BeginTestCase(scenarioContext.ScenarioInfo.Title, tags);
     }

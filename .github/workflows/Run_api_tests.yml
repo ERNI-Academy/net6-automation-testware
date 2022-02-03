@@ -1,0 +1,41 @@
+name: Run-api-tests
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      test_results_path:
+        required: true
+        type: string
+jobs:
+  api-tests:      
+      strategy:
+        matrix:
+          os: ${{fromJson(inputs.environment)}}  
+        fail-fast: false
+
+      name: Run API (${{ matrix.os }}) tests
+      runs-on: ${{ matrix.os }}
+
+      steps:
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 6.0.x
+        - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
+          with:
+            workflow: CI.yml
+            name: testing-artifact-api
+        - name: Run git init
+          run: git init
+        - name: Run tests
+          run: dotnet test TestWare.Samples.API.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
+        - name: Test Report
+          uses: dorny/test-reporter@v1
+          if: success() || failure()
+          with:
+            name: Report - API Tests - (${{ matrix.os }})
+            path: ${{ inputs.test_results_path }}/results.trx
+            reporter: dotnet-trx

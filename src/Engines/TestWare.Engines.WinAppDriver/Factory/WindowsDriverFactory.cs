@@ -8,7 +8,7 @@ namespace TestWare.Engines.Appium.WinAppDriver.Factory;
 
 internal static class WindowsDriverFactory
 {
-    private const int _waitForApplicationToOpen = 5;
+    private const int _waitForApplicationToOpen = 30;
     private const int _retriesWaitForApplication = 16;
 
     private static IWindowsDriver _rootDriver;

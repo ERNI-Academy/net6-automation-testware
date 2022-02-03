@@ -26,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="ExternalResources\SwagLabs.apk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="TestConfiguration.Mobile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

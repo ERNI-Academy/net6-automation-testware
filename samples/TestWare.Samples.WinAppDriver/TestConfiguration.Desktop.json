@@ -4,22 +4,22 @@
             "Tag": "WinAppDriver",
             "Capabilities": [
 
-                {
-                    "Name":  "Notepad",
-                    "ApplicationPath": "C:\\Windows\\System32\\notepad.exe",
-                    "ApplicationName": "Notepad",
-                    "ApplicationClassName": "Notepad",
-                    "WinAppDriverUrl": "http://127.0.0.1:4723/wd/hub",
-                    "CommandTimeOutInMinutes": 5
-                },
-                {
-                    "Name":  "Calculator",
-                    "ApplicationPath": "C:\\Windows\\System32\\calc.exe",
-                    "ApplicationName": "Calculator",
-                    "ApplicationClassName": "",
-                    "WinAppDriverUrl": "http://127.0.0.1:4723/wd/hub",
-                    "CommandTimeOutInMinutes": 5
-                }
+              {
+                "Name": "Notepad",
+                "ApplicationPath": "C:\\Windows\\System32\\notepad.exe",
+                "ApplicationName": "Notepad",
+                "ApplicationClassName": "Notepad",
+                "WinAppDriverUrl": "http://127.0.0.1:4723/wd/hub",
+                "CommandTimeOutInMinutes": 5
+              },
+              {
+                "Name": "Calculator",
+                "ApplicationPath": ".\\ExternalResources\\mini-calc.exe",
+                "ApplicationName": "Mini Calculator Classic",
+                "ApplicationClassName": "",
+                "WinAppDriverUrl": "http://127.0.0.1:4723/wd/hub",
+                "CommandTimeOutInMinutes": 5
+              }
             ]
         }    
   ],

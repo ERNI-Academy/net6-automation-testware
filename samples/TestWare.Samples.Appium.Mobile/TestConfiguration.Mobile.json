@@ -7,7 +7,7 @@
           "Name": "Appiumdriver",
           "AppiumUrl": "http://127.0.0.1:4723/wd/hub",
           "ApkUrl": "https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/Android.SauceLabs.Mobile.Sample.app.2.7.1.apk",
-          "ApkPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\ExternalResources\\SwagLabs.apk",
+          "ApkPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\TestWare.Samples.Appium.Mobile\\bin\\Debug\\net6.0\\ExternalResources\\SwagLabs.apk",
           "CommandTimeOutInMinutes": 5,
           "DeviceName": "emulator-5554",
           "PlatformName": "Android",

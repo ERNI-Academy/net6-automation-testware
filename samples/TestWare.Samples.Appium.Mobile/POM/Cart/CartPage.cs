@@ -2,6 +2,7 @@
 using TestWare.Engines.Appium.Pages;
 using TestWare.Engines.Appium.Extras;
 using TestWare.Engines.Appium.Factory;
+using TestWare.Core.Libraries;
 
 namespace TestWare.Samples.Appium.Mobile.POM.Cart;
 
@@ -50,13 +51,23 @@ public class CartPage : MobilePage, ICartPage
     public void CheckItemExistsAtCart(string productName)
     {
         WaitUntilElementIsClickable(this.ContinueShoppingButton);
-        this.CartItemList.Any(x => x.Text.ToLowerInvariant() == productName.ToLowerInvariant()).Should().BeTrue();
+        RetryPolicies.ExecuteActionWithRetries(
+            () =>
+            {
+                this.CartItemList.Any(x => x.Text.ToLowerInvariant() == productName.ToLowerInvariant()).Should().BeTrue();
+            },
+            numberOfRetries: 5);
     }
 
     public void CheckItemDoesNotExistAtCart(string productName)
     {
         WaitUntilElementIsClickable(this.ContinueShoppingButton);
-        this.CartItemList.Any(x => x.Text.ToLowerInvariant() == productName.ToLowerInvariant()).Should().BeFalse();
+        RetryPolicies.ExecuteActionWithRetries(
+            () =>
+            {
+                this.CartItemList.Any(x => x.Text.ToLowerInvariant() == productName.ToLowerInvariant()).Should().BeFalse();
+            },
+            numberOfRetries: 5);        
     }
 
     private int GetCartItemIndex(string productName)

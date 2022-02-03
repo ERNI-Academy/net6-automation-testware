@@ -1,0 +1,71 @@
+name: Run-web-tests
+
+on:
+  workflow_call:
+    inputs:
+      driver_type:
+        required: true
+        type: string
+      test_results_path:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+jobs:
+  web-tests:      
+      strategy:
+        matrix:
+          os: ${{fromJson(inputs.environment)}}
+          browser: ${{fromJson(inputs.driver_type)}}
+        fail-fast: false
+
+      name: Run WEB (${{ matrix.browser }}) tests - ${{ matrix.os }}
+      runs-on: ${{ matrix.os }}
+
+      steps:
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 6.0.x
+        - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
+          with:
+            workflow: CI.yml
+            name: testing-artifact-selenium-web
+        - name: Run git init
+          run: git init
+        - name: Get Driver path by browser
+          run: |
+            switch ( "${{ matrix.browser }}".ToLower() )
+            {
+                "chrome" { $driverPathRaw = "$env:CHROMEWEBDRIVER"    }
+                "firefox" { $driverPathRaw = "$env:GeckoWebDriver"    }
+                "edge" { $driverPathRaw = "$env:EdgeWebDriver"   }
+                "internetexplorer" { $driverPathRaw = "$env:IEWebDriver" }
+            }
+            echo "driverPathRaw=$driverPathRaw" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf-8 -Append
+          shell: pwsh
+        - name: config replacement
+          uses: microsoft/variable-substitution@v1 
+          with:
+            files: '.\TestConfiguration.Web.json'
+          env:
+            Configurations.0.Capabilities.0.Path: ${{ env.driverPathRaw }}
+            Configurations.0.Capabilities.0.Driver: ${{ matrix.browser }}
+            TestResultPath: ${{ inputs.test_results_path }}
+        - name: Run tests
+          run: dotnet test TestWare.Samples.Selenium.Web.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
+        - name: Archive WEB (${{ matrix.browser }}) screenshots
+          if: always()
+          uses: actions/upload-artifact@v2
+          with:
+            name: web-${{ matrix.browser }}-screenshots
+            path: |
+              ${{ inputs.test_results_path }}
+        - name: Test Report
+          uses: dorny/test-reporter@v1
+          if: success() || failure()
+          with:
+            name: Report - WEB (${{ matrix.browser }} - ${{ matrix.os }})
+            path: ${{ inputs.test_results_path }}/results.trx
+            reporter: dotnet-trx
