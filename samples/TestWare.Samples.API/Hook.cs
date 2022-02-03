@@ -43,7 +43,7 @@ public sealed class Hook
         _testContext.WriteLine($"Feature: {featureContext.FeatureInfo.Title}");
         _testContext.WriteLine($"   Scenario: {scenarioContext.ScenarioInfo.Title} \r\n");
 
-        _stepCounter = 0;
+        _stepCounter = 1;
         var tags = GetTags(featureContext, scenarioContext);
         _lifeCycle.BeginTestCase(scenarioContext.ScenarioInfo.Title, tags);
     }
@@ -76,7 +76,7 @@ public sealed class Hook
         var description = scenarioContext.StepContext.StepInfo.Text;
         _testReport.CreateStep(name, description);
 
-        var stepId = _stepCounter.ToString("00");
+        var stepId = $"{_stepCounter:00} {description}";
         _stepCounter++;
         _lifeCycle.BeginTestStep(stepId);
     }
