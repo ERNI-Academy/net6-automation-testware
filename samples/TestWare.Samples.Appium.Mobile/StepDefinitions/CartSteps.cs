@@ -1,4 +1,3 @@
-
 using TestWare.Core;
 using TestWare.Samples.Appium.Mobile.POM.Cart;
 

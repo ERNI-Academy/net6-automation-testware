@@ -19,7 +19,6 @@ public static class ContainerManager
         if (assemblies != null && assemblies.Any())
         {
             _assemblies.AddRange(assemblies);
-            //RegisterTestwareComponents();
         }
     }
 
@@ -46,11 +45,7 @@ public static class ContainerManager
     /// <exception cref="ArgumentNullException"> In case is not possible to resolve or named don't exists</exception>
     public static T GetTestWareComponent<T>(string name)
     {
-        var dependency = _dependencies.Where(x => x.Name == name).FirstOrDefault();
-        if (dependency == null)
-        {
-            throw new ArgumentNullException(nameof(T));
-        }
+        var dependency = _dependencies.FirstOrDefault(x => x.Name == name) ?? throw new ArgumentNullException(nameof(T));
         ILifetimeScope scope;
         if (!_scopes.TryGetValue(name, out scope))
         {
@@ -111,7 +106,7 @@ public static class ContainerManager
     }
     public static bool ExistsType(Type type)
     {
-        return _dependencies.Where(x => x.GetType() == type).Any();
+        return _dependencies.Any(x => x.GetType() == type);
     }
 
     public static void RegisterType<T>(string name, T instance) where T : class
