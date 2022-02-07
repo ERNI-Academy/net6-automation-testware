@@ -1,5 +1,3 @@
-using Autofac;
-using OpenQA.Selenium;
 using TestWare.Core;
 using TestWare.Samples.Appium.Mobile.POM.Cart;
 
@@ -12,10 +10,7 @@ public sealed class CartSteps
 
     public CartSteps()
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            cartPage = scope.Resolve<ICartPage>() ?? throw new ArgumentNullException(nameof(ICartPage));
-        }
+        cartPage = ContainerManager.GetTestWareComponent<ICartPage>();
     }
 
     [When(@"the user removes product '(.*)' from cart by dragging")]

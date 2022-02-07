@@ -1,4 +1,3 @@
-using Autofac;
 using TestWare.Core;
 using TestWare.Samples.Appium.Mobile.POM.Product;
 
@@ -11,10 +10,7 @@ public sealed class ProductSteps
 
     public ProductSteps()
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            productPage = scope.Resolve<IProductPage>() ?? throw new ArgumentNullException(nameof(IProductPage));
-        }
+        productPage = ContainerManager.GetTestWareComponent<IProductPage>();
     }
 
     [Given(@"the user click on toggle view - Products")]

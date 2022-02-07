@@ -31,7 +31,7 @@ public class RestSharpManager : EngineManagerBase, IEngineManager
                 {
                     var client = ClientFactory.Create(capability);
 
-                    ContainerManager.RegisterType(client);
+                    ContainerManager.RegisterType(capability.Name, client);
                 }
                 break;
         }

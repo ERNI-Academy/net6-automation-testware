@@ -33,7 +33,7 @@ public class AppiumManager : EngineManagerBase, IEngineManager
                 {
                     var driver = AppiumDriverFactory.Create(capability);
 
-                    ContainerManager.RegisterType(driver);
+                    ContainerManager.RegisterType(capability.Name, driver);
                 }
                 break;
         }

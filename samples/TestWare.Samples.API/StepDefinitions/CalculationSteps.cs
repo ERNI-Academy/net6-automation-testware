@@ -1,6 +1,4 @@
-using Autofac;
 using TestWare.Core;
-
 using TestWare.Samples.API.Resources.Derive;
 using TestWare.Samples.API.Resources.Factor;
 using TestWare.Samples.API.Resources.Integrate;
@@ -25,15 +23,12 @@ public sealed class CalculationSteps
 
     public CalculationSteps(LastResponse lastResponse)
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            _simplifyResource = scope.Resolve<ISimplifyResource>() ?? throw new ArgumentNullException(nameof(ISimplifyResource));
-            _factorResource = scope.Resolve<IFactorResource>() ?? throw new ArgumentNullException(nameof(IFactorResource));
-            _deriveResource = scope.Resolve<IDeriveResource>() ?? throw new ArgumentNullException(nameof(IDeriveResource));
-            _integrateResource = scope.Resolve<IIntegrateResource>() ?? throw new ArgumentNullException(nameof(IIntegrateResource));
-            _sineResource = scope.Resolve<ISineResource>() ?? throw new ArgumentNullException(nameof(ISineResource));
-            _unkownResource = scope.Resolve<IUnkownResource>() ?? throw new ArgumentException(nameof(IUnkownResource));
-        }
+        _simplifyResource = ContainerManager.GetTestWareComponent<ISimplifyResource>();
+        _factorResource = ContainerManager.GetTestWareComponent<IFactorResource>();
+        _deriveResource = ContainerManager.GetTestWareComponent<IDeriveResource>();
+        _integrateResource = ContainerManager.GetTestWareComponent<IIntegrateResource>();
+        _sineResource = ContainerManager.GetTestWareComponent<ISineResource>();
+        _unkownResource = ContainerManager.GetTestWareComponent<IUnkownResource>();
         _lastResponse = lastResponse;
     }
 

@@ -23,18 +23,6 @@ internal static class BrowserFactory
         return result;
     }
 
-    public static Type GetBrowserType(Capabilities capabilities)
-    {
-        return capabilities.GetDriver() switch
-        {
-            SupportedBrowsers.Chrome => typeof(ChromeDriver),
-            SupportedBrowsers.Firefox => typeof(FirefoxDriver),
-            SupportedBrowsers.InternetExplorer => typeof(InternetExplorerDriver),
-            SupportedBrowsers.Edge => typeof(EdgeDriver),
-            _ => throw new NotSupportedException($"Browser type is invalid."),
-        };
-    }
-
     private static ChromeDriver CreateChromeDriver(Capabilities capabilities)
     {
         ChromeOptions options = new();

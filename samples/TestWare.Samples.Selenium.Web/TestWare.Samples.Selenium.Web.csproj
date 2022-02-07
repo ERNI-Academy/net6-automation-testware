@@ -18,7 +18,6 @@
 	  <SpecFlowObsoleteCodeBehindFiles Remove="Drivers\**" />
 	  <SpecFlowObsoleteCodeBehindFiles Remove="Support\**" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
 		<PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
@@ -35,9 +34,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Features\Login_multibrowser.feature.cs">
+	    <DependentUpon>Login_multibrowser.feature</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Update="TestConfiguration.Web.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <SpecFlowFeatureFiles Update="Features\Login_multibrowser.feature">
+	    <Visible>$(UsingMicrosoftNETSdk)</Visible>
+	    <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+	  </SpecFlowFeatureFiles>
 	</ItemGroup>
 
 </Project>

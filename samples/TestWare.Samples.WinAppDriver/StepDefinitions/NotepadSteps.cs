@@ -1,5 +1,4 @@
-﻿using Autofac;
-using TestWare.Core;
+﻿using TestWare.Core;
 using TestWare.Samples.WinAppDriver.Desktop.POM.Notepad;
 
 namespace TestWare.Samples.WinAppDriver.Desktop.StepDefinitions;
@@ -11,10 +10,7 @@ public class NotepadSteps
 
     public NotepadSteps()
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            _notepadPage = scope.Resolve<INotepadPage>() ?? throw new ArgumentNullException(nameof(INotepadPage));
-        }
+        _notepadPage = ContainerManager.GetTestWareComponent<INotepadPage>();
     }
 
     [Given(@"user writes '([^']*)'")]

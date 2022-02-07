@@ -81,6 +81,7 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
             engine.Destroy();
         }
         Summary.StopTestCase();
+        ContainerManager.DisposeContainer();
     }
 
     public void EndTestSuite()

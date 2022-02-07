@@ -1,6 +1,5 @@
-﻿using System.Globalization;
-using System.Reflection;
-using System.Text.RegularExpressions;
+﻿using System.Text.Json;
+using TestWare.Core.Configuration;
 
 namespace TestWare.Core;
 
@@ -14,6 +13,17 @@ public abstract class EngineManagerBase
                 return foundConfiguration;
         }
         return default;
+    }
+
+    protected IEnumerable<T> GetCapabilities<T>(TestConfiguration testConfiguration, string configName)
+    {
+        var configuration = testConfiguration.Configurations.FirstOrDefault(item => item.Tag.ToUpperInvariant() == configName.ToUpperInvariant());
+        if (configuration?.Capabilities == null)
+        {
+            throw new ArgumentException($"Capabilities for configuration {configName} are null.");
+        }
+        var capabilities = configuration.Capabilities.Select(x => x.Deserialize<T>());
+        return capabilities;
     }
 
 }
