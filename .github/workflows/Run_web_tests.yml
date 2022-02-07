@@ -52,6 +52,12 @@ jobs:
           env:
             Configurations.0.Capabilities.0.Path: ${{ env.driverPathRaw }}
             Configurations.0.Capabilities.0.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.0.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.0.Path: ${{ env.driverPathRaw }}
+            Configurations.1.Capabilities.1.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.1.Path: ${{ env.driverPathRaw }}
+            Configurations.1.Capabilities.2.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.2.Path: ${{ env.driverPathRaw }}
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Run tests
           run: dotnet test TestWare.Samples.Selenium.Web.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"

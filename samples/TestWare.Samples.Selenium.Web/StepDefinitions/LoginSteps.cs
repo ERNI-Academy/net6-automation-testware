@@ -1,5 +1,4 @@
-﻿using Autofac;
-using TestWare.Core;
+﻿using TestWare.Core;
 using TestWare.Samples.Selenium.Web.POM.Login;
 
 namespace TestWare.Samples.Selenium.Web.StepDefinitions;
@@ -15,10 +14,7 @@ public sealed class LoginSteps
 
     public LoginSteps()
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            loginPage = scope.Resolve<ILoginPage>() ?? throw new ArgumentNullException(nameof(ILoginPage));
-        }
+        loginPage = ContainerManager.GetTestWareComponent<ILoginPage>();
     }
 
     [Given(@"the user enters username '([^']*)'")]
@@ -38,7 +34,8 @@ public sealed class LoginSteps
     {
         GivenTheUserEntersUsername(userName);
         GivenTheUserEntersValidPassword(password);
-        WhenTheUserClicksSubmit();    }
+        WhenTheUserClicksSubmit();    
+    }
 
 
     [Given(@"the user clicks submit")]

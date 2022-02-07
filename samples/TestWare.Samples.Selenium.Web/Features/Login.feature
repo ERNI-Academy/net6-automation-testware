@@ -1,7 +1,7 @@
 ﻿@WebDriver
 Feature: Login
 
-@NominalTest
+@NominalTest @firefox
 Scenario: Login 
 	Given the user enters username 'standard_user'
 	And the user enters password 'secret_sauce'

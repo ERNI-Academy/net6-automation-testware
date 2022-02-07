@@ -1,5 +1,4 @@
-﻿using Autofac;
-using TestWare.Core;
+﻿using TestWare.Core;
 using TestWare.Samples.Selenium.Web.POM.Inventory;
 
 namespace TestWare.Samples.Selenium.Web.StepDefinitions;
@@ -15,10 +14,7 @@ public sealed class InventorySteps
 
     public InventorySteps()
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            inventoryPage = scope.Resolve<IInventoryPage>() ?? throw new ArgumentNullException(nameof(IInventoryPage));
-        }
+        inventoryPage = ContainerManager.GetTestWareComponent<IInventoryPage>();
     }
 
     [Then(@"the user can login")]

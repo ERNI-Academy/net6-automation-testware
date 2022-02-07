@@ -1,4 +1,3 @@
-using Autofac;
 using TestWare.Core;
 using TestWare.Samples.WinAppDriver.Desktop.POM;
 
@@ -11,10 +10,7 @@ public sealed class CalculatorSteps
 
     public CalculatorSteps()
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            calculatorPage = scope.Resolve<ICalculatorPage>() ?? throw new ArgumentNullException(nameof(ICalculatorPage));
-        }
+        calculatorPage = ContainerManager.GetTestWareComponent<ICalculatorPage>();
     }
 
     [Given("select number '(.*)'")]

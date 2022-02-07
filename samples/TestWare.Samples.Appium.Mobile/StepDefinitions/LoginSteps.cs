@@ -1,4 +1,3 @@
-using Autofac;
 using TestWare.Core;
 using TestWare.Samples.Appium.Mobile.POM.Login;
 using TestWare.Samples.Appium.Mobile.POM.Menu;
@@ -13,11 +12,8 @@ public sealed class LoginSteps
 
     public LoginSteps()
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            loginPage = scope.Resolve<ILoginPage>() ?? throw new ArgumentNullException(nameof(ILoginPage));
-            menuPage = scope.Resolve<IMenuPage>() ?? throw new ArgumentNullException(nameof(IMenuPage));
-        }
+        loginPage = ContainerManager.GetTestWareComponent<ILoginPage>();
+        menuPage = ContainerManager.GetTestWareComponent<IMenuPage>();
     }
 
 

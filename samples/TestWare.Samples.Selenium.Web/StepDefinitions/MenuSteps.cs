@@ -1,5 +1,4 @@
-﻿using Autofac;
-using TestWare.Core;
+﻿using TestWare.Core;
 using TestWare.Samples.Selenium.Web.POM.Menu;
 
 namespace TestWare.Samples.Selenium.Web.StepDefinitions;
@@ -15,10 +14,7 @@ public sealed class MenuSteps
 
     public MenuSteps()
     {
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
-        {
-            menuPage = scope.Resolve<IMenuPage>() ?? throw new ArgumentNullException(nameof(IMenuPage));
-        }
+        menuPage = ContainerManager.GetTestWareComponent<IMenuPage>();
     }
 
     [When(@"the user clicks Logout button")]

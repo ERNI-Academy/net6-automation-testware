@@ -31,7 +31,7 @@ public class WinAppDriverManager : EngineManagerBase, IEngineManager
                 if (!ContainerManager.ExistsType(typeof(WindowsDriverFactory)))
                 {
                     var driver = WindowsDriverFactory.CreateRootWinAppDriverSession(capability);
-                    ContainerManager.RegisterType(driver);
+                    ContainerManager.RegisterType(capability.Name, driver);
                 }
                 break;
         }
