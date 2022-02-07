@@ -59,6 +59,13 @@ jobs:
             Configurations.1.Capabilities.2.Driver: ${{ matrix.browser }}
             Configurations.1.Capabilities.2.Path: ${{ env.driverPathRaw }}
             TestResultPath: ${{ inputs.test_results_path }}
+        - name: Read configuration
+          id: config_file
+          uses: juliangruber/read-file-action@v1
+          with:
+            path: '.\TestConfiguration.Web.json'
+        - name: Echo configuration.json
+          run: echo "${{ steps.config_file.outputs.content }}"
         - name: Run tests
           run: dotnet test TestWare.Samples.Selenium.Web.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive WEB (${{ matrix.browser }}) screenshots
