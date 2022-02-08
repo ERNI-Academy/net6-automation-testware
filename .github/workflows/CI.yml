@@ -44,3 +44,5 @@ jobs:
           name: testing-artifact-winappdriver
           path: |
             ${{ github.workspace }}/samples/TestWare.Samples.WinAppDriver/bin/Release/net6.0
+  sonar-scanner:
+    uses: ./.github/workflows/Sonar_Scanner.yml
