@@ -1,8 +1,13 @@
-name: SonnarQube Scanner
-on: push
+name: SonarQube Scanner
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
 jobs:
   sonnarScan:
-    name: sonnarScan
+    name: sonarScan
     runs-on: windows-latest
     steps:
       - name: Setup .NET
