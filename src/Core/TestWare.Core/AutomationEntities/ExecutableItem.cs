@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TestWare.Core.AutomationEntities;
+﻿namespace TestWare.Core.AutomationEntities;
 
 public class ExecutableItem
 {
     public string Id;
     private const string _defaultKey = "default";
     private string _currentKey;
-    private Dictionary<string, ExecutableItem> _subItems;
+    private readonly Dictionary<string, ExecutableItem> _subItems;
 
     public ExecutableItem(string id)
     {
@@ -19,13 +13,14 @@ public class ExecutableItem
         _subItems = new();
     }
 
-    public void StartExecution()
+    public static void StartExecution()
     {
-
+        // Do nothing, not applicable.
     }
 
-    public void StopExecution()
+    public static void StopExecution()
     {
+        // Do nothing, not applicable.
     }
 
     public ExecutableItem AddItem(string id)

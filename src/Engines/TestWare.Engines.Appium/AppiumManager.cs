@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using System.Text.Json;
 using TestWare.Core;
 using TestWare.Core.Configuration;
 using TestWare.Core.Interfaces;
@@ -50,7 +49,7 @@ public class AppiumManager : EngineManagerBase, IEngineManager
         ((AppiumDriver)driver).Dispose();
     }
 
-    public string CollectEvidence(string destinationPath, string name)
+    public string CollectEvidence(string destinationPath, string evidenceName)
     {
         var screenshotPath = string.Empty;
 
@@ -63,9 +62,12 @@ public class AppiumManager : EngineManagerBase, IEngineManager
             }
 
             var screenshot = ((ITakesScreenshot)windowsDriver).GetScreenshot();
-            screenshot.SaveAsFile(Path.Combine(destinationPath, $"{name}.png"), ScreenshotImageFormat.Png);
+            screenshot.SaveAsFile(Path.Combine(destinationPath, $"{evidenceName}.png"), ScreenshotImageFormat.Png);
         }
-        catch { }
+        catch 
+        {
+            // Do nothing, not applicable.
+        }
 
         return screenshotPath;
     }

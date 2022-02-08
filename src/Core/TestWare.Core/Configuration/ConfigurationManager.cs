@@ -4,7 +4,7 @@ namespace TestWare.Core.Configuration;
 
 public class ConfigurationManager
 {
-    public TestConfiguration ReadConfigurationFile(string filePath)
+    public static TestConfiguration ReadConfigurationFile(string filePath)
     {
         var configurationFile = File.ReadAllText(filePath);
         return JsonSerializer.Deserialize<TestConfiguration>(configurationFile);

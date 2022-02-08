@@ -67,7 +67,7 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
         }
     }
 
-    public string CollectEvidence(string destinationPath, string name)
+    public string CollectEvidence(string destinationPath, string evidenceName)
     {
         var screenshotPath = string.Empty;
 
@@ -87,7 +87,7 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
             {
                 var instanceName = ContainerManager.GetNameFromInstance(webDriver);
                 var ss = ((ITakesScreenshot)webDriver).GetScreenshot();
-                ss.SaveAsFile(Path.Combine(destinationPath, $"{name} - {instanceName}.png"), ScreenshotImageFormat.Png);
+                ss.SaveAsFile(Path.Combine(destinationPath, $"{evidenceName} - {instanceName}.png"), ScreenshotImageFormat.Png);
             }
 
         }

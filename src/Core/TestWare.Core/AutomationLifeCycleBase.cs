@@ -54,10 +54,10 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
         CreateTestResultsDirectory(TestConfiguration.TestResultPath, path);
     }
 
-    public void BeginTestStep(string name)
+    public void BeginTestStep(string id)
     {
-        var id = ResultPathValidation(name);
-        Summary.StartTestStep(id);
+        var name = ResultPathValidation(id);
+        Summary.StartTestStep(name);
     }
 
     public void EndTestStep()
@@ -95,7 +95,7 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
         //TODO Create summary report
     }
 
-    private string CreateTestResultsDirectory(string path, string name)
+    private void CreateTestResultsDirectory(string path, string name)
     {
         var testResultsDirectory = Path.Combine(path, name);
         testResultsDirectory = ResultPathValidation(testResultsDirectory);
@@ -106,8 +106,6 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
         }
 
         Directory.CreateDirectory(testResultsDirectory);
-
-        return testResultsDirectory;
     }
 
     public string GetCurrentTestResultsDirectory()

@@ -5,7 +5,7 @@ namespace TestWare.Core;
 
 public abstract class EngineManagerBase
 {
-    protected TEnum GetValidConfiguration<TEnum>(IEnumerable<string> tags) where TEnum : struct
+    protected static TEnum GetValidConfiguration<TEnum>(IEnumerable<string> tags) where TEnum : struct
     {
         foreach (var tag in tags)
         {
@@ -15,7 +15,7 @@ public abstract class EngineManagerBase
         return default;
     }
 
-    protected IEnumerable<T> GetCapabilities<T>(TestConfiguration testConfiguration, string configName)
+    protected static IEnumerable<T> GetCapabilities<T>(TestConfiguration testConfiguration, string configName)
     {
         var configuration = testConfiguration.Configurations.FirstOrDefault(item => item.Tag.ToUpperInvariant() == configName.ToUpperInvariant());
         if (configuration?.Capabilities == null)
