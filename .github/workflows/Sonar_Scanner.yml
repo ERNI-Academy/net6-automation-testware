@@ -6,7 +6,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonnarScan:
+  sonarScan:
     name: sonarScan
     runs-on: windows-latest
     steps:
