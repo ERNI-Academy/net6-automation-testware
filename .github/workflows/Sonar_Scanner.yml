@@ -1,5 +1,6 @@
 name: SonarQube Scanner
 on:
+  workflow_call:
   workflow_dispatch: ~
 jobs:
   sonarScan:
