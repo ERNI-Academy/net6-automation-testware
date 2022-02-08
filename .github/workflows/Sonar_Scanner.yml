@@ -1,10 +1,6 @@
 name: SonarQube Scanner
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch: ~
 jobs:
   sonarScan:
     name: sonarScan
