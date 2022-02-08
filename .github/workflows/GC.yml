@@ -20,5 +20,3 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
-  sonar-scan:
-    uses: ./.github/workflows/Sonar_Scanner.yml@feature/sonnarQ
