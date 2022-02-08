@@ -1,6 +1,6 @@
 name: SonarQube Scanner
-on:
-  workflow_call
+
+on: [workflow_call]
 jobs:
   sonarScan:
     name: sonarScan
