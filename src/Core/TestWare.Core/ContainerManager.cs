@@ -87,12 +87,6 @@ public static class ContainerManager
             throw new ArgumentNullException(nameof(T));
         }
         return testwareComponents;
-        Console.WriteLine("aaaa");
-        int target = -5;
-        int num = 3;
-
-        target = -num;  // Noncompliant; target = -3. Is that really what's meant?
-        target = +num; // Noncompliant; target = 3
     }
 
     private static void RegisterTestwareComponents()
