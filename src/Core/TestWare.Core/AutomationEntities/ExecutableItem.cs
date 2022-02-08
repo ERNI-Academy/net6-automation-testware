@@ -13,12 +13,12 @@ public class ExecutableItem
         _subItems = new();
     }
 
-    public static void StartExecution()
+    public void StartExecution()
     {
         // Do nothing, not applicable.
     }
 
-    public static void StopExecution()
+    public void StopExecution()
     {
         // Do nothing, not applicable.
     }

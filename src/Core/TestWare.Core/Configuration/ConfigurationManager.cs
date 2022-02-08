@@ -2,7 +2,7 @@
 
 namespace TestWare.Core.Configuration;
 
-public class ConfigurationManager
+public static class ConfigurationManager
 {
     public static TestConfiguration ReadConfigurationFile(string filePath)
     {

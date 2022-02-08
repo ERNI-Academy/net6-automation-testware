@@ -30,7 +30,6 @@ internal class LifeCycle : AutomationLifeCycleBase
 
     protected override TestConfiguration GetConfiguration()
     {
-        var configManager = new ConfigurationManager();
-        return configManager.ReadConfigurationFile("TestConfiguration.Desktop.json");
+        return ConfigurationManager.ReadConfigurationFile("TestConfiguration.Desktop.json");
     }
 }
