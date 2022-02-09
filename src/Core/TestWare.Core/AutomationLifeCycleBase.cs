@@ -9,10 +9,11 @@ namespace TestWare.Core;
 
 public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
 {
-    public AutomationSummary Summary;
-
+    private AutomationSummary _summary;
+    private TestConfiguration _configuration;
     public IEnumerable<IEngineManager> Engines { get; private set; }
-    public TestConfiguration TestConfiguration;
+    public TestConfiguration TestConfiguration { get { return _configuration; } }
+    public AutomationSummary Summary { get { return _summary; } }
 
 
     protected abstract IEnumerable<Assembly> GetTestWareComponentAssemblies();
@@ -24,9 +25,9 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
         var assemblies = GetTestWareComponentAssemblies();
         ContainerManager.RegisterTestwareComponents(assemblies);
         Engines = GetTestWareEngines();
-        TestConfiguration = GetConfiguration();
-        Summary = new(id);
-        CreateTestResultsDirectory(TestConfiguration.TestResultPath, id);
+        _configuration = GetConfiguration();
+        _summary = new(id);
+        CreateTestResultsDirectory(_configuration.TestResultPath, id);
     }
 
     public void BeginTestExecution()
@@ -37,41 +38,41 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
 
     public void BeginTestSuite(string id)
     {
-        Summary.StartTestSuite(id);
-        var path = Summary.BuildSuitePath();
-        CreateTestResultsDirectory(TestConfiguration.TestResultPath, path);
+        _summary.StartTestSuite(id);
+        var path = _summary.BuildSuitePath();
+        CreateTestResultsDirectory(_configuration.TestResultPath, path);
     }
 
     public void BeginTestCase(string id, IEnumerable<string> tags)
     {
         foreach(var engine in Engines)
         {
-            engine.Initialize(tags, TestConfiguration);
+            engine.Initialize(tags, _configuration);
         }
         ContainerManager.BuildContainer();
-        Summary.StartTestCase(id);
-        var path = Summary.BuildTestPath();
-        CreateTestResultsDirectory(TestConfiguration.TestResultPath, path);
+        _summary.StartTestCase(id);
+        var path = _summary.BuildTestPath();
+        CreateTestResultsDirectory(_configuration.TestResultPath, path);
     }
 
     public void BeginTestStep(string id)
     {
         var name = ResultPathValidation(id);
-        Summary.StartTestStep(name);
+        _summary.StartTestStep(name);
     }
 
     public void EndTestStep()
     {
-        var path = Path.Combine(TestConfiguration.TestResultPath,Summary.BuildTestPath());
+        var path = Path.Combine(_configuration.TestResultPath,Summary.BuildTestPath());
         path = ResultPathValidation(path);
-        var stepName = Summary.GetCurrentStepId();
+        var stepName = _summary.GetCurrentStepId();
 
         foreach (var engine in Engines)
         {
             var name = $"{stepName} - {engine.GetEngineName()}";
             engine.CollectEvidence(path, name);
         }
-        Summary.StopTestStep();
+        _summary.StopTestStep();
     }
 
     public void EndTestCase()
@@ -80,18 +81,18 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
         {
             engine.Destroy();
         }
-        Summary.StopTestCase();
+        _summary.StopTestCase();
         ContainerManager.DisposeContainer();
     }
 
     public void EndTestSuite()
     {
-        Summary.StopTestSuite();
+        _summary.StopTestSuite();
     }
 
     public void EndTestExecution()
     {
-        Summary.StopExecution();
+        _summary.StopExecution();
     }
 
     private void CreateTestResultsDirectory(string path, string name)
@@ -109,32 +110,32 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
 
     public string GetCurrentTestResultsDirectory()
     {
-        return GetResultsDirectory(Summary.BuildTestPath());
+        return GetResultsDirectory(_summary.BuildTestPath());
     }
     public IEnumerable<string> GetStepEvidences()
     {
-        var path = Path.Combine(TestConfiguration.TestResultPath, Summary.BuildTestPath());
+        var path = Path.Combine(_configuration.TestResultPath, _summary.BuildTestPath());
         path = ResultPathValidation(path);
-        var stepName = Summary.GetCurrentStepId();
+        var stepName = _summary.GetCurrentStepId();
 
-        DirectoryInfo evidenceFolder = new DirectoryInfo(path);
+        var evidenceFolder = new DirectoryInfo(path);
         var evidences = evidenceFolder.GetFiles().Where<FileInfo>(f => f.Name.StartsWith(stepName)).Select(f => f.FullName);
 
         return evidences;
     }
     public string GetCurrentSuitetResultsDirectory()
     {
-        return GetResultsDirectory(Summary.BuildSuitePath());
+        return GetResultsDirectory(_summary.BuildSuitePath());
     }
 
     public string GetCurrentResultsDirectory()
     {
-        return GetResultsDirectory(Summary.TestRun.Id);
+        return GetResultsDirectory(_summary.TestRun.Id);
     }
 
     private string GetResultsDirectory(string relativePath)
     {
-        var path = Path.Combine(TestConfiguration.TestResultPath, relativePath);
+        var path = Path.Combine(_configuration.TestResultPath, relativePath);
         path = ResultPathValidation(path);
         return path;
     }
@@ -142,7 +143,7 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
     protected virtual string ResultPathValidation(string path)
     {
         path = Regex.Replace(path, @"[^a-zA-Z0-9- \\$:_]+", string.Empty, RegexOptions.Compiled);
-        path = path.Length >= 247 ? path.Substring(0, 244) : path;
+        path = path.Length < 247 ? path : path[..244];
         return path;
     }
 

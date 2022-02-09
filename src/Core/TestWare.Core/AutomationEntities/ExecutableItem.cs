@@ -2,14 +2,15 @@
 
 public class ExecutableItem
 {
-    public string Id;
+    private readonly string _id;
     private const string _defaultKey = "default";
     private string _currentKey;
     private readonly Dictionary<string, ExecutableItem> _subItems;
+    public string Id { get { return _id; } }
 
     public ExecutableItem(string id)
     {
-        Id = id;
+        _id = id;
         _subItems = new();
     }
 

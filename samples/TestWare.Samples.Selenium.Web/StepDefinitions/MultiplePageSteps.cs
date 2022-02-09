@@ -49,7 +49,7 @@ public sealed class MultiplePageSteps
     }
 
     [When(@"the user clicks Logout button on '([^']*)'")]
-    public void WhenTheUserClicksLogoutButtonOn(string browser)
+    public static void WhenTheUserClicksLogoutButtonOn(string browser)
     {
         var menuPage = ContainerManager.GetTestWareComponent<IMenuPage>(browser);
         menuPage.ClickOpenMenuButton();
@@ -57,7 +57,7 @@ public sealed class MultiplePageSteps
     }
 
     [Then(@"the user is at Login page on '([^']*)'")]
-    public void ThenTheUserIsAtLoginPageOn(string browser)
+    public static void ThenTheUserIsAtLoginPageOn(string browser)
     {
         var loginPage = ContainerManager.GetTestWareComponent<ILoginPage>(browser);
         loginPage.CheckUserIsAtLoginpage();

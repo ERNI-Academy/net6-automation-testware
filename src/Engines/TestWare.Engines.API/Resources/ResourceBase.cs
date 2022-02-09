@@ -19,7 +19,7 @@ public class ResourceBase
         RestResponse<T> response = null;
         var task = Task.Run(async () => { response = await Client.ExecuteAsync<T>(request, cancellationToken); });
         task.Wait();
-        responseQueue.Append(response);
+        responseQueue.Enqueue(response);
         return response ?? throw new ApplicationException(nameof(response));
     }
 }

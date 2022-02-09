@@ -9,10 +9,10 @@ namespace TestWare.Core;
 public static class ContainerManager
 {
     public static IContainer Container { get; private set; }
-    private static ContainerBuilder _builder = new ContainerBuilder();
-    private static List<Assembly> _assemblies = new();
+    private static ContainerBuilder _builder = new();
+    private static readonly List<Assembly> _assemblies = new();
     private static List<DependencyInfo> _dependencies = new();
-    private static Dictionary<string, ILifetimeScope> _scopes = new();
+    private static readonly  Dictionary<string, ILifetimeScope> _scopes = new();
     
     internal static void RegisterTestwareComponents(IEnumerable<Assembly> assemblies)
     {
@@ -31,7 +31,7 @@ public static class ContainerManager
     /// <exception cref="ArgumentNullException"> In case is not possible to resolve to the instance</exception>
     public static T GetTestWareComponent<T>()
     {
-        return Container.Resolve<T>() ?? throw new ArgumentNullException(nameof(T));
+        return Container.Resolve<T>() ?? throw new DependencyResolutionException(nameof(T));
     }
 
     /// <summary>
@@ -45,9 +45,8 @@ public static class ContainerManager
     /// <exception cref="ArgumentNullException"> In case is not possible to resolve or named don't exists</exception>
     public static T GetTestWareComponent<T>(string name)
     {
-        var dependency = _dependencies.FirstOrDefault(x => x.Name == name) ?? throw new ArgumentNullException(nameof(T));
-        ILifetimeScope scope;
-        if (!_scopes.TryGetValue(name, out scope))
+        var dependency = _dependencies.FirstOrDefault(x => x.Name == name) ?? throw new DependencyResolutionException(nameof(T));
+        if (!_scopes.TryGetValue(name, out ILifetimeScope scope))
         {
             scope = Container.BeginLifetimeScope(name);
             _scopes[name] = scope;
@@ -56,7 +55,7 @@ public static class ContainerManager
                 (pi, ctx) => pi.ParameterType == dependency.InstanceType,
                 (pi, ctx) => scope.ResolveNamed(dependency.Name, pi.ParameterType)
             );
-        var testwareComponent = scope.Resolve<T>(parameter) ?? throw new ArgumentNullException(nameof(T));
+        var testwareComponent = scope.Resolve<T>(parameter) ?? throw new DependencyResolutionException(nameof(T));
         return testwareComponent;
     }
     
@@ -78,14 +77,14 @@ public static class ContainerManager
                 var testwarecomponent = GetTestWareComponent<T>(name);
                 testwareComponents = testwareComponents.Append(testwarecomponent);
             }
-            catch (ArgumentNullException)
+            catch (DependencyResolutionException)
             {
                 // Do nothing, keep the loop.
             }
         }
         if (!testwareComponents.Any())
         {
-            throw new ArgumentNullException(nameof(T));
+            throw new DependencyResolutionException(nameof(T));
         }
         return testwareComponents;
     }
