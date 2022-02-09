@@ -1,8 +1,9 @@
 name: SonarQube Scanner
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-  workflow_call: ~
+  workflow_call:
+    secrets:
+        SONAR_TOKEN:
+          required: true
   workflow_dispatch: ~
 jobs:
   sonarScan:

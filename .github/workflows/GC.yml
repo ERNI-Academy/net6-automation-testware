@@ -20,3 +20,8 @@ jobs:
         run: dotnet restore
       - name: Build
         run: dotnet build --configuration Release --no-restore
+        
+  sonar-scanner:
+    uses: ./.github/workflows/Sonar_Scanner.yml
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
