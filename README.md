@@ -2,7 +2,7 @@
 
 [![Continuous-Deployment](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CD.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CD.yml)
 
-[![SonarQube Scanner](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml/badge.svg?branch=all-contributors%2Fadd-LopezMDidac)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml)
+[![SonarQube Scanner](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml/badge.svg?branch=main)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
