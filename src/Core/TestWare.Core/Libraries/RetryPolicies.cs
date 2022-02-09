@@ -14,20 +14,13 @@ public static class RetryPolicies
 
     public static void ExecuteActionWithRetries(Action action, int numberOfRetries, TimeSpan retryAttemp)
     {
-        try
-        {
-            var policy = Policy.Handle<Exception>()
-                                    .WaitAndRetry(numberOfRetries, retryAttempt => retryAttemp, (ex, time) => { });
+        var policy = Policy.Handle<Exception>()
+                                .WaitAndRetry(numberOfRetries, retryAttempt => retryAttemp, (ex, time) => { });
 
-            policy.Execute(() =>
-            {
-                action.Invoke();
-            });
-        }
-        catch (Exception)
+        policy.Execute(() =>
         {
-            throw;
-        }
+            action.Invoke();
+        });
     }
 
     public static void ExecuteActionWithTimeout(Action action, int timeoutInMinutes)

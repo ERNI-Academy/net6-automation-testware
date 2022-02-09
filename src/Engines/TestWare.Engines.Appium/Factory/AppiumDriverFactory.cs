@@ -3,7 +3,7 @@ using TestWare.Engines.Appium.Configuration;
 
 namespace TestWare.Engines.Appium.Factory;
 
-internal class AppiumDriverFactory
+internal static class AppiumDriverFactory
 {
     public static IAppiumDriver Create(Capabilities capabilities)
     {

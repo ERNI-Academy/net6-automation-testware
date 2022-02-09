@@ -13,7 +13,7 @@ public abstract class PageBase
 
     public IWebDriver Driver { get; protected set; }
 
-    private TimeSpan RetryAttemp = TimeSpan.FromMilliseconds(200);
+    private readonly TimeSpan RetryAttemp = TimeSpan.FromMilliseconds(200);
 
     protected void ClickElement(IWebElement element)
     {
@@ -37,7 +37,7 @@ public abstract class PageBase
             () =>
             {
                 this.WaitUntilElementIsClickable(element);
-                Actions action = new Actions(Driver);
+                var action = new Actions(Driver);
                 action.MoveToElement(element).Click().Perform();
             },
             numberOfRetries: NumberOfRetries,
@@ -95,6 +95,12 @@ public abstract class PageBase
     protected void WaitUntilElementIsClickable(IWebElement element)
         => this.WaitUntilElementIsClickable(element, TimeToWait);
 
+    protected void WaitUntilElementIsClickable(IWebElement element, int timeToWait)
+    {
+        var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
+        webDriverWait.Until(ExpectedConditions.ElementToBeClickable(element));
+    }
+
     protected void WaitUntilElementIsVisible(By locator)
         => this.WaitUntilElementIsVisible(locator, TimeToWait);
 
@@ -102,12 +108,6 @@ public abstract class PageBase
     {
         var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
         webDriverWait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
-    }
-
-    protected void WaitUntilElementIsClickable(IWebElement element, int timeToWait)
-    {
-        var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
-        webDriverWait.Until(ExpectedConditions.ElementToBeClickable(element));
     }
 
     protected void WaitUntilElementNotVisible(By locator, int secondsToWait)
