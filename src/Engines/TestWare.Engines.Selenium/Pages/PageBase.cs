@@ -100,7 +100,6 @@ public abstract class PageBase
 
     protected void WaitUntilElementIsVisible(By locator, int timeToWait)
     {
-        // TODO: WebDriverWait call fails in case driver type is WindowsDriver.
         var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
         webDriverWait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
     }

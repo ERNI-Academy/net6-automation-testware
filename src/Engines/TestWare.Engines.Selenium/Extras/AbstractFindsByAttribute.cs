@@ -115,7 +115,6 @@ public abstract class AbstractFindsByAttribute : Attribute, IComparable
             throw new ArgumentException("Object to compare must be a AbstractFindsByAttribute", nameof(obj));
         }
 
-        // TODO(JimEvans): Construct an algorithm to sort on more than just Priority.
         if (Priority != other.Priority)
         {
             return Priority - other.Priority;

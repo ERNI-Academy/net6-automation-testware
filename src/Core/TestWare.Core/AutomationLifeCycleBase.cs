@@ -92,7 +92,6 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
     public void EndTestExecution()
     {
         Summary.StopExecution();
-        //TODO Create summary report
     }
 
     private void CreateTestResultsDirectory(string path, string name)
