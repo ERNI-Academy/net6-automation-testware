@@ -63,7 +63,7 @@ internal class WebElementProxy : WebDriverObjectProxy, IWrapsElement, IWebElemen
 
     public string GetCssValue(string propertyName) => WrappedElement.GetCssValue(propertyName);
 
-    [Obsolete]
+    [Obsolete ("Deprecated on IWebElement")]
     public string GetProperty(string propertyName) => WrappedElement.GetProperty(propertyName);
 
     public void SendKeys(string text) => WrappedElement.SendKeys(text);
