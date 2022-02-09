@@ -2,11 +2,13 @@
 
 [![Continuous-Deployment](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CD.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CD.yml)
 
-# About 
+[![SonarQube Scanner](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml/badge.svg?branch=all-contributors%2Fadd-LopezMDidac)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml)
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+# About 
 [Automation Testware](https://github.com/ERNI-Academy/net6-automation-testware) is a flexible solution that implements the interaction and management of the main automation engines for Web _(Selenium)_, Mobile _(Appium)_ and Desktop _(WinAppDriver)_ environments. 
 
 TestWare provides a robust and scalable core that can be reused by any automation project in order to abstract the core automation implementation focusing only on its business needs.
