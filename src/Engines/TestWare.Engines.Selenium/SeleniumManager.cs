@@ -1,6 +1,5 @@
 ﻿using Autofac;
 using OpenQA.Selenium;
-using System.Text.Json;
 using TestWare.Core;
 using TestWare.Core.Configuration;
 using TestWare.Core.Interfaces;
@@ -13,7 +12,7 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
 {
     private const string _name = "Selenium";
 
-    private void RegisterSingle(IEnumerable<string> tags, TestConfiguration testConfiguration)
+    private static void RegisterSingle(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
         var configName = Enum.GetName(ConfigurationTags.webdriver).ToUpperInvariant();
         var capabilities = GetCapabilities<Capabilities>(testConfiguration, configName);
@@ -25,7 +24,7 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
         }
     }
 
-    private void RegisterMultiple(IEnumerable<string> tags, TestConfiguration testConfiguration)
+    private static void RegisterMultiple(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
         var configName = Enum.GetName(ConfigurationTags.multiwebdriver).ToUpperInvariant();
         var capabilities = GetCapabilities<Capabilities>(testConfiguration, configName);
@@ -67,7 +66,7 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
         }
     }
 
-    public string CollectEvidence(string destinationPath, string name)
+    public string CollectEvidence(string destinationPath, string evidenceName)
     {
         var screenshotPath = string.Empty;
 
@@ -87,7 +86,7 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
             {
                 var instanceName = ContainerManager.GetNameFromInstance(webDriver);
                 var ss = ((ITakesScreenshot)webDriver).GetScreenshot();
-                ss.SaveAsFile(Path.Combine(destinationPath, $"{name} - {instanceName}.png"), ScreenshotImageFormat.Png);
+                ss.SaveAsFile(Path.Combine(destinationPath, $"{evidenceName} - {instanceName}.png"), ScreenshotImageFormat.Png);
             }
 
         }

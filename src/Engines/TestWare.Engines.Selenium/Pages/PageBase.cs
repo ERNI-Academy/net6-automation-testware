@@ -17,7 +17,7 @@ public abstract class PageBase
 
     protected void ClickElement(IWebElement element)
     {
-        element = element ?? throw new ArgumentNullException("Element to be clicked was null", nameof(element));
+        element = element ?? throw new ArgumentNullException(nameof(element), "Element to be clicked was null");
 
         RetryPolicies.ExecuteActionWithRetries(
             () =>
@@ -31,7 +31,7 @@ public abstract class PageBase
 
     protected void ClickInnerElement(IWebElement element)
     {
-        element = element ?? throw new ArgumentNullException("Element to be clicked was null", nameof(element));
+        element = element ?? throw new ArgumentNullException(nameof(element), "Element to be clicked was null");
 
         RetryPolicies.ExecuteActionWithRetries(
             () =>
@@ -46,7 +46,7 @@ public abstract class PageBase
 
     protected void DoubleClickElement(IWebElement element)
     {
-        element = element ?? throw new ArgumentNullException("Element to be double clicked was null", nameof(element));
+        element = element ?? throw new ArgumentNullException(nameof(element), "Element to be double clicked was null");
 
         RetryPolicies.ExecuteActionWithRetries(
             () =>
@@ -63,7 +63,7 @@ public abstract class PageBase
 
     protected void SendKeysElement(IWebElement element, string text, int timeToWait)
     {
-        element = element ?? throw new ArgumentNullException("Element to send keys was null", nameof(element));
+        element = element ?? throw new ArgumentNullException(nameof(element), "Element to send keys was null");
 
         RetryPolicies.ExecuteActionWithRetries(
             () =>
@@ -80,7 +80,7 @@ public abstract class PageBase
 
     protected void ClearElementText(IWebElement element, int timeToWait)
     {
-        element = element ?? throw new ArgumentNullException("Element to clear was null", nameof(element));
+        element = element ?? throw new ArgumentNullException(nameof(element), "Element to clear was null");
 
         RetryPolicies.ExecuteActionWithRetries(
             () =>
@@ -100,46 +100,24 @@ public abstract class PageBase
 
     protected void WaitUntilElementIsVisible(By locator, int timeToWait)
     {
-        try
-        {
-            // TODO: La llamada al WebDriverWait falla si el driver es de tipo WindowsDriver.
-            var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
-            webDriverWait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
-        }
-        catch (Exception)
-        {
-            throw;
-        }
+        var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
+        webDriverWait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
     }
 
     protected void WaitUntilElementIsClickable(IWebElement element, int timeToWait)
     {
-        try
-        {
-            var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
-            webDriverWait.Until(ExpectedConditions.ElementToBeClickable(element));
-        }
-        catch (Exception)
-        {
-            throw;
-        }
+        var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
+        webDriverWait.Until(ExpectedConditions.ElementToBeClickable(element));
     }
 
     protected void WaitUntilElementNotVisible(By locator, int secondsToWait)
     {
         Thread.Sleep(1000);
-        try
-        {
-            var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(secondsToWait));
-            webDriverWait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
-        }
-        catch (Exception)
-        {
-            throw;
-        }
+        var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(secondsToWait));
+        webDriverWait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));
     }
 
-    protected void ExecuteActionWithDelay(Action action, int secondsToDelayAction)
+    protected static void ExecuteActionWithDelay(Action action, int secondsToDelayAction)
     {
         Thread.Sleep(secondsToDelayAction * 1000);
         action.Invoke();

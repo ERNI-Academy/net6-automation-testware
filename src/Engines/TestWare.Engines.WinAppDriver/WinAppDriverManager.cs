@@ -37,7 +37,7 @@ public class WinAppDriverManager : EngineManagerBase, IEngineManager
         }
     }
 
-    public string CollectEvidence(string destinationPath, string name)
+    public string CollectEvidence(string destinationPath, string evidenceName)
     {
         var screenshotPath = string.Empty;
 
@@ -51,9 +51,12 @@ public class WinAppDriverManager : EngineManagerBase, IEngineManager
 
             var screenshot = ((ITakesScreenshot)windowsDriver).GetScreenshot();
             var screenshotBitmap = new Bitmap(new MemoryStream(screenshot.AsByteArray));
-            screenshotBitmap.Save(Path.Combine(destinationPath, $"{name}.png"), ImageFormat.Png);
+            screenshotBitmap.Save(Path.Combine(destinationPath, $"{evidenceName}.png"), ImageFormat.Png);
         }
-        catch { }
+        catch 
+        {
+            // Do nothing, not applicable.
+        }
 
         return screenshotPath;
     }

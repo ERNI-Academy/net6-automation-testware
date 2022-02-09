@@ -80,9 +80,10 @@ public static class ContainerManager
             }
             catch (ArgumentNullException)
             {
+                // Do nothing, keep the loop.
             }
         }
-        if (testwareComponents.Count() == 0)
+        if (!testwareComponents.Any())
         {
             throw new ArgumentNullException(nameof(T));
         }

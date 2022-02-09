@@ -33,12 +33,6 @@ internal static class WindowsDriverFactory
 
     private static void LaunchApplication(Capabilities capabilities)
     {
-        /*
-        var allProcess = Process.GetProcesses();
-        //var a = allProcess.FirstOrDefault().Modules[0].FileName;
-        var processes3 = allProcess.Select(x => x.MainModule?.FileName == capabilities.ApplicationPath);
-        */
-
         Process[] processes = Process.GetProcessesByName(capabilities.ApplicationName);
 
         foreach (Process process in processes)
@@ -66,7 +60,7 @@ internal static class WindowsDriverFactory
                 window = _rootDriver.FindElement(MobileBy.Name(capabilities.ApplicationName));
             }
 
-            var topLevelWindowHandle = window.GetAttribute("NativeWindowHandle");
+            var topLevelWindowHandle = window?.GetAttribute("NativeWindowHandle");
             topLevelWindowHandle = int.Parse(topLevelWindowHandle).ToString("x"); // Convert to Hex
 
             var appCapabilities = new AppiumOptions();

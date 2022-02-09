@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using System.Text.Json;
+﻿using System.Text.Json;
 using TestWare.Core;
 using TestWare.Core.Configuration;
 using TestWare.Core.Interfaces;
@@ -11,6 +10,7 @@ namespace TestWare.Engines.Restsharp;
 public class RestSharpManager : EngineManagerBase, IEngineManager
 {
     private const string _name = "Restsharp";
+
     public void Initialize(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
         var foundConfiguration = GetValidConfiguration<ConfigurationTags>(tags);
@@ -37,9 +37,12 @@ public class RestSharpManager : EngineManagerBase, IEngineManager
         }
     }
 
-    public void Destroy() { }
+    public void Destroy() 
+    {
+        // Do nothing, not applicable.
+    }
 
-    public string CollectEvidence(string evidencePath, string name) { return evidencePath; }
+    public string CollectEvidence(string destinationPath, string evidenceName) { return destinationPath; }
 
     public string GetEngineName()
     {
