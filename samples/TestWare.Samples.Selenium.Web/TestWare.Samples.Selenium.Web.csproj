@@ -34,7 +34,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Features\Login_multibrowser.feature.cs">
+	  <Compile Update="Features\SwagLabs\Login_multibrowser.feature.cs">
 	    <DependentUpon>Login_multibrowser.feature</DependentUpon>
 	  </Compile>
 	</ItemGroup>
@@ -46,10 +46,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <SpecFlowFeatureFiles Update="Features\Login_multibrowser.feature">
+	  <SpecFlowFeatureFiles Update="Features\SwagLabs\Login_multibrowser.feature">
 	    <Visible>$(UsingMicrosoftNETSdk)</Visible>
 	    <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
 	  </SpecFlowFeatureFiles>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Features\Stinto\" />
 	</ItemGroup>
 
 </Project>
