@@ -13,6 +13,8 @@ internal class Capabilities
 
     public string PlatformName {get; set;}
 
+    public string PlatformVersion {get; set;}
+
     public IEnumerable<CapabilityOption<object>> Options { get; set; }
 
 

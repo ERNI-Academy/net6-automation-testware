@@ -42,6 +42,7 @@ internal static class AppiumDriverFactory
             App = capabilities.AppPath,
             DeviceName = capabilities.DeviceName,
             PlatformName = capabilities.PlatformName,
+            PlatformVersion = capabilities.PlatformVersion,
             AutomationName = "XCUITest"
         };
 
