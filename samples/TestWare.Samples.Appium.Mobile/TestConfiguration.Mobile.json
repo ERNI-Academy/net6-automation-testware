@@ -4,10 +4,10 @@
       "Tag": "Appiumdriver",
       "Capabilities": [
         {
-          "Name": "Appiumdriver",
+          "Name": "Androiddriver",
           "AppiumUrl": "http://127.0.0.1:4723/wd/hub",
           "ApkUrl": "https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/Android.SauceLabs.Mobile.Sample.app.2.7.1.apk",
-          "ApkPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\TestWare.Samples.Appium.Mobile\\bin\\Debug\\net6.0\\ExternalResources\\SwagLabs.apk",
+          "AppPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\TestWare.Samples.Appium.Mobile\\bin\\Debug\\net6.0\\ExternalResources\\SwagLabs.apk",
           "CommandTimeOutInMinutes": 5,
           "DeviceName": "emulator-5554",
           "PlatformName": "Android",
@@ -43,6 +43,19 @@
             {
               "Name": "newCommandTimeout",
               "Value": 500
+            }
+          ]
+        },
+        {
+          "Name": "IOSDriver",
+          "AppiumUrl": "http://127.0.0.1:4723/wd/hub",
+          "AppPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\TestWare.Samples.Appium.Mobile\\bin\\Debug\\net6.0\\ExternalResources\\iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip",
+          "PlatformName": "iOS",
+          "DeviceName": "iphone8",
+          "Options": [
+            {
+              "Name": "osVersion",
+              "Value": "14.0"
             }
           ]
         }
