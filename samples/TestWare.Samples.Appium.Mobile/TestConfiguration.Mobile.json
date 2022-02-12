@@ -61,6 +61,22 @@
             {
               "Name": "showXcodeLog",
               "Value": true
+            },
+            {
+              "Name": "showIOSLog",
+              "Value": true
+            },
+            {
+              "Name": "wdaStartupRetries",
+              "Value": "4"
+            },
+            {
+              "Name": "iosInstallPause",
+              "Value": "8000"
+            },
+            {
+              "Name": "wdaStartupRetryInterval",
+              "Value": "20000"
             }
           ]
         }
