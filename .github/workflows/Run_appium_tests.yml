@@ -59,7 +59,7 @@ jobs:
             force-avd-creation: false
             emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
             disable-animations: false
-            script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"" --filter "Androiddriver"
+            script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"" --filter "Category=Androiddriver"
         - name: Archive Mobile (${{ matrix.os }}) screenshots
           if: always()
           uses: actions/upload-artifact@v2
