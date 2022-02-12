@@ -2,7 +2,7 @@
 Feature: Swaglabs
 
 
-@IOSDriver @Androiddriver
+@IOSDriver
 Scenario: Login - Valid
 	When login on SwagLabs with username 'standard_user' and password 'secret_sauce'
 	Then the user can login - SwagLabs
