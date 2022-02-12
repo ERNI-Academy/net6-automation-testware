@@ -50,7 +50,7 @@ jobs:
           with:
             files: './TestConfiguration.Mobile.json'
           env:
-            Configurations.0.Capabilities.0.ApkPath: ${{ github.workspace }}/ExternalResources/SwagLabs.apk
+            Configurations.0.Capabilities.0.AppPath: ${{ github.workspace }}/ExternalResources/SwagLabs.apk
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Start Device and run tests
           uses: reactivecircus/android-emulator-runner@v2
