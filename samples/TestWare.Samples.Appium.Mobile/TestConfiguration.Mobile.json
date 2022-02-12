@@ -51,11 +51,15 @@
           "AppiumUrl": "http://127.0.0.1:4723/wd/hub",
           "AppPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\TestWare.Samples.Appium.Mobile\\bin\\Debug\\net6.0\\ExternalResources\\iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip",
           "PlatformName": "iOS",
-          "DeviceName": "iphone8",
+          "DeviceName": "iPhone 8",
           "Options": [
             {
               "Name": "osVersion",
-              "Value": "14.0"
+              "Value": "15.2"
+            },
+            {
+              "Name": "udid",
+              "Value": "69941576-255B-4E69-8AD9-8BA0602D5E9F"
             }
           ]
         }
