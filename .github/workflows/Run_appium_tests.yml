@@ -60,13 +60,13 @@ jobs:
             force-avd-creation: false
             emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
             disable-animations: false
-            script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "Category=Androiddriver"
+            script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "TestCategory=Androiddriver"
         
         - name: Start iOs Device and run tests
           uses: futureware-tech/simulator-action@v1
           with:
             model: 'iPhone 8'
-        - run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "Category=IOSDriver"
+        - run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "TestCategory=IOSDriver"
         
         - name: Archive Mobile (${{ matrix.os }}) screenshots
           if: always()
