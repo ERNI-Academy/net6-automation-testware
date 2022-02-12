@@ -54,12 +54,16 @@
           "DeviceName": "iPhone 8",
           "Options": [
             {
-              "Name": "osVersion",
+              "Name": "platformVersion",
               "Value": "15.2"
             },
             {
               "Name": "udid",
               "Value": "69941576-255B-4E69-8AD9-8BA0602D5E9F"
+            },
+            {
+              "Name": "showXcodeLog",
+              "Value": true
             }
           ]
         }
