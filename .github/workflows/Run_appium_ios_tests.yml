@@ -59,7 +59,7 @@ jobs:
           with:
             model: 'iPhone 8'
         - name: Run ios tests
-          run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "TestCategory=IOSDriver"
+          run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         
         - name: Archive Mobile iOS (${{ matrix.os }}) screenshots
           if: always()
