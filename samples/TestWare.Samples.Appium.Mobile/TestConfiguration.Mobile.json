@@ -68,15 +68,19 @@
             },
             {
               "Name": "wdaStartupRetries",
-              "Value": "4"
+              "Value": 4
             },
             {
               "Name": "iosInstallPause",
-              "Value": "8000"
+              "Value": 8000
             },
             {
               "Name": "wdaStartupRetryInterval",
-              "Value": "20000"
+              "Value": 20000
+            },
+            {
+              "Name": "useNewWDA",
+              "Value":  true
             }
           ]
         }
