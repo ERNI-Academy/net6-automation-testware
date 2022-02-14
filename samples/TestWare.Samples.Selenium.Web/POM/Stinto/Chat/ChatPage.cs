@@ -10,7 +10,7 @@ public class ChatPage : WebPage, IChatPage
     [FindsBy(How = How.XPath, Using = "//*[contains(@id,'msg')]")]
     private IList<IWebElement> ChatMessages { get; set; }
 
-    [FindsBy(How = How.XPath, Using = "//*[@id='prompt']")]
+    [FindsBy(How = How.Id, Using = "prompt")]
     private IWebElement SendMessageInput { get; set; }
 
     public ChatPage(IWebDriver driver) : base(driver)

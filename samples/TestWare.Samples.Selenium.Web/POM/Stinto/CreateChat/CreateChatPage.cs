@@ -6,10 +6,10 @@ namespace TestWare.Samples.Selenium.Web.POM.Stinto.CreateChat;
 
 public class CreateChatPage : WebPage, ICreateChatPage
 {
-    [FindsBy(How = How.XPath, Using = "//*[@id='loginNick']")]
+    [FindsBy(How = How.Id, Using = "loginNick")]
     private IWebElement UserIdInput { get; set; }
 
-    [FindsBy(How = How.XPath, Using = "//*[@id='loginTermsOfUse']")]
+    [FindsBy(How = How.Id, Using = "loginTermsOfUse")]
     private IWebElement LoginTermsOfUseCheckbox { get; set; }
 
     [FindsBy(How = How.XPath, Using = "//*[@id='loginDialog']/form/div/div/div[3]/button")]
