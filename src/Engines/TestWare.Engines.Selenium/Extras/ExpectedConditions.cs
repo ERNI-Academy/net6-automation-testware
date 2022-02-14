@@ -506,6 +506,17 @@ public sealed class ExpectedConditions
     }
 
     /// <summary>
+    /// An expectation for checking if the given element is selected.
+    /// </summary>
+    /// <param name="locator">The locator used to find the element.</param>
+    /// <returns><see langword="true"/> given element is selected.; otherwise, <see langword="false"/>.</returns>
+    public static Func<IWebDriver, bool> ElementToBeSelected(By locator)
+    {
+        return ElementSelectionStateToBe(locator, true);
+    }
+
+
+    /// <summary>
     /// An expectation for checking if the given element is in correct state.
     /// </summary>
     /// <param name="element">The element.</param>
@@ -517,16 +528,6 @@ public sealed class ExpectedConditions
         {
             return element.Selected == selected;
         };
-    }
-
-    /// <summary>
-    /// An expectation for checking if the given element is selected.
-    /// </summary>
-    /// <param name="locator">The locator used to find the element.</param>
-    /// <returns><see langword="true"/> given element is selected.; otherwise, <see langword="false"/>.</returns>
-    public static Func<IWebDriver, bool> ElementToBeSelected(By locator)
-    {
-        return ElementSelectionStateToBe(locator, true);
     }
 
     /// <summary>

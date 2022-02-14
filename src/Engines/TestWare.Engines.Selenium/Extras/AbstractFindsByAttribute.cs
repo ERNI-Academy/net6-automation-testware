@@ -62,14 +62,20 @@ public abstract class AbstractFindsByAttribute : Attribute, IComparable
     /// <param name="one">One instance to compare.</param>
     /// <param name="two">The other instance to compare.</param>
     /// <returns><see langword="true"/> if the first instance is greater than the second; otherwise, <see langword="false"/>.</returns>
+    
     public static bool operator >(AbstractFindsByAttribute one, AbstractFindsByAttribute two)
     {
-        if (one is null)
-        {
-            throw new ArgumentNullException("one", "Object to compare cannot be null");
-        }
-
         return one.CompareTo(two) > 0;
+    }
+
+    public static bool operator >=(AbstractFindsByAttribute one, AbstractFindsByAttribute two)
+    {
+        return one.CompareTo(two) >= 0;
+    }
+
+    public static bool operator <=(AbstractFindsByAttribute one, AbstractFindsByAttribute two)
+    {
+        return one.CompareTo(two) <= 0;
     }
 
     /// <summary>
@@ -80,11 +86,6 @@ public abstract class AbstractFindsByAttribute : Attribute, IComparable
     /// <returns><see langword="true"/> if the first instance is less than the second; otherwise, <see langword="false"/>.</returns>
     public static bool operator <(AbstractFindsByAttribute one, AbstractFindsByAttribute two)
     {
-        if (one is null)
-        {
-            throw new ArgumentNullException("one", "Object to compare cannot be null");
-        }
-
         return one.CompareTo(two) < 0;
     }
 
