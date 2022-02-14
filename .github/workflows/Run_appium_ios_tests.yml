@@ -52,7 +52,7 @@ jobs:
           env:
             Configurations.0.Capabilities.1.Name: "Appiumdriver"
             Configurations.0.Capabilities.1.AppPath: ${{ github.workspace }}/ExternalResources/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip
-            TestResultPath: ${{ inputs.test_results_path }}
+            TestResultPath: ${{ github.workspace }}/results # ${{ inputs.test_results_path }}
 
         - name: Start iOs Device
           uses: futureware-tech/simulator-action@v1
