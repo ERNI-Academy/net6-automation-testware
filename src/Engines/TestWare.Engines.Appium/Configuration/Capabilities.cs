@@ -10,6 +10,7 @@ internal class Capabilities
     public string AppPath { get; set; }
 
     public string DeviceName {get; set;}
+    public int CommandTimeOutInMinutes { get; set; }
 
     public string PlatformName {get; set;}
 

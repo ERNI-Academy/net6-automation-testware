@@ -32,7 +32,7 @@ internal static class AppiumDriverFactory
             appiumOptions.AddAdditionalAppiumOption(capabilityOption.Name, capabilityOption.Value);
         }
 
-        return new AndroidDriver(new Uri(capabilities.AppiumUrl), appiumOptions, TimeSpan.FromSeconds(120));
+        return new AndroidDriver(new Uri(capabilities.AppiumUrl), appiumOptions, TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
     }
 
     private static IOSDriver CreateIOSDriver(Capabilities capabilities)
@@ -51,6 +51,6 @@ internal static class AppiumDriverFactory
             appiumOptions.AddAdditionalAppiumOption(capabilityOption.Name, capabilityOption.Value);
         }
         
-        return new IOSDriver(new Uri(capabilities.AppiumUrl), appiumOptions);
+        return new IOSDriver(new Uri(capabilities.AppiumUrl), appiumOptions, TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
     }
 }

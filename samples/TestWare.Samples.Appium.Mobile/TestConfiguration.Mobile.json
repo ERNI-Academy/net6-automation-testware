@@ -53,6 +53,7 @@
           "PlatformName": "iOS",
           "DeviceName": "iPhone 8",
           "PlatformVersion": "15.2",
+          "CommandTimeOutInMinutes": 5,
           "Options": [
             {
               "Name": "udid",
@@ -80,7 +81,7 @@
             },
             {
               "Name": "useNewWDA",
-              "Value":  true
+              "Value": true
             }
           ]
         }
