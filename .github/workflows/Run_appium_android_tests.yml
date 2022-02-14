@@ -51,22 +51,16 @@ jobs:
             files: './TestConfiguration.Mobile.json'
           env:
             Configurations.0.Capabilities.0.AppPath: ${{ github.workspace }}/ExternalResources/SwagLabs.apk
-            Configurations.0.Capabilities.1.AppPath: ${{ github.workspace }}/ExternalResources/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip
+            Configurations.0.Capabilities.0.Name: "Appiumdriver"
             TestResultPath: ${{ inputs.test_results_path }}
-        # - name: Start Android Device and run tests
-        #   uses: reactivecircus/android-emulator-runner@v2
-        #   with:
-        #     api-level: 29
-        #     force-avd-creation: false
-        #     emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-        #     disable-animations: false
-        #     script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "TestCategory=Androiddriver"
-        
-        - name: Start iOs Device and run tests
-          uses: futureware-tech/simulator-action@v1
+        - name: Start Android Device and run tests
+          uses: reactivecircus/android-emulator-runner@v2
           with:
-            model: 'iPhone 8'
-        - run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "TestCategory=IOSDriver"
+            api-level: 29
+            force-avd-creation: false
+            emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+            disable-animations: false
+            script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "TestCategory=Androiddriver"
         
         - name: Archive Mobile (${{ matrix.os }}) screenshots
           if: always()

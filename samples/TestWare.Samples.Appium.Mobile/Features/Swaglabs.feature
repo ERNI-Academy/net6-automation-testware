@@ -2,12 +2,12 @@
 Feature: Swaglabs
 
 
-@IOSDriver
+
 Scenario: Login - Valid
 	When login on SwagLabs with username 'standard_user' and password 'secret_sauce'
 	Then the user can login - SwagLabs
 
-@Androiddriver
+
 Scenario: Add product to cart by button
 	Given login on SwagLabs with username 'standard_user' and password 'secret_sauce'
 	And the user can login - SwagLabs
@@ -16,7 +16,6 @@ Scenario: Add product to cart by button
 	And the user opens the Cart
 	Then cart contains 'Sauce Labs Backpack' product
 
-@Androiddriver
 Scenario: Add product to cart by dragging
 	Given login on SwagLabs with username 'standard_user' and password 'secret_sauce'
 	And the user can login - SwagLabs
@@ -25,7 +24,6 @@ Scenario: Add product to cart by dragging
 	And the user opens the Cart
 	Then cart contains 'Sauce Labs Backpack' product
 
-@Androiddriver
 Scenario: Remove product from cart by button
 	Given login on SwagLabs with username 'standard_user' and password 'secret_sauce'
 	And the user can login - SwagLabs
@@ -36,7 +34,7 @@ Scenario: Remove product from cart by button
 	When the user removes product 'Sauce Labs Backpack' from cart clicking Remove button
 	Then cart does not contain 'Sauce Labs Backpack' product
 
-@Androiddriver
+
 Scenario: Remove product from cart by dragging
 	Given login on SwagLabs with username 'standard_user' and password 'secret_sauce'
 	And the user can login - SwagLabs
