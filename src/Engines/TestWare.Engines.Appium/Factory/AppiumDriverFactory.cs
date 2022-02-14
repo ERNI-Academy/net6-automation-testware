@@ -13,7 +13,7 @@ internal static class AppiumDriverFactory
             SupportedPlatforms.Android => CreateAndroidDriver(capabilities),
             SupportedPlatforms.IOS => CreateIOSDriver(capabilities),
             SupportedPlatforms.Invalid => throw new NotImplementedException(),
-            _ => throw new NotSupportedException($"Browser type is invalid."),
+            _ => throw new NotSupportedException($"Platform type is invalid."),
         };
         return result;
     }
