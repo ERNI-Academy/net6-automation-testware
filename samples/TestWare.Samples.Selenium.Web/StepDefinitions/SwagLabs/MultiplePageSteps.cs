@@ -46,7 +46,6 @@ public sealed class MultiplePageSteps
     public void ThenTheUserCanLoginOnAll()
     {
         inventoryPages.ToList().ForEach(x => x.CheckUserIsAtInventory());
-<<<<<<< HEAD:samples/TestWare.Samples.Selenium.Web/StepDefinitions/MultiplePageSteps.cs
     }
 
     [When(@"the user clicks Logout button on '([^']*)'")]
@@ -64,23 +63,4 @@ public sealed class MultiplePageSteps
         loginPage.CheckUserIsAtLoginpage();
     }
 
-=======
-    }
-
-    [When(@"the user clicks Logout button on '([^']*)'")]
-    public static void WhenTheUserClicksLogoutButtonOn(string browser)
-    {
-        var menuPage = ContainerManager.GetTestWareComponent<IMenuPage>(browser);
-        menuPage.ClickOpenMenuButton();
-        menuPage.ClickLogoutButton();
-    }
-
-    [Then(@"the user is at Login page on '([^']*)'")]
-    public static void ThenTheUserIsAtLoginPageOn(string browser)
-    {
-        var loginPage = ContainerManager.GetTestWareComponent<ILoginPage>(browser);
-        loginPage.CheckUserIsAtLoginpage();
-    }
-
->>>>>>> 4f02faefa8a432de508073ee8d91334477d4f1da:samples/TestWare.Samples.Selenium.Web/StepDefinitions/SwagLabs/MultiplePageSteps.cs
 }
