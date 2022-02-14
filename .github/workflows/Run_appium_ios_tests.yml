@@ -45,6 +45,11 @@ jobs:
         - name: Show Response
           run: echo "${{ steps.AppiumStatus.outputs.response }}"
           continue-on-error: true
+        - name: Start iOs Device
+          id: device
+          uses: futureware-tech/simulator-action@v1
+          with:
+            model: 'iPhone 8'
         - name: config replacement
           uses: microsoft/variable-substitution@v1 
           with:
@@ -52,14 +57,11 @@ jobs:
           env:
             Configurations.0.Capabilities.1.Name: "Appiumdriver"
             Configurations.0.Capabilities.1.AppPath: ${{ github.workspace }}/ExternalResources/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip
+            Configuartions.0.Capabilities.1.Options.0.Value: ${{ steps.device.outputs.udid }}
             TestResultPath: ${{ github.workspace }}/results # ${{ inputs.test_results_path }}
-
-        - name: Start iOs Device
-          uses: futureware-tech/simulator-action@v1
-          with:
-            model: 'iPhone 8'
+            
         - name: Run ios tests
-          run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
+          run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "TestCategory=iPhone"
         
         - name: Archive Mobile iOS (${{ matrix.os }}) screenshots
           if: always()
