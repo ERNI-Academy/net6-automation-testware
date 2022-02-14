@@ -7,7 +7,7 @@
           "Name": "Appiumdriver",
           "AppiumUrl": "http://127.0.0.1:4723/wd/hub",
           "ApkUrl": "https://github.com/saucelabs/sample-app-mobile/releases/download/2.7.1/Android.SauceLabs.Mobile.Sample.app.2.7.1.apk",
-          "ApkPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\TestWare.Samples.Appium.Mobile\\bin\\Debug\\net6.0\\ExternalResources\\SwagLabs.apk",
+          "AppPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\TestWare.Samples.Appium.Mobile\\bin\\Debug\\net6.0\\ExternalResources\\SwagLabs.apk",
           "CommandTimeOutInMinutes": 5,
           "DeviceName": "emulator-5554",
           "PlatformName": "Android",
@@ -43,6 +43,45 @@
             {
               "Name": "newCommandTimeout",
               "Value": 500
+            }
+          ]
+        },
+        {
+          "Name": "IOSDriver",
+          "AppiumUrl": "http://127.0.0.1:4723/wd/hub",
+          "AppPath": "C:\\workspace\\services\\net6-automation-testware\\samples\\TestWare.Samples.Appium.Mobile\\bin\\Debug\\net6.0\\ExternalResources\\iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip",
+          "PlatformName": "iOS",
+          "DeviceName": "iPhone 8",
+          "PlatformVersion": "15.2",
+          "CommandTimeOutInMinutes": 5,
+          "Options": [
+            {
+              "Name": "udid",
+              "Value": "69941576-255B-4E69-8AD9-8BA0602D5E9F"
+            },
+            {
+              "Name": "showXcodeLog",
+              "Value": true
+            },
+            {
+              "Name": "showIOSLog",
+              "Value": true
+            },
+            {
+              "Name": "wdaStartupRetries",
+              "Value": 4
+            },
+            {
+              "Name": "iosInstallPause",
+              "Value": 8000
+            },
+            {
+              "Name": "wdaStartupRetryInterval",
+              "Value": 20000
+            },
+            {
+              "Name": "useNewWDA",
+              "Value": true
             }
           ]
         }

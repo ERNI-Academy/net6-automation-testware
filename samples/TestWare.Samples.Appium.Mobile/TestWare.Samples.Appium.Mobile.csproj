@@ -26,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="ExternalResources\iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ExternalResources\SwagLabs.apk">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

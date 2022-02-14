@@ -1,0 +1,81 @@
+name: Run-appium-ios-tests
+
+on:
+  workflow_call:
+    inputs:
+      test_results_path:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+jobs:
+  appium-tests:      
+      strategy:
+        matrix:
+          os: ${{fromJson(inputs.environment)}}
+        fail-fast: false
+
+      name: Run APPIUM ios (${{ matrix.os }}) tests
+      runs-on: ${{ matrix.os }}
+
+      steps:
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 6.0.x
+        - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
+          with:
+            workflow: CI.yml
+            name: testing-artifact-appium-mobile
+        - name: Run git init
+          run: git init
+        - name: Install Appium Server
+          run: |
+            npm install -g appium --unsafe-perm=true --allow-root
+            appium -v
+        - name: Run Appium Server
+          run: appium --log ${{ inputs.test_results_path }}/appium.log &
+        - name: Healthcheck appium
+          id: AppiumStatus
+          uses: fjogeleit/http-request-action@master
+          with:
+            url: 'http://127.0.0.1:4723/wd/hub/status'
+            method: 'GET'
+        - name: Show Response
+          run: echo "${{ steps.AppiumStatus.outputs.response }}"
+          continue-on-error: true
+        - name: Start iOs Device
+          id: device
+          uses: futureware-tech/simulator-action@v1
+          with:
+            model: 'iPhone 8'
+        - name: config replacement
+          uses: microsoft/variable-substitution@v1 
+          with:
+            files: './TestConfiguration.Mobile.json'
+          env:
+            Configurations.0.Capabilities.0.Name: "AndroidDriver"
+            Configurations.0.Capabilities.1.Name: "Appiumdriver"
+            Configurations.0.Capabilities.1.AppPath: ${{ github.workspace }}/ExternalResources/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip
+            Configuartions.0.Capabilities.1.Options.0.Value: ${{ steps.device.outputs.udid }}
+            TestResultPath: ${{ inputs.test_results_path }}
+
+        - name: Run ios tests
+          run: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}" --filter "TestCategory=iPhone"
+        
+        - name: Archive Mobile iOS (${{ matrix.os }}) screenshots
+          if: always()
+          uses: actions/upload-artifact@v2
+          with:
+            name: appium-${{ matrix.os }}-ios-screenshots
+            path: |
+              ${{ inputs.test_results_path }}
+            
+        - name: Test Report
+          uses: dorny/test-reporter@v1
+          if: success() || failure()
+          with:
+            name: Report - Mobile Tests - (iOS)
+            path: ${{ inputs.test_results_path }}/results.trx
+            reporter: dotnet-trx
