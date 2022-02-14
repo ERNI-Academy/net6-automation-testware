@@ -1,0 +1,78 @@
+name: Run-appium-tests
+
+on:
+  workflow_call:
+    inputs:
+      test_results_path:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
+jobs:
+  appium-tests:      
+      strategy:
+        matrix:
+          os: ${{fromJson(inputs.environment)}}
+        fail-fast: false
+
+      name: Run APPIUM (${{ matrix.os }}) tests
+      runs-on: ${{ matrix.os }}
+
+      steps:
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v1
+          with:
+            dotnet-version: 6.0.x
+        - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
+          with:
+            workflow: CI.yml
+            name: testing-artifact-appium-mobile
+        - name: Run git init
+          run: git init
+        - name: Install Appium Server
+          run: |
+            npm install -g appium --unsafe-perm=true --allow-root
+            appium -v
+        - name: Run Appium Server
+          run: appium --log ${{ inputs.test_results_path }}/appium.log &
+        - name: Healthcheck appium
+          id: AppiumStatus
+          uses: fjogeleit/http-request-action@master
+          with:
+            url: 'http://127.0.0.1:4723/wd/hub/status'
+            method: 'GET'
+        - name: Show Response
+          run: echo "${{ steps.AppiumStatus.outputs.response }}"
+          continue-on-error: true
+        - name: config replacement
+          uses: microsoft/variable-substitution@v1 
+          with:
+            files: './TestConfiguration.Mobile.json'
+          env:
+            Configurations.0.Capabilities.0.AppPath: ${{ github.workspace }}/ExternalResources/SwagLabs.apk
+            Configurations.0.Capabilities.0.Name: "Appiumdriver"
+            TestResultPath: ${{ inputs.test_results_path }}
+        - name: Start Android Device and run tests
+          uses: reactivecircus/android-emulator-runner@v2
+          with:
+            api-level: 29
+            force-avd-creation: false
+            emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+            disable-animations: false
+            script: dotnet test TestWare.Samples.Appium.Mobile.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
+        
+        - name: Archive Mobile (${{ matrix.os }}) screenshots
+          if: always()
+          uses: actions/upload-artifact@v2
+          with:
+            name: appium-${{ matrix.os }}-android-screenshots
+            path: |
+              ${{ inputs.test_results_path }}
+        - name: Test Report
+          uses: dorny/test-reporter@v1
+          if: success() || failure()
+          with:
+            name: Report - Mobile Tests - (Android)
+            path: ${{ inputs.test_results_path }}/results.trx
+            reporter: dotnet-trx

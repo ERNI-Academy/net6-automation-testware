@@ -32,7 +32,14 @@ jobs:
       test_results_path: './results'
 
   android-tests:
-    uses: ./.github/workflows/Run_appium_tests.yml
+    uses: ./.github/workflows/Run_appium_android_tests.yml
+    with:
+      environment: >-
+        ["macOs-latest"]
+      test_results_path: './results'
+
+  ios-tests:
+    uses: ./.github/workflows/Run_appium_ios_tests.yml
     with:
       environment: >-
         ["macOs-latest"]

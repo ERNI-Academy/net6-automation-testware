@@ -7,18 +7,50 @@ internal static class AppiumDriverFactory
 {
     public static IAppiumDriver Create(Capabilities capabilities)
     {
+
+        IAppiumDriver result = capabilities.GetPlatform() switch
+        {
+            SupportedPlatforms.Android => CreateAndroidDriver(capabilities),
+            SupportedPlatforms.IOS => CreateIOSDriver(capabilities),
+            SupportedPlatforms.Invalid => throw new NotImplementedException(),
+            _ => throw new NotSupportedException($"Platform type is invalid."),
+        };
+        return result;
+    }
+
+    private static AndroidDriver CreateAndroidDriver(Capabilities capabilities)
+    {
         var appiumOptions = new AppiumOptions()
-        { 
-            App = capabilities.ApkPath,
+        {
+            App = capabilities.AppPath,
             DeviceName = capabilities.DeviceName,
             PlatformName = capabilities.PlatformName
         };
 
-        foreach(var capabilityOption in capabilities.Options)
+        foreach (var capabilityOption in capabilities.Options)
         {
             appiumOptions.AddAdditionalAppiumOption(capabilityOption.Name, capabilityOption.Value);
         }
 
-        return new AndroidDriver(new Uri(capabilities.AppiumUrl), appiumOptions, TimeSpan.FromSeconds(120));
+        return new AndroidDriver(new Uri(capabilities.AppiumUrl), appiumOptions, TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+    }
+
+    private static IOSDriver CreateIOSDriver(Capabilities capabilities)
+    {
+        var appiumOptions = new AppiumOptions()
+        {
+            App = capabilities.AppPath,
+            DeviceName = capabilities.DeviceName,
+            PlatformName = capabilities.PlatformName,
+            PlatformVersion = capabilities.PlatformVersion,
+            AutomationName = "XCUITest"
+        };
+
+        foreach (var capabilityOption in capabilities.Options)
+        {
+            appiumOptions.AddAdditionalAppiumOption(capabilityOption.Name, capabilityOption.Value);
+        }
+        
+        return new IOSDriver(new Uri(capabilities.AppiumUrl), appiumOptions, TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
     }
 }
