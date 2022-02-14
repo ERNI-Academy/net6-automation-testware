@@ -55,13 +55,13 @@ public class AppiumManager : EngineManagerBase, IEngineManager
 
         try
         {
-            IAppiumDriver windowsDriver;
+            IAppiumDriver appiumDriver;
             using (var scope = ContainerManager.Container.BeginLifetimeScope())
             {
-                windowsDriver = scope.Resolve<IAppiumDriver>();
+                appiumDriver = scope.Resolve<IAppiumDriver>();
             }
 
-            var screenshot = ((ITakesScreenshot)windowsDriver).GetScreenshot();
+            var screenshot = ((ITakesScreenshot)appiumDriver).GetScreenshot();
             screenshot.SaveAsFile(Path.Combine(destinationPath, $"{evidenceName}.png"), ScreenshotImageFormat.Png);
         }
         catch 
