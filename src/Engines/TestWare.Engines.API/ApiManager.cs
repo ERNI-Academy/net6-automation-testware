@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using Autofac;
+using System.Text.Json;
 using TestWare.Core;
 using TestWare.Core.Configuration;
 using TestWare.Core.Interfaces;
@@ -42,7 +43,23 @@ public class RestSharpManager : EngineManagerBase, IEngineManager
         // Do nothing, not applicable.
     }
 
-    public string CollectEvidence(string destinationPath, string evidenceName) { return destinationPath; }
+    public string CollectEvidence(string destinationPath, string evidenceName) 
+    {
+        IEnumerable<IApiClient> apiClients;
+        apiClients = ContainerManager.Container.Resolve<IEnumerable<IApiClient>>();
+
+        foreach (var apiClient in apiClients)
+        {
+            var responses = apiClient.GetRestResponses();
+            var instanceName = ContainerManager.GetNameFromInstance(apiClient);
+            var evidenceData = JsonSerializer.Serialize(responses);
+            var evidencePath = Path.Combine(destinationPath, $"{evidenceName} - {instanceName}.json");
+            File.WriteAllText(evidencePath, evidenceData);
+            apiClient.ClearResponseQueue();
+        }
+
+        return destinationPath;
+    }
 
     public string GetEngineName()
     {

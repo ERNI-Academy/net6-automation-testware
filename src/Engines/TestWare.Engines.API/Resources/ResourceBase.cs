@@ -5,21 +5,23 @@ namespace TestWare.Engines.Restsharp.Resources;
 
 public class ResourceBase
 {
-    public ApiClient Client { get; protected set; }
-    internal Queue<RestResponse> responseQueue;
+    public IApiClient Client { get; protected set; }
+
 
     public ResourceBase()
     {
-        responseQueue = new();
     }
 
     public RestResponse<T> ExecuteRequest<T>(RestRequest request)
     {
         CancellationToken cancellationToken = new();
         RestResponse<T> response = null;
-        var task = Task.Run(async () => { response = await Client.ExecuteAsync<T>(request, cancellationToken); });
+        var task = Task.Run(async () => { 
+            response = await ((RestClient)Client).ExecuteAsync<T>(request, cancellationToken); 
+        });
+
         task.Wait();
-        responseQueue.Enqueue(response);
+        Client.EnqueueResponse(response);
         return response ?? throw new ApplicationException(nameof(response));
     }
 }
