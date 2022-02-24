@@ -16,7 +16,7 @@ public class WinAppDriverManager : EngineManagerBase, IEngineManager
     private const string _name = "WinAppDriver";
     public void Initialize(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
-        var foundConfiguration = GetValidConfiguration<ConfigurationTags>(tags);
+        var foundConfiguration = ConfigurationManager.GetValidConfiguration<ConfigurationTags>(tags);
         switch (foundConfiguration)
         {
             case ConfigurationTags.winappdriver:

@@ -15,8 +15,8 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
     private static void RegisterSingle(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
         var configName = Enum.GetName(ConfigurationTags.webdriver).ToUpperInvariant();
-        var capabilities = GetCapabilities<Capabilities>(testConfiguration, configName);
-        var singleCapability = capabilities.FirstOrDefault(x => tags.Contains(x.Name));
+        var capabilities = ConfigurationManager.GetCapabilities<Capabilities>(testConfiguration, configName);
+        var singleCapability = capabilities.FirstOrDefault(x => tags.Contains(x.Name.ToUpperInvariant()));
         if (!ContainerManager.ExistsType(singleCapability.GetType()))
         {
             var driver = BrowserFactory.Create(singleCapability);
@@ -27,8 +27,8 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
     private static void RegisterMultiple(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
         var configName = Enum.GetName(ConfigurationTags.multiwebdriver).ToUpperInvariant();
-        var capabilities = GetCapabilities<Capabilities>(testConfiguration, configName);
-        var multipleCapabilities = capabilities.Where(x => tags.Contains(x.Name));
+        var capabilities = ConfigurationManager.GetCapabilities<Capabilities>(testConfiguration, configName);
+        var multipleCapabilities = capabilities.Where(x => tags.Contains(x.Name.ToUpperInvariant()));
 
         foreach (var capability in multipleCapabilities)
         {
@@ -39,15 +39,17 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
 
     public void Initialize(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
-        var foundConfiguration = GetValidConfiguration<ConfigurationTags>(tags);
+        var normalizedTags = tags.Select(x => x.ToUpperInvariant()).ToArray();
+        var foundConfiguration = ConfigurationManager.GetValidConfiguration<ConfigurationTags>(tags);
 
         switch (foundConfiguration)
         {
             case ConfigurationTags.webdriver:
-                RegisterSingle(tags, testConfiguration); 
+                RegisterSingle(normalizedTags, testConfiguration); 
                 break;
+
             case ConfigurationTags.multiwebdriver:
-                RegisterMultiple(tags, testConfiguration);
+                RegisterMultiple(normalizedTags, testConfiguration);
                 break;
         }
     }
