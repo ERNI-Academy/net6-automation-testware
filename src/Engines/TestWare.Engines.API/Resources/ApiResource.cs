@@ -14,6 +14,6 @@ public class ApiResource : ResourceBase
 
     public ApiResource(IApiClient client) : base()
     {
-        Client = (ApiClient)client;
+        Client = client;
     }
 }

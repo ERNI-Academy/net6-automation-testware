@@ -1,4 +1,5 @@
 ﻿using RestSharp;
+using TestWare.Core;
 using TestWare.Samples.API.Resources.Derive;
 using TestWare.Samples.API.Resources.Factor;
 using TestWare.Samples.API.Resources.Integrate;

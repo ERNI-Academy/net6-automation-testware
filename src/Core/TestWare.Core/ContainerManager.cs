@@ -45,7 +45,7 @@ public static class ContainerManager
     /// <exception cref="ArgumentNullException"> In case is not possible to resolve or named don't exists</exception>
     public static T GetTestWareComponent<T>(string name)
     {
-        var dependency = _dependencies.FirstOrDefault(x => x.Name == name) ?? throw new DependencyResolutionException(nameof(T));
+        var dependency = _dependencies.FirstOrDefault(x => x.Name.ToUpperInvariant() == name.ToUpperInvariant()) ?? throw new DependencyResolutionException(nameof(T));
         if (!_scopes.TryGetValue(name, out ILifetimeScope scope))
         {
             scope = Container.BeginLifetimeScope(name);

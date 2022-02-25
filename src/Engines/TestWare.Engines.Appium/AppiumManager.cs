@@ -15,7 +15,7 @@ public class AppiumManager : EngineManagerBase, IEngineManager
     private const string _name = "Appium";
     public void Initialize(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
-        var foundConfiguration = GetValidConfiguration<ConfigurationTags>(tags);
+        var foundConfiguration = ConfigurationManager.GetValidConfiguration<ConfigurationTags>(tags);
         switch (foundConfiguration)
         {
             case ConfigurationTags.appiumdriver:

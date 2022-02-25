@@ -62,5 +62,4 @@ public sealed class MultiplePageSteps
         var loginPage = ContainerManager.GetTestWareComponent<ILoginPage>(browser);
         loginPage.CheckUserIsAtLoginpage();
     }
-
 }

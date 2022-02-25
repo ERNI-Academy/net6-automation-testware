@@ -4,6 +4,8 @@ namespace TestWare.Engines.Restsharp.Factory;
 
 public class ApiClient : RestClient, IApiClient
 {
+    internal Queue<RestResponse> responseQueue = new();
+
     public ApiClient()
     {
     }
@@ -27,4 +29,20 @@ public class ApiClient : RestClient, IApiClient
     public ApiClient(HttpClient httpClient, RestClientOptions options = null) : base(httpClient, options)
     {
     }
+
+    public void EnqueueResponse(RestResponse response)
+    {
+        responseQueue.Enqueue(response);
+    }
+
+    public void ClearResponseQueue()
+    {
+        responseQueue.Clear();
+    }
+
+    public IEnumerable<RestResponse> GetRestResponses()
+    {
+        return responseQueue.ToArray();
+    }
+
 }
