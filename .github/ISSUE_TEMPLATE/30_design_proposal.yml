@@ -1,0 +1,45 @@
+name: 🤔 Design proposal
+description: Collaborate on a design for a feature/fix or other change
+labels:
+  - "design-proposal"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please keep in mind that the GitHub issue tracker is not intended as a general support forum, but for reporting bugs and feature requests.
+  - type: textarea
+    attributes:
+      label: Explain in 1-2 sentences. Say what this is about.
+      description: 1-2 sentences. Say what this is about.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Motivation Goals
+      description: 1-2 paragraphs, or a bullet-pointed list. What existing pain points does this solve? What evidence shows it's valuable to solve this?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: In scope
+      description: A list of major scenarios, perhaps in priority order.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Out of scope
+      description: Scenarios you explicitly want to exclude.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Risks / unknowns
+      description: How might developers misinterpret/misuse this? How might implementing it restrict us from other enhancements in the future? Also list any perf/security/correctness concerns.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Examples
+      description: Give brief examples of possible developer experiences (e.g., code they would write). Don't be deeply concerned with how it would be implemented yet. Your examples could even be from other technology stacks.
+    validations:
+      required: false

@@ -8,42 +8,47 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-# About 
-[Automation Testware](https://github.com/ERNI-Academy/net6-automation-testware) is a flexible solution that implements the interaction and management of the main automation engines for Web _(Selenium)_, Mobile _(Appium)_ and Desktop _(WinAppDriver)_ environments. 
+# About
+
+[Automation Testware](https://github.com/ERNI-Academy/net6-automation-testware) is a flexible solution that implements the interaction and management of the main automation engines for Web _(Selenium)_, Mobile _(Appium)_ and Desktop _(WinAppDriver)_ environments.
 
 TestWare provides a robust and scalable core that can be reused by any automation project in order to abstract the core automation implementation focusing only on its business needs.
 
-This solution comes from the need to standarize and reuse the common usage and extension of the different automation engines. 
+This solution comes from the need to standarize and reuse the common usage and extension of the different automation engines.
 
 With this action the maintenance decreases and the robustness increases.
 
 ## Built With
- - [.net 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
- - [Selenium 4.+](https://www.selenium.dev/documentation/webdriver/getting_started/upgrade_to_selenium_4/)
- - [Appium 5.+](https://appium.io/)
- - [Restsharp 107.+](https://restsharp.dev/v107/#restsharp-v107)
 
+- [.net 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0)
+- [Selenium 4.+](https://www.selenium.dev/documentation/webdriver/getting_started/upgrade_to_selenium_4/)
+- [Appium 5.+](https://appium.io/)
+- [Restsharp 107.+](https://restsharp.dev/v107/#restsharp-v107)
 
 # Features
-Testware provides capabilities to automate:
- - **Websites** (using Selenium)
 
-    - Supported Browsers:
+Testware provides capabilities to automate:
+
+- **Websites** (using Selenium)
+
+  - Supported Browsers:
 
         <img src="https://github.com/devicons/devicon/blob/master/icons/chrome/chrome-original-wordmark.svg" title="Chrome" alt="Chrome" width="40" height="40"/>&nbsp;
         <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>&nbsp;
-        <img src="https://github.com/devicons/devicon/blob/master/icons/ie10/ie10-original.svg" title="IE" alt="IE" width="40" height="40"/>&nbsp;        
+        <img src="https://github.com/devicons/devicon/blob/master/icons/ie10/ie10-original.svg" title="IE" alt="IE" width="40" height="40"/>&nbsp;
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" title="Edge" alt="Edge" width="40" height="40"/>&nbsp;
 
- - **Mobile Applications** (using Appium)
- - **Windows Desktop applications** (using WinAppDriver)
- - **API Rest** (using Restsharp)
+- **Mobile Applications** (using Appium)
+- **Windows Desktop applications** (using WinAppDriver)
+- **API Rest** (using Restsharp)
 
 Testware provides capabilities to report:
- - HTML (using extent report)
+
+- HTML (using extent report)
 
 Evidence collection:
- - Screenshots after each step (for web, mobile applications and windows desktop applications)
+
+- Screenshots after each step (for web, mobile applications and windows desktop applications)
 
 # Getting Started
 
@@ -58,7 +63,7 @@ Evidence collection:
     - It should inherit from **AutomationLifeCycleBase**.
     - **GetTestWareComponentAssemblies:** Returns the assemblies list that contains the TestWareComponents.
     - **GetTestWareEngines:** Returns the engines instances that will be used at the current Automation project.
-    - **GetConfiguration:** Returns the [configuration](#configuration) object defined at .json file. 
+    - **GetConfiguration:** Returns the [configuration](#configuration) object defined at .json file.
 
 ```cs
  public class LifeCycle : AutomationLifeCycleBase
@@ -91,20 +96,19 @@ Evidence collection:
     }
 ```
 
-
 3. Add calls to the lifecycle class on the execution life cycles according
     - **BeginTestExecution:** Once at the very begining of execution. It initializes the Core.
-        - **BeginTestSuite _(optional)_:** Once at the begining of the test suite/feature. 
+        - **BeginTestSuite _(optional)_:** Once at the begining of the test suite/feature.
             - **BeginTestCase:** Once at the begining of a test case. It Initialize the Engines
                 - **BeginTestStep _(optional)_:** Once at the begining of test step.
                 - **EndTestStep _(optional)_:** Once at the end of test step. It generate evidences of execution (optional)
             - **EndTestCase:** Once at the end of test case. It dispose the engine
         - **EndTestSuite:** Once at the end of test suite.
     - **EndTestExecution:** Once at the end of the execution
-    
 
 4. Implement business automation objects _(i.e Pages)_
     - Components should inherit from ITestWareComponent in order to be registered
+
 ```cs
  public interface IBusinessPage : ITestWareComponent
     {
@@ -113,8 +117,8 @@ Evidence collection:
     }
 ```
 
-
 5. Design test cases. _(Is it possible to access the business objects resolving from the ContainerManager)_
+
 ```cs
         using (var scope = ContainerManager.Container.BeginLifetimeScope())
         {
@@ -124,6 +128,7 @@ Evidence collection:
 ```
 
 <a name="configuration"></a>
+
 ## Configuration file example
 
 ```json
@@ -223,20 +228,36 @@ Evidence collection:
 }
 ```
 
-# Contributing
+## Contributing
 
 Please see our [Contribution Guide](CONTRIBUTING.md) to learn how to contribute.
 
-# License
+## License
 
-[MIT](LICENSE) © 2022 [ERNI - Swiss Software Engineering](https://www.betterask.erni)
+![MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
-**Contact:** 
+(LICENSE) © {{Year}} [ERNI - Swiss Software Engineering](https://www.betterask.erni)
 
-Erni Services  - [@ERNI](https://twitter.com/ERNI) - esp-services@betterask.erni
+## Code of conduct
+
+Please see our [Code of Conduct](CODE_OF_CONDUCT.md)
+
+## Stats
+
+![https://repobeats.axiom.co/api/embed/7ebe11822a109c9c80ee0470d57be9997ac78837.svg](https://repobeats.axiom.co/api/embed/7ebe11822a109c9c80ee0470d57be9997ac78837.svg)
+
+## Follow us
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/ERNI?style=social)](https://www.twitter.com/ERNI)
+[![Twitch Status](https://img.shields.io/twitch/status/erni_academy?label=Twitch%20Erni%20Academy&style=social)](https://www.twitch.tv/erni_academy)
+[![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCkdDcxjml85-Ydn7Dc577WQ?label=Youtube%20Erni%20Academy&style=social)](https://www.youtube.com/channel/UCkdDcxjml85-Ydn7Dc577WQ)
+[![Linkedin](https://img.shields.io/badge/linkedin-31k-green?style=social&logo=Linkedin)](https://www.linkedin.com/company/erni)
+
+## Contact
+
+📧 [esp-services@betterask.erni](mailto:esp-services@betterask.erni)
 
 ## Contributors ✨
-
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -255,8 +276,6 @@ Erni Services  - [@ERNI](https://twitter.com/ERNI) - esp-services@betterask.erni
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
