@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Core.Registration;
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
@@ -40,13 +41,18 @@ public class AppiumManager : EngineManagerBase, IEngineManager
 
     public void Destroy()
     {
-        IAppiumDriver driver;
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
+        try
         {
-            driver = scope.Resolve<IAppiumDriver>();
+            IAppiumDriver driver;
+            using (var scope = ContainerManager.Container.BeginLifetimeScope())
+            {
+                driver = scope.Resolve<IAppiumDriver>();
+            }
+            ((AppiumDriver)driver).CloseApp();
+            ((AppiumDriver)driver).Dispose();
         }
-        ((AppiumDriver)driver).CloseApp();
-        ((AppiumDriver)driver).Dispose();
+        catch (ComponentNotRegisteredException) { }
+
     }
 
     public string CollectEvidence(string destinationPath, string evidenceName)

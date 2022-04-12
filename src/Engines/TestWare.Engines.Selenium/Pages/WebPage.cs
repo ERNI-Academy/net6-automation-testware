@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using TestWare.Engines.Selenium.Extras;
+using TestWare.Engines.Selenium.Factory;
 
 namespace TestWare.Engines.Selenium.Pages;
 
@@ -7,7 +8,7 @@ public abstract class WebPage : PageBase
 {
     protected string Url { get; set; }
 
-    protected WebPage(IWebDriver driver)
+    protected WebPage(IBrowserDriver driver)
     {
         Driver = driver;
         PageFactory.InitElements(Driver, this);

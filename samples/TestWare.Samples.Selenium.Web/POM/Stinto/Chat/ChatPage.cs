@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using TestWare.Core.Libraries;
 using TestWare.Engines.Selenium.Extras;
+using TestWare.Engines.Selenium.Factory;
 using TestWare.Engines.Selenium.Pages;
 
 namespace TestWare.Samples.Selenium.Web.POM.Stinto.Chat;
@@ -13,7 +14,7 @@ public class ChatPage : WebPage, IChatPage
     [FindsBy(How = How.Id, Using = "prompt")]
     private IWebElement SendMessageInput { get; set; }
 
-    public ChatPage(IWebDriver driver) : base(driver)
+    public ChatPage(IBrowserDriver driver) : base(driver)
     {
     }
 

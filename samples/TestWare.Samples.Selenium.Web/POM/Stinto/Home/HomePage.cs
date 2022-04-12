@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using TestWare.Engines.Selenium.Extras;
+using TestWare.Engines.Selenium.Factory;
 using TestWare.Engines.Selenium.Pages;
 
 namespace TestWare.Samples.Selenium.Web.POM.Stinto;
@@ -11,7 +12,7 @@ public class HomePage : WebPage, IHomePage
     [FindsBy(How = How.XPath, Using = "//*[@id='navbarToggler']/a")]
     private IWebElement CreateChatButton { get; set; }
 
-    public HomePage(IWebDriver driver) : base(driver)
+    public HomePage(IBrowserDriver driver) : base(driver)
     {
         Url = HomeUrl;
         NavigateToUrl();
