@@ -3,13 +3,14 @@ using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.MultiTouch;
 using System.Drawing;
 using TestWare.Engines.Appium.Extras;
+using TestWare.Engines.Appium.Factory;
 using TestWare.Engines.Selenium.Pages;
 
 namespace TestWare.Engines.Appium.Pages;
 
 public abstract class MobilePage : PageBase
 {
-    protected MobilePage(IWebDriver driver)
+    protected MobilePage(IAppiumDriver driver)
     {
         Driver = driver;
         PageFactory.InitElements(Driver, this);

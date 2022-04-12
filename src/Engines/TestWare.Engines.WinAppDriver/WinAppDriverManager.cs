@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Core.Registration;
 using OpenQA.Selenium;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -63,13 +64,21 @@ public class WinAppDriverManager : EngineManagerBase, IEngineManager
 
     public void Destroy()
     {
-        IWindowsDriver driver;
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
+        try
         {
-            driver = scope.Resolve<IWindowsDriver>();
+            IWindowsDriver driver;
+            using (var scope = ContainerManager.Container.BeginLifetimeScope())
+            {
+                driver = scope.Resolve<IWindowsDriver>();
+            }
+            driver.Close();
+            driver.Dispose();
         }
-        driver.Close();
-        driver.Dispose();
+        catch (ComponentNotRegisteredException)
+        {
+
+        }
+
     }
 
     public string GetEngineName()

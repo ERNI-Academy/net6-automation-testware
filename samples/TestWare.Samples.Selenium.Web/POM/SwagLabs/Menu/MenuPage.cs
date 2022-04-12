@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using TestWare.Engines.Selenium.Extras;
+using TestWare.Engines.Selenium.Factory;
 using TestWare.Engines.Selenium.Pages;
 
 namespace TestWare.Samples.Selenium.Web.POM.Menu;
@@ -16,7 +17,7 @@ public class MenuPage : WebPage, IMenuPage
     [FindsBy(How = How.Id, Using = "logout_sidebar_link")]
     private IWebElement LogoutButton { get; set; }
 
-    public MenuPage(IWebDriver driver)
+    public MenuPage(IBrowserDriver driver)
         : base(driver)
     {
     }

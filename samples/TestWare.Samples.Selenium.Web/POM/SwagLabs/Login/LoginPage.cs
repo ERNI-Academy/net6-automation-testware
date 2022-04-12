@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using TestWare.Core.Libraries;
 using TestWare.Engines.Selenium.Extras;
+using TestWare.Engines.Selenium.Factory;
 using TestWare.Engines.Selenium.Pages;
 
 namespace TestWare.Samples.Selenium.Web.POM.Login;
@@ -18,7 +19,7 @@ public class LoginPage : WebPage, ILoginPage
     [FindsBy(How = How.Name, Using = "login-button")]
     private IWebElement LoginButton { get; set; }
 
-    public LoginPage(IWebDriver driver) : base(driver)
+    public LoginPage(IBrowserDriver driver) : base(driver)
     {
         Url = LoginUrl;
         NavigateToUrl();

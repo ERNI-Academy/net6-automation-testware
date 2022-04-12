@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -9,9 +8,9 @@ namespace TestWare.Engines.Selenium.Factory;
 
 internal static class BrowserFactory
 {
-    public static IWebDriver Create(Capabilities capabilities)
+    public static IBrowserDriver Create(Capabilities capabilities)
     {
-        IWebDriver result = capabilities.GetDriver() switch
+        IBrowserDriver result = capabilities.GetDriver() switch
         {
             SupportedBrowsers.Chrome => CreateChromeDriver(capabilities),
             SupportedBrowsers.Firefox => CreateFirefoxDriver(capabilities),
@@ -23,17 +22,17 @@ internal static class BrowserFactory
         return result;
     }
 
-    private static ChromeDriver CreateChromeDriver(Capabilities capabilities)
+    private static IBrowserDriver CreateChromeDriver(Capabilities capabilities)
     {
         ChromeOptions options = new();
         options.AddArguments(capabilities.Arguments);
 
-        return new ChromeDriver(ChromeDriverService.CreateDefaultService(capabilities.Path),
+        return  new ChromeDriver(ChromeDriverService.CreateDefaultService(capabilities.Path),
                                 options,
                                 TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
     }
 
-    private static FirefoxDriver CreateFirefoxDriver(Capabilities capabilities)
+    private static IBrowserDriver CreateFirefoxDriver(Capabilities capabilities)
     {
         FirefoxOptions options = new();
         options.AddArguments(capabilities.Arguments);
@@ -43,7 +42,7 @@ internal static class BrowserFactory
                                 TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
     }
 
-    private static InternetExplorerDriver CreateInternetExplorerDriver(Capabilities capabilities)
+    private static IBrowserDriver CreateInternetExplorerDriver(Capabilities capabilities)
     {
         InternetExplorerOptions options = new();
 
@@ -52,7 +51,7 @@ internal static class BrowserFactory
                                 TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
     }
 
-    private static EdgeDriver CreateEdgeDriver(Capabilities capabilities)
+    private static IBrowserDriver CreateEdgeDriver(Capabilities capabilities)
     {
         EdgeOptions options = new();
         options.AddArguments(capabilities.Arguments);

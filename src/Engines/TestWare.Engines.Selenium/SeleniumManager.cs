@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Autofac.Core.Registration;
 using OpenQA.Selenium;
 using TestWare.Core;
 using TestWare.Core.Configuration;
@@ -56,26 +57,31 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
 
     public void Destroy()
     {
-        IEnumerable<IWebDriver> webDrivers;
-        using (var scope = ContainerManager.Container.BeginLifetimeScope())
+        try
         {
-            webDrivers = scope.Resolve<IEnumerable<IWebDriver>>();
+            IEnumerable<IBrowserDriver> webDrivers;
+            using (var scope = ContainerManager.Container.BeginLifetimeScope())
+            {
+                webDrivers = scope.Resolve<IEnumerable<IBrowserDriver>>();
+            }
+
+            foreach (var webDriver in webDrivers)
+            {
+                webDriver.Close();
+                webDriver.Dispose();
+            }
         }
-        foreach (var webDriver in webDrivers)
-        {
-            webDriver.Close();
-            webDriver.Dispose();
-        }
+        catch (ComponentNotRegisteredException) { }
     }
 
     public string CollectEvidence(string destinationPath, string evidenceName)
     {
         var screenshotPath = string.Empty;
 
-        IEnumerable<IWebDriver> webDrivers;
+        IEnumerable<IBrowserDriver> webDrivers;
         using (var scope = ContainerManager.Container.BeginLifetimeScope())
         {
-            webDrivers = scope.Resolve<IEnumerable<IWebDriver>>();
+            webDrivers = scope.Resolve<IEnumerable<IBrowserDriver>>();
         }
         foreach (var webDriver in webDrivers)
         {
@@ -90,6 +96,7 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
                 var ss = ((ITakesScreenshot)webDriver).GetScreenshot();
                 ss.SaveAsFile(Path.Combine(destinationPath, $"{evidenceName} - {instanceName}.png"), ScreenshotImageFormat.Png);
             }
+            catch (WebDriverException) { }
 
         }
             
