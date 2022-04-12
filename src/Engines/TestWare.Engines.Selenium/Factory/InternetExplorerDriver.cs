@@ -6,10 +6,6 @@ namespace TestWare.Engines.Selenium.Factory;
 
 public class InternetExplorerDriver : OpenQA.Selenium.IE.InternetExplorerDriver, IBrowserDriver
 {
-    public InternetExplorerDriver()
-    {
-    }
-
     public InternetExplorerDriver(InternetExplorerOptions options) : base(options)
     {
     }

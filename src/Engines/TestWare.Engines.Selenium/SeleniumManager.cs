@@ -64,16 +64,14 @@ public class SeleniumManager : EngineManagerBase, IEngineManager
             {
                 webDrivers = scope.Resolve<IEnumerable<IBrowserDriver>>();
             }
+
             foreach (var webDriver in webDrivers)
             {
-
                 webDriver.Close();
                 webDriver.Dispose();
-
             }
         }
         catch (ComponentNotRegisteredException) { }
-
     }
 
     public string CollectEvidence(string destinationPath, string evidenceName)

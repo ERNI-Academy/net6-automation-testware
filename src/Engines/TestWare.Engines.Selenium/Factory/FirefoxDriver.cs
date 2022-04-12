@@ -4,10 +4,6 @@ namespace TestWare.Engines.Selenium.Factory;
 
 public class FirefoxDriver : OpenQA.Selenium.Firefox.FirefoxDriver, IBrowserDriver
 {
-    public FirefoxDriver()
-    {
-    }
-
     public FirefoxDriver(FirefoxOptions options) : base(options)
     {
     }
