@@ -3,6 +3,7 @@ using OpenQA.Selenium.Appium;
 using System.Diagnostics;
 using TestWare.Core.Libraries;
 using TestWare.Engines.Appium.WinAppDriver.Configuration;
+using TestWare.Engines.Appium.WinAppDriver.UniversalWindowsPlatform;
 
 namespace TestWare.Engines.Appium.WinAppDriver.Factory;
 
@@ -33,13 +34,24 @@ internal static class WindowsDriverFactory
 
     private static void LaunchApplication(Capabilities capabilities)
     {
-        Process[] processes = Process.GetProcessesByName(capabilities.ApplicationName);
-
-        foreach (Process process in processes)
+        if (!string.IsNullOrEmpty(capabilities.ApplicationPath))
         {
-            process.Kill();
+            Process[] processes = Process.GetProcessesByName(capabilities.ApplicationName);
+            foreach (Process process in processes)
+            {
+                process.Kill();
+            }
+            Process.Start(capabilities.ApplicationPath);
         }
-        Process.Start(capabilities.ApplicationPath);
+        else if (!string.IsNullOrEmpty(capabilities.ApplicationId))
+        {
+            ApplicationActivationManager appActiveManager = new ApplicationActivationManager();
+            appActiveManager.ActivateApplication(capabilities.ApplicationId, null, ActivateOptions.None, out uint pid);
+        }
+        else
+        {
+            throw new FileNotFoundException("capabilities.ApplicationPath and capabilities.ApplicationId are empty, please specify one of them to start the application to test.");
+        }
     }
 
     private static IWindowsDriver AttachToApplication(Capabilities capabilities)
