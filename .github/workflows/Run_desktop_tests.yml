@@ -53,7 +53,7 @@ jobs:
           env:
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Run tests
-          run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
+          run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"  --filter TestCategory!=WindowsCalculator
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
           if: always()
           uses: actions/upload-artifact@v2
