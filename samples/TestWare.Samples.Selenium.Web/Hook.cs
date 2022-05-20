@@ -1,4 +1,5 @@
-﻿using TestWare.Reporting.ExtentReport;
+﻿using System.Globalization;
+using TestWare.Reporting.ExtentReport;
 
 namespace TestWare.Samples.Selenium.Web;
 
@@ -35,6 +36,11 @@ public sealed class Hook
     public void BeforeScenario(FeatureContext featureContext, ScenarioContext scenarioContext)
     {
         var name = scenarioContext.ScenarioInfo.Title;
+        if (scenarioContext.ScenarioInfo.Arguments.Count > 0)
+        {
+            name = $"{DateTime.UtcNow.ToString("yyy-MM-dd HH-mm-ss", CultureInfo.InvariantCulture)} - {name}";
+        }
+
         var description = scenarioContext.ScenarioInfo.Description ?? "";
         var scenarioTags = scenarioContext.ScenarioInfo.Tags;
         _testReport.CreateTestCase(name, description, scenarioTags);
@@ -45,7 +51,7 @@ public sealed class Hook
 
         _stepCounter = 1;
         var tags = GetTags(featureContext, scenarioContext);
-        _lifeCycle.BeginTestCase(scenarioContext.ScenarioInfo.Title, tags);
+        _lifeCycle.BeginTestCase(name, tags);
     }
 
     [AfterScenario]
