@@ -102,7 +102,7 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
 
         if (Directory.Exists(testResultsDirectory))
         {
-            Directory.Delete(testResultsDirectory);
+            Directory.Delete(testResultsDirectory, true);
         }
 
         Directory.CreateDirectory(testResultsDirectory);
