@@ -35,11 +35,9 @@ public sealed class Hook
     [BeforeScenario]
     public void BeforeScenario(FeatureContext featureContext, ScenarioContext scenarioContext)
     {
-        var name = scenarioContext.ScenarioInfo.Title;
-        if (scenarioContext.ScenarioInfo.Arguments.Count > 0)
-        {
-            name = $"{DateTime.UtcNow.ToString("yyy-MM-dd HH-mm-ss", CultureInfo.InvariantCulture)} - {name}";
-        }
+        var name = scenarioContext.ScenarioInfo.Arguments.Count > 0
+            ? $"{DateTime.UtcNow.ToString("yyy-MM-dd HH-mm-ss", CultureInfo.InvariantCulture)} - {scenarioContext.ScenarioInfo.Title}"
+            : scenarioContext.ScenarioInfo.Title;
 
         var description = scenarioContext.ScenarioInfo.Description ?? "";
         var scenarioTags = scenarioContext.ScenarioInfo.Tags;
