@@ -4,64 +4,11 @@
   ],
   "imageSize": 100,
   "commit": false,
-  "contributors": [
-    {
-      "login": "LopezMDidac",
-      "name": "Didac Lopez",
-      "avatar_url": "https://avatars.githubusercontent.com/u/20030140?v=4",
-      "profile": "https://github.com/LopezMDidac",
-      "contributions": [
-        "code",
-        "content",
-        "doc",
-        "design",
-        "ideas",
-        "maintenance",
-        "test",
-        "example",
-        "review"
-      ]
-    },
-    {
-      "login": "mg-diego",
-      "name": "mg-diego",
-      "avatar_url": "https://avatars.githubusercontent.com/u/39908763?v=4",
-      "profile": "https://github.com/mg-diego",
-      "contributions": [
-        "code",
-        "content",
-        "doc",
-        "design",
-        "ideas",
-        "maintenance",
-        "test",
-        "example",
-        "review"
-      ]
-    },
-    {
-      "login": "Rabosa616",
-      "name": "Rabosa616",
-      "avatar_url": "https://avatars.githubusercontent.com/u/12774781?v=4",
-      "profile": "https://github.com/Rabosa616",
-      "contributions": [
-        "code",
-        "content",
-        "doc",
-        "design",
-        "ideas",
-        "maintenance",
-        "test",
-        "example",
-        "review"
-      ]
-     }
-    }
-  ],
   "contributorsPerLine": 7,
-  "projectName": "net6-automation-testware",
   "projectOwner": "ERNI-Academy",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
+  "contributors": []
 }
