@@ -11,11 +11,11 @@ newIssueWelcomeComment: >
 
 # Comment to be posted to on PRs from first time contributors in your repository
 newPRWelcomeComment: >
-  Thanks for opening this pull request! If you haven't already, please be sure to check out [the contributing guidelines](https://github.com/ERNI-Academy/net6-automation-testware/blob/main/CONTRIBUTING.md).
+  Thanks for opening this pull request! If you haven't already, please be sure to check out [the contributing guidelines](https://github.com/ERNI-Academy/erni-academy-template/blob/main/CONTRIBUTING.md).
 # Configuration for first-pr-merge - https://github.com/behaviorbot/first-pr-merge
 
 # Comment to be posted to on pull requests merged by a first time user
 firstPRMergeComment: >
-  Congrats on merging your first pull request! <br /> <br />We here at Erni-Academy are proud of you! :tada:<br /><br />If you're interested in tackling another bug or feature, take a look at [the open issues](https://github.com/ERNI-Academy/starterkit-mobile-application/issues), especially those [labeled `help wanted`](https://github.com/ERNI-Academy/starterkit-mobile-application/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22)."
+  Congrats on merging your first pull request! <br /> <br />We here at Erni-Academy are proud of you! :tada:<br /><br />If you're interested in tackling another bug or feature, take a look at the open issues, especially those labeled `help wanted`."
   
 # It is recommend to include as many gifs and emojis as possible
