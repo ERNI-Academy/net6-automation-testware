@@ -7,20 +7,26 @@ public class ResourceBase
 {
     public IApiClient Client { get; protected set; }
 
-
     public ResourceBase()
     {
     }
 
-    public RestResponse<T> ExecuteRequest<T>(RestRequest request)
+    public async Task<RestResponse<T>> ExecuteRequest<T>(RestRequest request)
     {
         CancellationToken cancellationToken = new();
-        RestResponse<T> response = null;
-        var task = Task.Run(async () => { 
-            response = await ((RestClient)Client).ExecuteAsync<T>(request, cancellationToken); 
-        });
 
-        task.Wait();
+        RestResponse<T> response = await ((RestClient)Client).ExecuteAsync<T>(request, cancellationToken);
+
+        Client.EnqueueResponse(response);
+        return response ?? throw new ApplicationException(nameof(response));
+    }
+
+    public async Task<RestResponse> ExecuteRequest(RestRequest request)
+    {
+        CancellationToken cancellationToken = new();
+
+        RestResponse response = await ((RestClient)Client).ExecuteAsync(request, cancellationToken);
+
         Client.EnqueueResponse(response);
         return response ?? throw new ApplicationException(nameof(response));
     }

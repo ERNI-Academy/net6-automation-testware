@@ -18,17 +18,17 @@ internal class AgeSteps
     }
 
     [Given(@"A calculated age for name '([^']*)'")]
-    public void GivenACalculatedAgeForName(string name)
+    public async Task GivenACalculatedAgeForName(string name)
     {
-        var ageResponse = _ageResource.GuessAge(name);
+        var ageResponse = await _ageResource.GuessAge(name);
         _lastResponse.AddResponse(ageResponse);
     }
 
     [When(@"the formula '([^']*)' is simplified on '([^']*)'")]
-    public void WhenTheFormulaIsSimplifiedOn(string formula, string api)
+    public async Task WhenTheFormulaIsSimplifiedOn(string formula, string api)
     {
         var _simplifyResource = ContainerManager.GetTestWareComponent<ISimplifyResource>(api);
-        var ageResponse = _simplifyResource.Simplify(formula);
+        var ageResponse = await _simplifyResource.Simplify(formula);
         _lastResponse.AddResponse(ageResponse);
     }
 
@@ -36,7 +36,7 @@ internal class AgeSteps
     public void ThenAgeAndExpresionShouldBeTheSame()
     {
         var simplifyResponse = _lastResponse.GetResponse<SimplifyResponse>();
-        var ageResponse = _lastResponse.GetResponse<AgeResponse>();  
+        var ageResponse = _lastResponse.GetResponse<AgeResponse>();
         simplifyResponse.Data.result.Should().Be(ageResponse.Data.age.ToString());
     }
 

@@ -8,17 +8,17 @@ namespace TestWare.Samples.API.Resources.Simplify;
 public class SimplifyResource : ApiResource, ISimplifyResource
 {
     private const string _resourceName = "simplify";
-    
+
     public SimplifyResource(IApiClient client) : base(client)
     {
         ResourceName = _resourceName;
     }
 
-    public RestResponse<SimplifyResponse> Simplify(string formula)
+    public async Task<RestResponse<SimplifyResponse>> Simplify(string formula)
     {
         var encodedUrl = HttpUtility.UrlEncode(formula);
         var req = new RestRequest($"{ResourceName}/{encodedUrl}");
-        var response = ExecuteRequest<SimplifyResponse>(req);
+        var response = await ExecuteRequest<SimplifyResponse>(req);
         return response;
     }
 }

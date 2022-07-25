@@ -1,5 +1,4 @@
 ﻿using RestSharp;
-using TestWare.Core;
 using TestWare.Samples.API.Resources.Derive;
 using TestWare.Samples.API.Resources.Factor;
 using TestWare.Samples.API.Resources.Integrate;
@@ -40,7 +39,6 @@ internal class ApiCodeSteps
         ValidateReturnCode(response, code);
     }
 
-
     [Then(@"integrate response status should be '([^']*)'")]
     public void ThenIntegrateResponseStatusShouldBe(int code)
     {
@@ -61,7 +59,6 @@ internal class ApiCodeSteps
         var response = _lastResponse.GetResponse<UnkownResponse>();
         ValidateReturnCode(response, code);
     }
-
 
     private void ValidateReturnCode(RestResponse response, int expectedCode)
     {

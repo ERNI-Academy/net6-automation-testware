@@ -5,7 +5,7 @@ using TestWare.Engines.Restsharp.Resources;
 
 namespace TestWare.Samples.API.Resources.Derive;
 
-internal class DeriveResource: ApiResource, IDeriveResource
+internal class DeriveResource : ApiResource, IDeriveResource
 {
     private const string _resourceName = "derive";
 
@@ -14,11 +14,11 @@ internal class DeriveResource: ApiResource, IDeriveResource
         ResourceName = _resourceName;
     }
 
-    public RestResponse<DeriveResponse> Derive(string formula)
+    public async Task<RestResponse<DeriveResponse>> Derive(string formula)
     {
         var encodedUrl = HttpUtility.UrlEncode(formula);
         var req = new RestRequest($"{ResourceName}/{encodedUrl}");
-        var response = ExecuteRequest<DeriveResponse>(req);
+        var response = await ExecuteRequest<DeriveResponse>(req);
         return response;
     }
 }
