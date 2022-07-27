@@ -5,5 +5,5 @@ namespace TestWare.Samples.API.Resources.Derive;
 
 internal interface IDeriveResource : ITestWareComponent
 {
-    public RestResponse<DeriveResponse> Derive(string formula);
+    public Task<RestResponse<DeriveResponse>> Derive(string formula);
 }

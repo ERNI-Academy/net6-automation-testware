@@ -14,6 +14,16 @@ internal static class ClientFactory
 
         var client = new ApiClient(options);
 
+        foreach (var queryParam in capabilities.QueryParameters ?? Enumerable.Empty<CapabilityParameter>())
+        {
+            client.AddDefaultQueryParameter(queryParam.Name, queryParam.Value);
+        }
+
+        foreach (var headerParam in capabilities.HeaderParameters ?? Enumerable.Empty<CapabilityParameter>())
+        {
+            client.AddDefaultHeader(headerParam.Name, headerParam.Value);
+        }
+
         return client;
     }
 
