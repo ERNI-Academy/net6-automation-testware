@@ -24,7 +24,7 @@ public class ChatPage : WebPage, IChatPage
             () =>
                 {
                     var messages = ChatMessages.Select(x => x.Text).ToList();
-                    messages.Any(x => x == string.Concat(userId, message)).Should().BeTrue();
+                    messages.Any(x => x.Contains(string.Concat(userId, message))).Should().BeTrue();
                 },
             numberOfRetries: 10
             );
