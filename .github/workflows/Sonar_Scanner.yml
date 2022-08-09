@@ -1,7 +1,5 @@
 name: SonarQube Scanner
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
   pull_request_target:
     types: [opened, synchronize, reopened, labeled]
   workflow_call:
@@ -14,10 +12,15 @@ jobs:
   sonarScan:
     name: sonarScan
     runs-on: windows-latest
-    if: |
-      (github.event_name == 'pull_request_target' && contains(github.event.pull_request.labels.*.name, 'SonarScan')) ||
-      (github.event_name == 'pull_request' &&  github.event.pull_request.head.repo.full_name == github.event.pull_request.base.repo.full_name)
+
     steps:
+      - name: Check if draft
+        if: |
+          (github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name && !contains(github.event.pull_request.labels.*.name, 'SonarScan')) 
+        run: |
+          echo "This PR is pending to be reviewed by repo owner."
+          exit 1
+          
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -58,20 +61,3 @@ jobs:
           dotnet restore
           dotnet build --configuration Release --no-restore
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-
-  fail-for-draft:
-    needs: sonarScan
-    # if: |
-    #   (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name && needs.sonarScan.result == 'skipped')
-    runs-on: ubuntu-latest    
-    steps:     
-      - name: print
-        run: |
-           echo "${{ github.event_name}}"
-           echo "${{ github.event.pull_request.head.repo.full_name}}"
-           echo "${{ github.event.pull_request.base.repo.full_name}}"   
-           echo "${{ needs.sonarScan.result}}"  
-      - name: Fail if PR is a draft
-        run: |
-          echo "This PR is pending to be reviewed by repo owner."
-          exit 1
