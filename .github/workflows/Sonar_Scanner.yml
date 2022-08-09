@@ -62,7 +62,7 @@ jobs:
   fail-for-draft:
     needs: sonarScan
     if: |
-      (github.event_name == 'pull_request_target' && needs.sonarScan.result == 'skipped')
+      (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name && needs.sonarScan.result == 'skipped')
     runs-on: ubuntu-latest    
     steps:     
       - name: Fail if PR is a draft
