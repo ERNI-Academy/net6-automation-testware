@@ -9,6 +9,7 @@ on:
         SONAR_TOKEN:
           required: true
   workflow_dispatch: ~
+
 jobs:
   sonarScan:
     name: sonarScan
@@ -57,3 +58,14 @@ jobs:
           dotnet restore
           dotnet build --configuration Release --no-restore
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+
+  fail-for-draft:
+    needs: sonarScan
+    if: |
+      (github.event_name == 'pull_request_target' && github.event.pull_request.head.repo.full_name != github.event.pull_request.base.repo.full_name && needs.sonarScan.result == 'skipped')
+    runs-on: ubuntu-latest    
+    steps:     
+      - name: Fail if PR is a draft
+        run: |
+          echo "This PR is pending to be reviewed by repo owner."
+          exit 1
