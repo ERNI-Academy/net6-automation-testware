@@ -27,7 +27,7 @@ With this action the maintenance decreases and the robustness increases.
 
 # Features
 
-Testware provides capabilities to automate:
+Testware provides capabilities to automate :
 
 - **Websites** (using Selenium)
 
