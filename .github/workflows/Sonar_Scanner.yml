@@ -2,6 +2,8 @@ name: SonarQube Scanner
 on:
   pull_request:
     types: [opened, synchronize, reopened]
+  pull_request_target:
+    types: [opened, synchronize, reopened, labeled]
   workflow_call:
     secrets:
         SONAR_TOKEN:
@@ -11,6 +13,9 @@ jobs:
   sonarScan:
     name: sonarScan
     runs-on: windows-latest
+    if: |
+      (github.event_name == 'pull_request_target' && contains(github.event.pull_request.labels.*.name, 'SonarScan')) ||
+      github.event_name == 'pull_request'
     steps:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
