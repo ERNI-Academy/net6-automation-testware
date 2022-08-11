@@ -49,7 +49,7 @@ jobs:
           id: device
           uses: futureware-tech/simulator-action@v1
           with:
-            model: 'iPhone 8'
+            model: 'iPhone 13'
         - name: config replacement
           uses: microsoft/variable-substitution@v1 
           with:
