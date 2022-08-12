@@ -1,9 +1,4 @@
 ﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 using TestWare.Engines.Restsharp.Factory;
 using TestWare.Engines.Restsharp.Resources;
@@ -18,11 +13,12 @@ internal class SineResource : ApiResource, ISineResource
     {
         ResourceName = _resourceName;
     }
-    RestResponse<SineResponse> ISineResource.Sine(string operation)
+
+    async Task<RestResponse<SineResponse>> ISineResource.Sine(string operation)
     {
         var encodedUrl = HttpUtility.UrlEncode(operation);
         var req = new RestRequest($"{ResourceName}/{encodedUrl}");
-        var response = ExecuteRequest<SineResponse>(req);
+        var response = await ExecuteRequest<SineResponse>(req);
         return response;
     }
 }

@@ -1,10 +1,4 @@
 ﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using TestWare.Engines.Restsharp.Factory;
 using TestWare.Engines.Restsharp.Resources;
 
@@ -18,10 +12,11 @@ internal class UnkownResource : ApiResource, IUnkownResource
     {
         ResourceName = _resourceName;
     }
-    public RestResponse<UnkownResponse> Operate()
+
+    public async Task<RestResponse<UnkownResponse>> Operate()
     {
         var req = new RestRequest($"{ResourceName}");
-        var response = ExecuteRequest<UnkownResponse>(req);
+        var response = await ExecuteRequest<UnkownResponse>(req);
         return response;
     }
 }

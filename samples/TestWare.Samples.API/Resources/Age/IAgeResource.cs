@@ -5,5 +5,5 @@ namespace TestWare.Samples.API.Resources.Age;
 
 internal interface IAgeResource : ITestWareComponent
 {
-    public RestResponse<AgeResponse> GuessAge(string name);
+    public Task<RestResponse<AgeResponse>> GuessAge(string name);
 }

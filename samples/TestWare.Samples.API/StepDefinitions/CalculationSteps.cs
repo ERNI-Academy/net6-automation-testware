@@ -19,8 +19,6 @@ public sealed class CalculationSteps
     private readonly IUnkownResource _unkownResource;
     private readonly LastResponse _lastResponse;
 
-
-
     public CalculationSteps(LastResponse lastResponse)
     {
         _simplifyResource = ContainerManager.GetTestWareComponent<ISimplifyResource>();
@@ -33,9 +31,9 @@ public sealed class CalculationSteps
     }
 
     [When(@"the formula '([^']*)' is simplified")]
-    public void WhenTheFormulaIsSimplified(string formula)
+    public async Task WhenTheFormulaIsSimplified(string formula)
     {
-        var simplifyResponse = _simplifyResource.Simplify(formula);
+        var simplifyResponse = await _simplifyResource.Simplify(formula);
         _lastResponse.AddResponse(simplifyResponse);
     }
 
@@ -47,11 +45,12 @@ public sealed class CalculationSteps
     }
 
     [When(@"the formula '([^']*)' is factorized")]
-    public void WhenTheFormilaIsFactorized(string formula)
+    public async Task WhenTheFormulaIsFactorized(string formula)
     {
-        var response = _factorResource.Factor(formula);
+        var response = await _factorResource.Factor(formula);
         _lastResponse.AddResponse(response);
     }
+
     [Then(@"factor response result is ""([^""]*)""")]
     public void ThenFactorResponseResultIs(string result)
     {
@@ -60,9 +59,9 @@ public sealed class CalculationSteps
     }
 
     [When(@"the formula '([^']*)' is derived")]
-    public void WhenTheFormilaIsDerived(string formula)
+    public async Task WhenTheFormulaIsDerived(string formula)
     {
-        var response = _deriveResource.Derive(formula);
+        var response = await _deriveResource.Derive(formula);
         _lastResponse.AddResponse(response);
     }
 
@@ -74,9 +73,9 @@ public sealed class CalculationSteps
     }
 
     [When(@"the formula '([^']*)' is integrated")]
-    public void WhenTheFormilaIsIntegrated(string formula)
+    public async Task WhenTheFormulaIsIntegrated(string formula)
     {
-        var response = _integrateResource.Integrate(formula);
+        var response = await _integrateResource.Integrate(formula);
         _lastResponse.AddResponse(response);
     }
 
@@ -88,9 +87,9 @@ public sealed class CalculationSteps
     }
 
     [When(@"the operation sine is invoked with ""([^""]*)""")]
-    public void WhenTheOperationSineIsInvokedWith(string operation)
+    public async Task WhenTheOperationSineIsInvokedWith(string operation)
     {
-        var response = _sineResource.Sine(operation);
+        var response = await _sineResource.Sine(operation);
         _lastResponse.AddResponse(response);
     }
 
@@ -109,9 +108,9 @@ public sealed class CalculationSteps
     }
 
     [When(@"inexistent endpoint is called")]
-    public void WhenUnexistendEndpointIsCalled()
+    public async Task WhenInexistendEndpointIsCalled()
     {
-        var response = _unkownResource.Operate();
+        var response = await _unkownResource.Operate();
         _lastResponse.AddResponse(response);
     }
 
