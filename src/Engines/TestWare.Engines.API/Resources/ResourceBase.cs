@@ -31,3 +31,4 @@ public class ResourceBase
         return response ?? throw new ApplicationException(nameof(response));
     }
 }
+
