@@ -55,7 +55,24 @@
         "example",
         "review"
       ]
-     }
+    },
+    {
+      "login": "carmenavram",
+      "name": "Carmen Avram",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39376956?v=4",
+      "profile": "https://github.com/carmenavram",
+      "contributions": [
+        "code",
+        "content",
+        "doc",
+        "design",
+        "ideas",
+        "maintenance",
+        "test",
+        "example",
+        "review"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "net6-automation-testware",
