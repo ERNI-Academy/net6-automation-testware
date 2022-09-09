@@ -44,4 +44,15 @@ public abstract class MobilePage : PageBase
             .Release()
             .Perform();
     }
+
+    protected void ScrollFromLoactionAtoLocationB(Point pointA, Point pointB)
+    {
+        new TouchAction((AppiumDriver)this.Driver)
+            .Press(pointA.X, pointA.Y)
+            .Wait(5)
+            .MoveTo(pointB.X, pointB.Y)
+            .Wait(5)
+            .Release()
+            .Perform();
+    }
 }
