@@ -1,7 +1,5 @@
 [![Continuous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
 
-[![Continuous-Deployment](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CD.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CD.yml)
-
 [![SonarQube Scanner](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml/badge.svg?branch=main)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
@@ -31,12 +29,11 @@ Testware provides capabilities to automate:
 
 - **Websites** (using Selenium)
 
-  - Supported Browsers:
-
-        <img src="https://github.com/devicons/devicon/blob/master/icons/chrome/chrome-original-wordmark.svg" title="Chrome" alt="Chrome" width="40" height="40"/>&nbsp;
-        <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>&nbsp;
-        <img src="https://github.com/devicons/devicon/blob/master/icons/ie10/ie10-original.svg" title="IE" alt="IE" width="40" height="40"/>&nbsp;
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" title="Edge" alt="Edge" width="40" height="40"/>&nbsp;
+  - Supported Browsers:  
+        <img src="https://github.com/devicons/devicon/blob/master/icons/chrome/chrome-original-wordmark.svg" title="Chrome" alt="Chrome" width="40" height="40"/>
+        <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>
+        <img src="https://github.com/devicons/devicon/blob/master/icons/ie10/ie10-original.svg" title="IE" alt="IE" width="40" height="40"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" title="Edge" alt="Edge" width="40" height="40"/>
 
 - **Mobile Applications** (using Appium)
 - **Windows Desktop applications** (using WinAppDriver)
@@ -236,7 +233,7 @@ Please see our [Contribution Guide](CONTRIBUTING.md) to learn how to contribute.
 
 ![MIT](https://img.shields.io/badge/License-MIT-blue.svg)
 
-(LICENSE) © {{Year}} [ERNI - Swiss Software Engineering](https://www.betterask.erni)
+Copyright © 2022 [ERNI - Swiss Software Engineering](https://www.betterask.erni)
 
 ## Code of conduct
 
