@@ -38,9 +38,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWare.ExtentReport", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reporting", "Reporting", "{DCCEF363-0EBE-46EA-B02B-CD59010626F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWare.Engines.Selenoid", "TestWare.Engines.Selenoid\TestWare.Engines.Selenoid.csproj", "{0B7E3DFE-AB55-4C0C-81C6-6A6F517475EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWare.Engines.Selenoid", "src\Engines\TestWare.Engines.Selenoid\TestWare.Engines.Selenoid.csproj", "{0B7E3DFE-AB55-4C0C-81C6-6A6F517475EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWare.Samples.Selenoid.Web", "TestWare.Samples.Selenoid.Web\TestWare.Samples.Selenoid.Web.csproj", "{1E2E8373-84D1-4F9E-BE57-D340ECABBA5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWare.Samples.Selenoid.Web", "samples\TestWare.Samples.Selenoid.Web\TestWare.Samples.Selenoid.Web.csproj", "{1E2E8373-84D1-4F9E-BE57-D340ECABBA5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
