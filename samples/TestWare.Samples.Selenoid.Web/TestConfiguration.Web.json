@@ -5,10 +5,38 @@
       "Capabilities": [
         {
           "Name": "Chrome",
-          "Uri": "http://selenoid:4444/wd/hub",
-          "BrowserType": "Chrome",
-          "BrowserVersion": "111",
-          "Resolution": "1920x1080",
+          "Uri": "http://localhost:4444/wd/hub",
+          "BrowserName": "Chrome",
+          "BrowserVersion": "111.0",
+          "Resolution": "1920x1080x24",
+          "EnableLog": false,
+          "EnableVnc": true,
+          "EnableVideo": false,
+          "CommandTimeOutInMinutes": 5,
+          "Arguments": [
+            "--start-maximized"
+          ]
+        },
+        {
+          "Name": "Firefox",
+          "Uri": "http://localhost:4444/wd/hub",
+          "BrowserName": "Firefox",
+          "BrowserVersion": "110.0",
+          "Resolution": "1920x1080x24",
+          "EnableLog": false,
+          "EnableVnc": true,
+          "EnableVideo": false,
+          "CommandTimeOutInMinutes": 5,
+          "Arguments": [
+            "--start-maximized"
+          ]
+        },
+        {
+          "Name": "Edge",
+          "Uri": "http://localhost:4444/wd/hub",
+          "BrowserName": "Edge",
+          "BrowserVersion": "111.0",
+          "Resolution": "1920x1080x24",
           "EnableLog": false,
           "EnableVnc": true,
           "EnableVideo": false,

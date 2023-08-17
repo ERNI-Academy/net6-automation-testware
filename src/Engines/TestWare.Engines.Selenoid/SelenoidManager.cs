@@ -1,7 +1,10 @@
-﻿using TestWare.Core;
+﻿using Autofac;
+using Autofac.Core.Registration;
+using OpenQA.Selenium;
+using TestWare.Core;
 using TestWare.Core.Configuration;
 using TestWare.Core.Interfaces;
-using TestWare.Engines.Selenium.Configuration;
+using TestWare.Engines.Selenoid.Configuration;
 using TestWare.Engines.Selenoid.Factory;
 
 namespace TestWare.Engines.Selenoid
@@ -37,12 +40,50 @@ namespace TestWare.Engines.Selenoid
 
         public string CollectEvidence(string destinationPath, string evidenceName)
         {
-            throw new NotImplementedException();
+            var screenshotPath = string.Empty;
+
+            IEnumerable<IWebDriver> webDrivers;
+            using (var scope = ContainerManager.Container.BeginLifetimeScope())
+            {
+                webDrivers = scope.Resolve<IEnumerable<IWebDriver>>();
+            }
+            foreach (var webDriver in webDrivers)
+            {
+                try
+                {
+                    webDriver.SwitchTo().Alert();
+                    // No screenshot because an Alert is present
+                }
+                catch (NoAlertPresentException)
+                {
+                    var instanceName = ContainerManager.GetNameFromInstance(webDriver);
+                    var ss = ((ITakesScreenshot)webDriver).GetScreenshot();
+                    ss.SaveAsFile(Path.Combine(destinationPath, $"{evidenceName} - {instanceName}.png"), ScreenshotImageFormat.Png);
+                }
+                catch (WebDriverException) { }
+
+            }
+
+            return screenshotPath;
         }
 
         public void Destroy()
         {
-            throw new NotImplementedException();
+            try
+            {
+                IEnumerable<IWebDriver> webDrivers;
+                using (var scope = ContainerManager.Container.BeginLifetimeScope())
+                {
+                    webDrivers = scope.Resolve<IEnumerable<IWebDriver>>();
+                }
+
+                foreach (var webDriver in webDrivers)
+                {
+                    webDriver.Close();
+                    webDriver.Dispose();
+                }
+            }
+            catch (ComponentNotRegisteredException) { }
         }
 
         public string GetEngineName()

@@ -5,6 +5,5 @@ public enum SupportedBrowsers
     Invalid = 0,
     Chrome = 1,
     Firefox = 2,
-    InternetExplorer = 3,
-    Edge = 4
+    Edge = 3
 }

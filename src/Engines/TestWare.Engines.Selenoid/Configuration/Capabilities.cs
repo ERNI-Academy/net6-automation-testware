@@ -1,6 +1,6 @@
 ﻿using TestWare.Engines.Selenoid.Factory;
 
-namespace TestWare.Engines.Selenium.Configuration;
+namespace TestWare.Engines.Selenoid.Configuration;
 
 internal class Capabilities
 {
@@ -8,11 +8,11 @@ internal class Capabilities
 
     public string Uri { get; set; }
 
-    public string BrowserType { get; set; }
+    public string BrowserName { get; set; }
 
     public string BrowserVersion { get; set; }
 
-    public string Resolution { get; set; }
+    public string ScreenResolution { get; set; }
 
     public int CommandTimeOutInMinutes { get; set; }
 
@@ -26,6 +26,6 @@ internal class Capabilities
 
     public SupportedBrowsers GetDriver()
     {
-        return Enum.Parse<SupportedBrowsers>(BrowserType, true);
+        return Enum.Parse<SupportedBrowsers>(BrowserName, true);
     }
 }

@@ -1,63 +1,65 @@
-﻿using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
-using TestWare.Engines.Selenium.Configuration;
+using TestWare.Engines.Selenoid.Configuration;
 
 namespace TestWare.Engines.Selenoid.Factory;
 
 internal static class BrowserFactory
 {
-    public static IBrowserDriver Create(Capabilities capabilities)
+    private static string SELENOID_OPTIONS_KEY = "selenoid:options";
+
+    public static IWebDriver Create(Capabilities capabilities)
     {
-        IBrowserDriver result = capabilities.GetDriver() switch
+        IWebDriver result = capabilities.GetDriver() switch
         {
             SupportedBrowsers.Chrome => CreateChromeDriver(capabilities),
             SupportedBrowsers.Firefox => CreateFirefoxDriver(capabilities),
-            SupportedBrowsers.InternetExplorer => CreateInternetExplorerDriver(capabilities),
             SupportedBrowsers.Edge => CreateEdgeDriver(capabilities),
             SupportedBrowsers.Invalid => throw new NotImplementedException(),
             _ => throw new NotSupportedException($"Browser type is invalid."),
         };
         return result;
     }
-    private static IBrowserDriver CreateChromeDriver(Capabilities capabilities)
+    private static IWebDriver CreateChromeDriver(Capabilities capabilities)
     {
         ChromeOptions options = new();
-        options.AddAdditionalOption("selenoid:options", GenerateSelenoidCapabilities(capabilities));
+        options.AddArguments(capabilities.Arguments);
+        options.AddAdditionalOption(SELENOID_OPTIONS_KEY, GenerateSelenoidCapabilities(capabilities));
 
-        return (IBrowserDriver) new RemoteWebDriver(new Uri(capabilities.Uri), options);
+        return new RemoteWebDriver(new Uri(capabilities.Uri), options.ToCapabilities());
     }
-
-    private static IBrowserDriver CreateFirefoxDriver(Capabilities capabilities)
+    
+    private static IWebDriver CreateFirefoxDriver(Capabilities capabilities)
     {
         FirefoxOptions options = new();
-        options.AddAdditionalOption("selenoid:options", GenerateSelenoidCapabilities(capabilities));
+        options.AddArguments(capabilities.Arguments);
+        options.AddAdditionalOption(SELENOID_OPTIONS_KEY, GenerateSelenoidCapabilities(capabilities));
 
-        return (IBrowserDriver)new RemoteWebDriver(new Uri(capabilities.Uri), options);
+        return new RemoteWebDriver(new Uri(capabilities.Uri), options.ToCapabilities());
     }
 
-    private static IBrowserDriver CreateInternetExplorerDriver(Capabilities capabilities)
-    {
-        InternetExplorerOptions options = new();
-        options.AddAdditionalOption("selenoid:options", GenerateSelenoidCapabilities(capabilities));
-
-        return (IBrowserDriver)new RemoteWebDriver(new Uri(capabilities.Uri), options);
-    }
-
-    private static IBrowserDriver CreateEdgeDriver(Capabilities capabilities)
+    private static IWebDriver CreateEdgeDriver(Capabilities capabilities)
     {
         EdgeOptions options = new();
-        options.AddAdditionalOption("selenoid:options", GenerateSelenoidCapabilities(capabilities));
+        options.AddArguments(capabilities.Arguments);
+        options.AddAdditionalOption(SELENOID_OPTIONS_KEY, GenerateSelenoidCapabilities(capabilities));
 
-        return (IBrowserDriver)new RemoteWebDriver(new Uri(capabilities.Uri), options);
+        return new RemoteWebDriver(new Uri(capabilities.Uri), options.ToCapabilities());
     }
 
     private static Dictionary<string, object> GenerateSelenoidCapabilities(Capabilities capabilities) 
     {
         return new Dictionary<string, object>
         {
+            ["browserName"] = capabilities.BrowserName.ToLower(),
+            ["browserVersion"] = capabilities.BrowserVersion,
+            ["screenResolution"] = capabilities.ScreenResolution,
+            ["name"] = capabilities.BrowserName,
+            ["sessionTimeout"] = capabilities.CommandTimeOutInMinutes + "m",
             ["enableLog"] = capabilities.EnableLog,
             ["enableVnc"] = capabilities.EnableVnc,
             ["enableVideo"] = capabilities.EnableVideo
