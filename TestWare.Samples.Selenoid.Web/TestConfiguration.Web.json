@@ -1,0 +1,24 @@
+{
+  "Configurations": [
+    {
+      "Tag": "RemoteDriver",
+      "Capabilities": [
+        {
+          "Name": "Chrome",
+          "Uri": "http://selenoid:4444/wd/hub",
+          "BrowserType": "Chrome",
+          "BrowserVersion": "111",
+          "Resolution": "1920x1080",
+          "EnableLog": false,
+          "EnableVnc": true,
+          "EnableVideo": false,
+          "CommandTimeOutInMinutes": 5,
+          "Arguments": [
+            "--start-maximized"
+          ]
+        }
+      ]
+    }
+  ],
+  "TestResultPath": "C:\\workspace\\ERNI\\results\\"
+}
