@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Remote;
 using TestWare.Engines.Selenoid.Configuration;
 
@@ -53,9 +52,10 @@ internal static class BrowserFactory
 
     private static Dictionary<string, object> GenerateSelenoidCapabilities(Capabilities capabilities) 
     {
+        var browser = (SupportedBrowsers)Enum.Parse(typeof(SupportedBrowsers), capabilities.BrowserName);
         return new Dictionary<string, object>
         {
-            ["browserName"] = capabilities.BrowserName.ToLower(),
+            ["browserName"] = SupportedBrowsersHelper.GetBrowserName(browser),
             ["browserVersion"] = capabilities.BrowserVersion,
             ["screenResolution"] = capabilities.ScreenResolution,
             ["name"] = capabilities.BrowserName,
