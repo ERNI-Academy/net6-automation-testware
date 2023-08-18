@@ -34,7 +34,11 @@ Testware provides capabilities to automate:
         <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>
         <img src="https://github.com/devicons/devicon/blob/master/icons/ie10/ie10-original.svg" title="IE" alt="IE" width="40" height="40"/>
         <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" title="Edge" alt="Edge" width="40" height="40"/>
-
+- **Websites** (using Selenoid)
+  - Supported Browsers:  
+        <img src="https://github.com/devicons/devicon/blob/master/icons/chrome/chrome-original-wordmark.svg" title="Chrome" alt="Chrome" width="40" height="40"/>
+        <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg" title="Edge" alt="Edge" width="40" height="40"/>
 - **Mobile Applications** (using Appium)
 - **Windows Desktop applications** (using WinAppDriver)
 - **API Rest** (using Restsharp)
@@ -153,6 +157,53 @@ Evidence collection:
                         "--start-maximized"
                     ]
                 }
+            ]
+        },
+        {
+            "Tag": "RemoteDriver",
+            "Capabilities": [
+            {
+                "Name": "Chrome",
+                "Uri": "http://localhost:4444/wd/hub",
+                "BrowserName": "Chrome",
+                "BrowserVersion": "111.0",
+                "Resolution": "1920x1080x24",
+                "EnableLog": false,
+                "EnableVnc": true,
+                "EnableVideo": false,
+                "CommandTimeOutInMinutes": 5,
+                "Arguments": [
+                "--start-maximized"
+                ]
+            },
+            {
+                "Name": "Firefox",
+                "Uri": "http://localhost:4444/wd/hub",
+                "BrowserName": "Firefox",
+                "BrowserVersion": "110.0",
+                "Resolution": "1920x1080x24",
+                "EnableLog": false,
+                "EnableVnc": true,
+                "EnableVideo": false,
+                "CommandTimeOutInMinutes": 5,
+                "Arguments": [
+                "--start-maximized"
+                ]
+            },
+            {
+                "Name": "Edge",
+                "Uri": "http://localhost:4444/wd/hub",
+                "BrowserName": "Edge",
+                "BrowserVersion": "111.0",
+                "Resolution": "1920x1080x24",
+                "EnableLog": false,
+                "EnableVnc": true,
+                "EnableVideo": false,
+                "CommandTimeOutInMinutes": 5,
+                "Arguments": [
+                "--start-maximized"
+                ]
+            }
             ]
         },
         {
