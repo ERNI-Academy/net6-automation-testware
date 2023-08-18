@@ -27,9 +27,13 @@ internal static class BrowserFactory
         ChromeOptions options = new();
         options.AddArguments(capabilities.Arguments);
 
-        return  new ChromeDriver(ChromeDriverService.CreateDefaultService(capabilities.Path),
+        var driver = new ChromeDriver(ChromeDriverService.CreateDefaultService(capabilities.Path),
                                 options,
                                 TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+
+        driver.Navigate().GoToUrl(capabilities.BaseUrl);
+
+        return driver;
     }
 
     private static IBrowserDriver CreateFirefoxDriver(Capabilities capabilities)
@@ -37,18 +41,26 @@ internal static class BrowserFactory
         FirefoxOptions options = new();
         options.AddArguments(capabilities.Arguments);
 
-        return new FirefoxDriver(FirefoxDriverService.CreateDefaultService(capabilities.Path),
+        var driver = new FirefoxDriver(FirefoxDriverService.CreateDefaultService(capabilities.Path),
                                 options,
                                 TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+
+        driver.Navigate().GoToUrl(capabilities.BaseUrl);
+
+        return driver;
     }
 
     private static IBrowserDriver CreateInternetExplorerDriver(Capabilities capabilities)
     {
         InternetExplorerOptions options = new();
 
-        return new InternetExplorerDriver(InternetExplorerDriverService.CreateDefaultService(capabilities.Path),
+        var driver = new InternetExplorerDriver(InternetExplorerDriverService.CreateDefaultService(capabilities.Path),
                                 options,
                                 TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+
+        driver.Navigate().GoToUrl(capabilities.BaseUrl);
+
+        return driver;
     }
 
     private static IBrowserDriver CreateEdgeDriver(Capabilities capabilities)
@@ -56,8 +68,12 @@ internal static class BrowserFactory
         EdgeOptions options = new();
         options.AddArguments(capabilities.Arguments);
 
-        return new EdgeDriver(EdgeDriverService.CreateDefaultService(capabilities.Path),
+        var driver = new EdgeDriver(EdgeDriverService.CreateDefaultService(capabilities.Path),
                                 options,
                                 TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+
+        driver.Navigate().GoToUrl(capabilities.BaseUrl);
+
+        return driver;
     }
 }

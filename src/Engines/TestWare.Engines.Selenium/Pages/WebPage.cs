@@ -6,17 +6,15 @@ namespace TestWare.Engines.Selenium.Pages;
 
 public abstract class WebPage : PageBase
 {
-    protected string Url { get; set; }
-
     protected WebPage(IBrowserDriver driver)
     {
         Driver = driver;
         PageFactory.InitElements(Driver, this);
     }
 
-    public void NavigateToUrl()
+    public void NavigateToUrl(string Url)
     {
-        Driver.Navigate().GoToUrl(new Uri(Url));            
+        Driver.Navigate().GoToUrl(new Uri(Url));
     }
 
     protected string AcceptDialog()
