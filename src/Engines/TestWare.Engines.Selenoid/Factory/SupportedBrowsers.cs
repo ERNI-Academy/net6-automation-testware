@@ -10,7 +10,8 @@ public enum SupportedBrowsers
     [BrowserName("firefox")]
     Firefox = 2,
     [BrowserName("MicrosoftEdge")]
-    Edge = 3
+    Edge = 3,
+    Android = 4
 }
 
 static class SupportedBrowsersHelper

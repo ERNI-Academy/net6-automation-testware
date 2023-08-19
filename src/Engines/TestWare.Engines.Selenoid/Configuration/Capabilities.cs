@@ -14,6 +14,11 @@ internal class Capabilities
 
     public string ScreenResolution { get; set; }
 
+    public string DeviceName { get; set; }
+    public string DeviceVersion { get; set; }
+    public string ApkUrl { get; set; }
+    public string AppPath { get; set; }
+
     public int CommandTimeOutInMinutes { get; set; }
 
     public bool EnableLog { get; set; }

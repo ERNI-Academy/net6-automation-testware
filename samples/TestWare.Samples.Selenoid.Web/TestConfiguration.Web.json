@@ -44,6 +44,21 @@
           "Arguments": [
             "--start-maximized"
           ]
+        },
+
+        {
+          "Name": "Android",
+          "Uri": "http://localhost:4444/wd/hub",
+          "BrowserName": "Android",
+          "BrowserVersion": "111.0",
+          "Resolution": "1920x1080x24",
+          "EnableLog": false,
+          "EnableVnc": true,
+          "EnableVideo": false,
+          "CommandTimeOutInMinutes": 5,
+          "Arguments": [
+            "--start-maximized"
+          ]
         }
       ]
     }
