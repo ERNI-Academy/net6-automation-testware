@@ -2,7 +2,7 @@
 Feature: Chat_multibrowser
 
 
-@browser1 @browser2
+@browser1Chat @browser2Chat
 Scenario: Chat between two users
 	Given the 'user1' creates a new chat session on 'browser1'
 	When the 'user2' joins chat session on 'browser2'

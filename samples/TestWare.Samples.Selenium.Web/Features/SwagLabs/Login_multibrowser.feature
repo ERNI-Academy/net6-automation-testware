@@ -1,14 +1,14 @@
 ﻿@MultiWebDriver
 Feature: Login_multibrowser
 
-@browser1 @browser2 @browser3
+@browser1Swaglabs @browser2Swaglabs @browser3Swaglabs
 Scenario: Login on multiple browsers
 	Given the user enters username 'standard_user' on all
 	And the user enters password 'secret_sauce' on all
 	When the user clicks submit on all
 	Then the user can login on all
 
-@browser1 @browser2
+@browser1Swaglabs @browser2Swaglabs
 Scenario: Login on multiple browsers and logout browser2
 	Given the user enters username 'standard_user' on all
 	And the user enters password 'secret_sauce' on all
