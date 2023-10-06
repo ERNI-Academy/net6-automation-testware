@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\madi\.nuget\packages\specflow.allure\3.5.0.73\contentFiles\any\netstandard2.0\allureConfig.Template.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SpecFlow.Allure" Version="3.5.0.73" />
+  </ItemGroup>
+
+</Project>

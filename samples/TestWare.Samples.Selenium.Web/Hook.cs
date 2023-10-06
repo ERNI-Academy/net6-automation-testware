@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using TestWare.Reporting.ExtentReport;
+using TestWare.Reporting.AllureReport;
 
 namespace TestWare.Samples.Selenium.Web;
 
@@ -9,7 +10,8 @@ public sealed class Hook
     private readonly TestContext _testContext;
     private int _stepCounter;
     private static readonly LifeCycle _lifeCycle = new();
-    private static ExtentReport _testReport;
+    private static ExtentReport _extentReport;
+    private static AllureReport _allureReport;
 
     public Hook(TestContext testContext)
     {
@@ -23,7 +25,7 @@ public sealed class Hook
         var tags = featureContext.FeatureInfo.Tags;
 
         _lifeCycle.BeginTestSuite(name);
-        _testReport.CreateFeature(name, tags);
+        _extentReport.CreateFeature(name, tags);
     }
 
     [AfterFeature]
@@ -41,7 +43,7 @@ public sealed class Hook
 
         var description = scenarioContext.ScenarioInfo.Description ?? "";
         var scenarioTags = scenarioContext.ScenarioInfo.Tags;
-        _testReport.CreateTestCase(name, description, scenarioTags);
+        _extentReport.CreateTestCase(name, description, scenarioTags);
 
         _testContext.WriteLine("----------------------------------------- \r\n");
         _testContext.WriteLine($"Feature: {featureContext.FeatureInfo.Title}");
@@ -55,7 +57,7 @@ public sealed class Hook
     [AfterScenario]
     public void AfterScenario()
     {
-        _testReport.SetTestcaseOutcome(_testContext.CurrentTestOutcome);
+        _extentReport.SetTestcaseOutcome(_testContext.CurrentTestOutcome);
         _lifeCycle.EndTestCase();
     }
 
@@ -63,14 +65,16 @@ public sealed class Hook
     public static void BeforeTestRun()
     {
         _lifeCycle.BeginTestExecution();
-        _testReport = new ExtentReport(_lifeCycle.GetCurrentResultsDirectory());
+        _extentReport = new ExtentReport(_lifeCycle.GetCurrentResultsDirectory());
+        _allureReport = new AllureReport();
+        _allureReport.CleanResultsFolder();
     }
 
     [AfterTestRun]
     public static void AfterTestRun()
     {
         _lifeCycle.EndTestExecution();
-        _testReport.CreateTestReportFile();
+        _extentReport.CreateTestReportFile();
     }
 
     [BeforeStep]
@@ -78,7 +82,7 @@ public sealed class Hook
     {
         var name = scenarioContext.CurrentScenarioBlock.ToString();
         var description = scenarioContext.StepContext.StepInfo.Text;
-        _testReport.CreateStep(name, description);
+        _extentReport.CreateStep(name, description);
 
         var stepId = $"{_stepCounter:00} {description}";
         _stepCounter++;
@@ -93,7 +97,8 @@ public sealed class Hook
 
         foreach (var evidence in evidencesPath)
         {
-            _testReport.AddScreenshotToStep(evidence);
+            _extentReport.AddScreenshotToStep(evidence);
+            _allureReport.AddAttachment(evidence, Path.GetFileNameWithoutExtension(evidence));
             _testContext.AddResultFile(evidence);
         }
     }

@@ -38,6 +38,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestWare.ExtentReport", "sr
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reporting", "Reporting", "{DCCEF363-0EBE-46EA-B02B-CD59010626F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWare.AllureReport", "src\Core\TestWare.AllureReport\TestWare.AllureReport.csproj", "{91F2B723-A68B-4711-969B-89897B3C6161}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{94025C6B-DF0D-4AC4-BBC5-A94A9FA3AB0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94025C6B-DF0D-4AC4-BBC5-A94A9FA3AB0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94025C6B-DF0D-4AC4-BBC5-A94A9FA3AB0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F2B723-A68B-4711-969B-89897B3C6161}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F2B723-A68B-4711-969B-89897B3C6161}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F2B723-A68B-4711-969B-89897B3C6161}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F2B723-A68B-4711-969B-89897B3C6161}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +108,7 @@ Global
 		{71120454-DD7A-484C-93F2-699B4C363297} = {58B1446D-98A3-46A2-A668-305F0170B39F}
 		{94025C6B-DF0D-4AC4-BBC5-A94A9FA3AB0A} = {DCCEF363-0EBE-46EA-B02B-CD59010626F6}
 		{DCCEF363-0EBE-46EA-B02B-CD59010626F6} = {4678C707-68DB-4E06-9184-A07FB398832C}
+		{91F2B723-A68B-4711-969B-89897B3C6161} = {DCCEF363-0EBE-46EA-B02B-CD59010626F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F88CB24-23C8-4E0E-8B83-29023C1642B8}
