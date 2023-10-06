@@ -27,7 +27,7 @@ public sealed class Hook
         var tags = featureContext.FeatureInfo.Tags;
 
         _lifeCycle.BeginTestSuite(name);
-        _testReport.CreateFeature(name, tags);
+        _testReport?.CreateFeature(name, tags);
     }
 
     [AfterFeature]
@@ -45,7 +45,7 @@ public sealed class Hook
 
         var description = scenarioContext.ScenarioInfo.Description ?? "";
         var scenarioTags = scenarioContext.ScenarioInfo.Tags;
-        _testReport.CreateTestCase(name, description, scenarioTags);
+        _testReport?.CreateTestCase(name, description, scenarioTags);
 
         _testContext.WriteLine("----------------------------------------- \r\n");
         _testContext.WriteLine($"Feature: {featureContext.FeatureInfo.Title}");
@@ -62,7 +62,7 @@ public sealed class Hook
     [AfterScenario]
     public void AfterScenario()
     {
-        _testReport.SetTestcaseOutcome(_testContext.CurrentTestOutcome);
+        _testReport?.SetTestcaseOutcome(_testContext.CurrentTestOutcome);
         _lifeCycle.EndTestCase();
     }
 
@@ -77,7 +77,7 @@ public sealed class Hook
     public static void AfterTestRun()
     {
         _lifeCycle.EndTestExecution();
-        _testReport.CreateTestReportFile();
+        _testReport?.CreateTestReportFile();
     }
 
     [BeforeStep]
@@ -85,7 +85,7 @@ public sealed class Hook
     {
         var name = scenarioContext.CurrentScenarioBlock.ToString();
         var description = scenarioContext.StepContext.StepInfo.Text;
-        _testReport.CreateStep(name, description);
+        _testReport?.CreateStep(name, description);
 
         var stepId = $"{_stepCounter:00} {description}";
         _stepCounter++;
@@ -100,7 +100,7 @@ public sealed class Hook
 
         foreach (var evidence in evidencesPath)
         {
-            _testReport.AddScreenshotToStep(evidence);
+            _testReport?.AddScreenshotToStep(evidence);
             _testContext.AddResultFile(evidence);
         }
     }
