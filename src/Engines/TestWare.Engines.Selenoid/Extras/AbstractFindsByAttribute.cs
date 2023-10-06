@@ -110,11 +110,7 @@ public abstract class AbstractFindsByAttribute : Attribute, IComparable
             throw new ArgumentNullException(nameof(obj), "Object to compare cannot be null");
         }
 
-        AbstractFindsByAttribute other = obj as AbstractFindsByAttribute;
-        if (other == null)
-        {
-            throw new ArgumentException("Object to compare must be a AbstractFindsByAttribute", nameof(obj));
-        }
+        AbstractFindsByAttribute? other = obj as AbstractFindsByAttribute ?? throw new ArgumentException("Object to compare must be a AbstractFindsByAttribute", nameof(obj));
 
         if (Priority != other.Priority)
         {
@@ -140,7 +136,7 @@ public abstract class AbstractFindsByAttribute : Attribute, IComparable
             return false;
         }
 
-        AbstractFindsByAttribute other = obj as AbstractFindsByAttribute;
+        AbstractFindsByAttribute? other = obj as AbstractFindsByAttribute;
         if (other == null)
         {
             return false;

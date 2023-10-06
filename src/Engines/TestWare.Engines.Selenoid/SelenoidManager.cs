@@ -15,21 +15,29 @@ namespace TestWare.Engines.Selenoid
 
         private static void RegisterSingle(IEnumerable<string> tags, TestConfiguration testConfiguration)
         {
-            var configName = Enum.GetName(ConfigurationTags.remotedriver).ToUpperInvariant();
+            var configName = Enum.GetName(ConfigurationTags.remotedriver)?.ToUpperInvariant();
             var capabilities = ConfigurationManager.GetCapabilities<Capabilities>(testConfiguration, configName);
-            var singleCapability = capabilities.FirstOrDefault(x => tags.Contains(x.Name.ToUpperInvariant()));
-            if (!ContainerManager.ExistsType(singleCapability.GetType()))
+            var singleCapability = capabilities.FirstOrDefault(x => tags.Contains(x?.Name?.ToUpperInvariant()));
+            if (singleCapability != null && !ContainerManager.ExistsType(singleCapability.GetType()))
             {
                 var driver = BrowserFactory.Create(singleCapability);
                 ContainerManager.RegisterType(singleCapability.Name, driver);
+            }
+            else {
+                throw new NullReferenceException("No suitable capability was found.");
             }
         }
 
         private static void RegisterMultiple(IEnumerable<string> tags, TestConfiguration testConfiguration)
         {
-            var configName = Enum.GetName(ConfigurationTags.multiwebdriver).ToUpperInvariant();
+            var configName = Enum.GetName(ConfigurationTags.multiwebdriver)?.ToUpperInvariant();
             var capabilities = ConfigurationManager.GetCapabilities<Capabilities>(testConfiguration, configName);
-            var multipleCapabilities = capabilities.Where(x => tags.Contains(x.Name.ToUpperInvariant()));
+            var multipleCapabilities = capabilities.Where(x => tags.Contains(x?.Name?.ToUpperInvariant()));
+
+            if (!multipleCapabilities.Any())
+            {
+                throw new NullReferenceException("No suitable capability was found.");
+            }
 
             foreach (var capability in multipleCapabilities)
             {

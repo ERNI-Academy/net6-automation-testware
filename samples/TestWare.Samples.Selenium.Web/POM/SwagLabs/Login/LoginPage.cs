@@ -21,8 +21,6 @@ public class LoginPage : WebPage, ILoginPage
 
     public LoginPage(IBrowserDriver driver) : base(driver)
     {
-        Url = LoginUrl;
-        NavigateToUrl();
     }
 
     /// <inheritdoc cref="ILoginPage" />

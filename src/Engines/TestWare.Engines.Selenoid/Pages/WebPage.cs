@@ -1,12 +1,11 @@
 ﻿using OpenQA.Selenium;
 using TestWare.Engines.Selenoid.Extras;
-using TestWare.Engines.Selenoid.Factory;
 
 namespace TestWare.Engines.Selenoid.Pages;
 
 public abstract class WebPage : PageBase
 {
-    protected string Url { get; set; }
+    protected string? Url { get; set; }
 
     protected WebPage(IWebDriver driver)
     {
@@ -16,6 +15,9 @@ public abstract class WebPage : PageBase
 
     public void NavigateToUrl()
     {
+        if (Url == null) {
+            throw new NullReferenceException("Url variable was null");
+        }
         Driver.Navigate().GoToUrl(new Uri(Url));            
     }
 

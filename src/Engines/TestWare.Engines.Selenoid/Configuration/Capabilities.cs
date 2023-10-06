@@ -4,15 +4,15 @@ namespace TestWare.Engines.Selenoid.Configuration;
 
 internal class Capabilities
 {
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
-    public string Uri { get; set; }
+    public string? Uri { get; set; }
 
-    public string BrowserName { get; set; }
+    public string? BrowserName { get; set; }
 
-    public string BrowserVersion { get; set; }
+    public string? BrowserVersion { get; set; }
 
-    public string ScreenResolution { get; set; }
+    public string? ScreenResolution { get; set; }
 
     public int CommandTimeOutInMinutes { get; set; }
 
@@ -26,6 +26,9 @@ internal class Capabilities
 
     public SupportedBrowsers GetDriver()
     {
+        if (BrowserName == null) {
+            throw new NullReferenceException("BrowserName capability was null.");
+        }
         return Enum.Parse<SupportedBrowsers>(BrowserName, true);
     }
 }
