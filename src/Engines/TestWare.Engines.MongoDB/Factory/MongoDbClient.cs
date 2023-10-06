@@ -65,20 +65,20 @@ internal class MongoDbClient : MongoClient, IMongoDbClient
         await collection.InsertManyAsync(documentList);
     }
 
-    public async void UpdateOne(BsonDocument document, string databaseName, string collectionName)
+    public void UpdateOne(BsonDocument document, string databaseName, string collectionName)
     {
         var database = GetDatabase(databaseName);
         var collection = GetCollection(database, collectionName);
 
-        throw new NotImplementedException();
+        throw new NotImplementedException("Pending to implement");
     }
 
-    public async void UpdateMany(BsonDocument document, string databaseName, string collectionName)
+    public void UpdateMany(BsonDocument document, string databaseName, string collectionName)
     {
         var database = GetDatabase(databaseName);
         var collection = GetCollection(database, collectionName);
 
-        throw new NotImplementedException();
+        throw new NotImplementedException("Pending to implement");
     }
 
     public async void DeleteOne(BsonDocument document, string databaseName, string collectionName)

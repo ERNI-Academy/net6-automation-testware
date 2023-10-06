@@ -44,7 +44,7 @@ public class DatabaseStepDefinitions
         {
             result.Should().NotBeNull();
             result.Count.Should().Be(1);
-            result[0].GetValue("name").RawValue.Should().Be(value);
+            BsonTypeMapper.MapToDotNetValue(result[0].GetValue("name")).ToString().Should().Be(value);
         }
     }
 

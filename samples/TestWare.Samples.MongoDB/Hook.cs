@@ -13,7 +13,7 @@ public sealed class Hook
     private readonly TestContext _testContext;
     private int _stepCounter;
     private static readonly LifeCycle _lifeCycle = new();
-    private static ExtentReport _testReport;
+    private static ExtentReport? _testReport;
 
     public Hook(TestContext testContext)
     {

@@ -16,13 +16,16 @@ public class MongoDbManager : EngineManagerBase, IEngineManager
 
     private static void RegisterSingle(IEnumerable<string> tags, TestConfiguration testConfiguration)
     {
-        var configName = Enum.GetName(ConfigurationTags.mongodb).ToUpperInvariant();
+        var configName = Enum.GetName(ConfigurationTags.mongodb)?.ToUpperInvariant();
         var capabilities = ConfigurationManager.GetCapabilities<Capabilities>(testConfiguration, configName);
-        var singleCapability = capabilities.FirstOrDefault(x => tags.Contains(x.Name.ToUpperInvariant()));
-        if (!ContainerManager.ExistsType(singleCapability.GetType()))
+        var singleCapability = capabilities.FirstOrDefault(x => tags.Contains(x?.Name?.ToUpperInvariant()));
+        if (singleCapability != null && !ContainerManager.ExistsType(singleCapability.GetType()))
         {
             var driver = ClientFactory.Create(singleCapability);
             ContainerManager.RegisterType(singleCapability.Name, driver);
+        }
+        else {
+            throw new NullReferenceException("No suitable capability found.");
         }
     }
 
