@@ -1,5 +1,7 @@
 ﻿using System.Globalization;
+using System.Reflection;
 using TestWare.Reporting.ExtentReport;
+using TestWare.SpecFlow.LivingDoc;
 
 namespace TestWare.Samples.Selenium.Web;
 
@@ -10,6 +12,7 @@ public sealed class Hook
     private int _stepCounter;
     private static readonly LifeCycle _lifeCycle = new();
     private static ExtentReport _testReport;
+    private static LivingDocReport _livingDoc;
 
     public Hook(TestContext testContext)
     {
@@ -64,6 +67,7 @@ public sealed class Hook
     {
         _lifeCycle.BeginTestExecution();
         _testReport = new ExtentReport(_lifeCycle.GetCurrentResultsDirectory());
+        _livingDoc = new LivingDocReport(_lifeCycle.GetCurrentResultsDirectory(), Assembly.GetExecutingAssembly().Location.ToString());
     }
 
     [AfterTestRun]
@@ -71,6 +75,7 @@ public sealed class Hook
     {
         _lifeCycle.EndTestExecution();
         _testReport.CreateTestReportFile();
+        _livingDoc.GenerateLivingDocReport();
     }
 
     [BeforeStep]
