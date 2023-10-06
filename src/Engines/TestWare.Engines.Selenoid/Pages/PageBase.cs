@@ -11,7 +11,7 @@ public abstract class PageBase
     protected const int TimeToWait = 15;
     protected const int NumberOfRetries = 5;
 
-    public IWebDriver Driver { get; protected set; }
+    public IWebDriver? Driver { get; protected set; }
 
     private readonly TimeSpan RetryAttemp = TimeSpan.FromMilliseconds(200);
 
@@ -32,6 +32,7 @@ public abstract class PageBase
     protected void ClickInnerElement(IWebElement element)
     {
         element = element ?? throw new ArgumentNullException(nameof(element), "Element to be clicked was null");
+        if (Driver == null) throw new ArgumentNullException(nameof(Driver));
 
         RetryPolicies.ExecuteActionWithRetries(
             () =>
@@ -97,6 +98,7 @@ public abstract class PageBase
 
     protected void WaitUntilElementIsClickable(IWebElement element, int timeToWait)
     {
+        if (Driver == null) throw new ArgumentNullException(nameof(Driver));
         var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
         webDriverWait.Until(ExpectedConditions.ElementToBeClickable(element));
     }
@@ -106,12 +108,14 @@ public abstract class PageBase
 
     protected void WaitUntilElementIsVisible(By locator, int timeToWait)
     {
+        if (Driver == null) throw new ArgumentNullException(nameof(Driver));
         var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(timeToWait));
         webDriverWait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
     }
 
     protected void WaitUntilElementNotVisible(By locator, int secondsToWait)
     {
+        if (Driver == null) throw new ArgumentNullException(nameof(Driver));
         Thread.Sleep(1000);
         var webDriverWait = new WebDriverWait(Driver, TimeSpan.FromSeconds(secondsToWait));
         webDriverWait.Until(ExpectedConditions.InvisibilityOfElementLocated(locator));

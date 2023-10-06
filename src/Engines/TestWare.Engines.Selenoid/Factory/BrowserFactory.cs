@@ -29,6 +29,7 @@ internal static class BrowserFactory
         options.AddArguments(capabilities.Arguments);
         options.AddAdditionalOption(SELENOID_OPTIONS_KEY, GenerateSelenoidCapabilities(capabilities));
 
+        if (capabilities.Uri == null) throw new ArgumentNullException(nameof(capabilities.Uri));
         return new RemoteWebDriver(new Uri(capabilities.Uri), options.ToCapabilities());
     }
     
@@ -38,6 +39,7 @@ internal static class BrowserFactory
         options.AddArguments(capabilities.Arguments);
         options.AddAdditionalOption(SELENOID_OPTIONS_KEY, GenerateSelenoidCapabilities(capabilities));
 
+        if (capabilities.Uri == null) throw new ArgumentNullException(nameof(capabilities.Uri));
         return new RemoteWebDriver(new Uri(capabilities.Uri), options.ToCapabilities());
     }
 
@@ -47,15 +49,22 @@ internal static class BrowserFactory
         options.AddArguments(capabilities.Arguments);
         options.AddAdditionalOption(SELENOID_OPTIONS_KEY, GenerateSelenoidCapabilities(capabilities));
 
+        if (capabilities.Uri == null) throw new ArgumentNullException(nameof(capabilities.Uri));
         return new RemoteWebDriver(new Uri(capabilities.Uri), options.ToCapabilities());
     }
 
     private static Dictionary<string, object> GenerateSelenoidCapabilities(Capabilities capabilities) 
     {
+        if (capabilities.BrowserName == null || capabilities.BrowserVersion == null || capabilities.ScreenResolution == null) 
+        {
+            throw new ArgumentNullException(nameof(capabilities));
+        }
         var browser = (SupportedBrowsers)Enum.Parse(typeof(SupportedBrowsers), capabilities.BrowserName);
+        var supportedBrowser = SupportedBrowsersHelper.GetBrowserName(browser) ?? throw new ArgumentNullException(nameof(browser));
+
         return new Dictionary<string, object>
         {
-            ["browserName"] = SupportedBrowsersHelper.GetBrowserName(browser),
+            ["browserName"] = supportedBrowser,
             ["browserVersion"] = capabilities.BrowserVersion,
             ["screenResolution"] = capabilities.ScreenResolution,
             ["name"] = capabilities.BrowserName,
