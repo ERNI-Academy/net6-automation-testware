@@ -1,0 +1,14 @@
+{
+  "Configurations": [
+    {
+      "Tag": "MongoDB",
+      "Capabilities": [
+        {
+          "Name": "MongoDB",
+          "ConnectionString": "mongodb://guest:guest@localhost:27017/"
+        }
+      ]
+    }
+  ],
+  "TestResultPath": "C:\\workspace\\ERNI\\results\\"
+}

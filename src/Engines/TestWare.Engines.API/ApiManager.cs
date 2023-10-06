@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Text.Json;
 using TestWare.Core;
 using TestWare.Core.Configuration;
@@ -70,7 +71,12 @@ public class RestSharpManager : EngineManagerBase, IEngineManager
         {
             var responses = apiClient.GetRestResponses();
             var instanceName = ContainerManager.GetNameFromInstance(apiClient);
-            var evidenceData = JsonSerializer.Serialize(responses);
+            var serializeOptions = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            };
+            var evidenceData = JsonSerializer.Serialize(responses, serializeOptions);
             var evidencePath = Path.Combine(destinationPath, $"{evidenceName} - {instanceName}.json");
             File.WriteAllText(evidencePath, evidenceData);
             apiClient.ClearResponseQueue();
