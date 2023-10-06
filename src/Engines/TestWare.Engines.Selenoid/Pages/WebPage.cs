@@ -15,10 +15,8 @@ public abstract class WebPage : PageBase
 
     public void NavigateToUrl()
     {
-        if (Url == null) {
-            throw new NullReferenceException("Url variable was null");
-        }
-        Driver.Navigate().GoToUrl(new Uri(Url));            
+        if (Url == null) throw new NullReferenceException("Url variable was null");
+        Driver?.Navigate().GoToUrl(new Uri(Url));            
     }
 
     protected string AcceptDialog()
@@ -26,6 +24,7 @@ public abstract class WebPage : PageBase
 
     protected string AcceptDialog(int timeToWait)
     {
+        if (Driver == null) throw new NullReferenceException("Driver variable was null");
         IAlert alert = ExpectedConditions.AlertIsPresent().Invoke(Driver);
         var content = alert.Text;
         alert.Accept();
