@@ -65,6 +65,7 @@ jobs:
           with:
             path: '.\TestConfiguration.Web.json'
         - name: Echo configuration.json
+          continue-on-error: true
           run: echo "${{ steps.config_file.outputs.content }}"
         - name: Run tests
           run: dotnet test TestWare.Samples.Selenium.Web.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
@@ -89,6 +90,7 @@ jobs:
             reporter: dotnet-trx
           
   allure-results:
+    needs: web-tests
     uses: ./.github/workflows/Allure_Report.yml
     with:
       artifact_name: 'allure-results-web'
