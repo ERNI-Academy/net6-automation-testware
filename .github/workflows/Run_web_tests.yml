@@ -76,8 +76,8 @@ jobs:
             path: |
               ${{ inputs.test_results_path }}
         - name: Archive Testing artifacts - Allure
-            uses: actions/upload-artifact@v2
-            with:
+          uses: actions/upload-artifact@v2
+          with:
               name: allure-results-web
               path: '.\allure-results'
         - name: Test Report
