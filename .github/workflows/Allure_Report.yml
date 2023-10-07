@@ -31,6 +31,8 @@ jobs:
                   ${{ inputs.workflow }}
                 name: |
                   ${{ inputs.artifact_name }}
+                workflow_conclusion: success
+                path: allure-results
 
           - name: Allure Report action from marketplace
             uses: simple-elf/allure-report-action@master

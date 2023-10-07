@@ -58,6 +58,12 @@ jobs:
             Configurations.1.Capabilities.1.Path: ${{ env.driverPathRaw }}
             Configurations.1.Capabilities.2.Driver: ${{ matrix.browser }}
             Configurations.1.Capabilities.2.Path: ${{ env.driverPathRaw }}
+            Configurations.1.Capabilities.3.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.3.Path: ${{ env.driverPathRaw }}
+            Configurations.1.Capabilities.4.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.4.Path: ${{ env.driverPathRaw }}
+            Configurations.1.Capabilities.5.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.5.Path: ${{ env.driverPathRaw }}
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Read configuration
           id: config_file
@@ -95,5 +101,5 @@ jobs:
     if: always()
     uses: ./.github/workflows/Allure_Report.yml
     with:
-      artifact_name: 'allure-results-web'
-      workflow: 'Run_web_tests.yml'
+      artifact_name: allure-results-web
+      workflow: Run_web_tests.yml
