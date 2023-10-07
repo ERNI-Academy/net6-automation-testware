@@ -77,6 +77,7 @@ jobs:
             path: |
               ${{ inputs.test_results_path }}
         - name: Archive Testing artifacts - Allure
+          if: always()
           uses: actions/upload-artifact@v2
           with:
               name: allure-results-web
@@ -91,6 +92,7 @@ jobs:
           
   allure-results:
     needs: web-tests
+    if: always()
     uses: ./.github/workflows/Allure_Report.yml
     with:
       artifact_name: 'allure-results-web'

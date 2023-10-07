@@ -89,9 +89,7 @@
       "Capabilities": [
         {
           "IssueTrackerBaseUrl": "https://www.myissuetracker.com/",
-          "IssueTagRegex": "^issue:(\\d+)",
           "TestManagementSystemBaseUrl": "https://www.mytms.com/",
-          "TestManagementSystemTagRegex": "^tms:(\\d+)",
           "EnvironmentValues": [
             {
               "key": "System",
