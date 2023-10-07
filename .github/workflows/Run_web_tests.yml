@@ -75,6 +75,11 @@ jobs:
             name: web-${{ matrix.browser }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
+        - name: Archive Testing artifacts - Allure
+            uses: actions/upload-artifact@v2
+            with:
+              name: allure-results-web
+              path: '.\allure-results'
         - name: Test Report
           uses: dorny/test-reporter@v1
           if: success() || failure()
@@ -82,3 +87,9 @@ jobs:
             name: Report - WEB (${{ matrix.browser }} - ${{ matrix.os }})
             path: ${{ inputs.test_results_path }}/results.trx
             reporter: dotnet-trx
+          
+  allure-results:
+    uses: ./.github/workflows/Allure_Report.yml
+    with:
+      artifact_name: 'allure-results-web'
+      workflow: 'Run_web_tests.yml'
