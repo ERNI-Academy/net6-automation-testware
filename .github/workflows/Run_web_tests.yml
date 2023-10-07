@@ -86,7 +86,7 @@ jobs:
           if: always()
           uses: actions/upload-artifact@v2
           with:
-              name: allure-results-web
+              name: allure-results
               path: '.\allure-results'
         - name: Test Report
           uses: dorny/test-reporter@v1
@@ -101,5 +101,5 @@ jobs:
     if: always()
     uses: ./.github/workflows/Allure_Report.yml
     with:
-      artifact_name: allure-results-web
+      artifact_name: allure-results
       workflow: Run_web_tests.yml

@@ -27,11 +27,8 @@ jobs:
               
           - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
             with:
-                workflow: |
-                  ${{ inputs.workflow }}
-                name: |
-                  ${{ inputs.artifact_name }}
-                workflow_conclusion: success, failure, completed
+                workflow: ${{ inputs.workflow }}
+                name: ${{ inputs.artifact_name }}
                 path: allure-results
 
           - name: Allure Report action from marketplace

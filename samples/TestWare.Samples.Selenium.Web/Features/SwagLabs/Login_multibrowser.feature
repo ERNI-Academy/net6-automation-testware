@@ -14,5 +14,5 @@ Scenario: Login on multiple browsers and logout browser2
 	And the user enters password 'secret_sauce' on all
 	And the user clicks submit on all
 	And the user can login on all
-	When the user clicks Logout button on 'browser2' 
-	Then the user is at Login page on 'browser2'
+	When the user clicks Logout button on 'browser2Swaglabs' 
+	Then the user is at Login page on 'browser2Swaglabs'
