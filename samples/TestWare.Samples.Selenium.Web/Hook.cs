@@ -66,8 +66,11 @@ public sealed class Hook
     {
         _lifeCycle.BeginTestExecution();
         _extentReport = new ExtentReport(_lifeCycle.GetCurrentResultsDirectory());
-        _allureReport = new AllureReport();
+
+        var allureConfiguration = _lifeCycle.TestConfiguration.Configurations.First(x=>x.Tag == "AllureConfiguration");
+        _allureReport = new AllureReport(allureConfiguration.Capabilities.FirstOrDefault());
         _allureReport.CleanResultsFolder();
+        _allureReport.GenerateAllureEnvironmentFile();
     }
 
     [AfterTestRun]

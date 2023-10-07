@@ -41,6 +41,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Update="specflow.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	  <None Update="TestConfiguration.Web.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
