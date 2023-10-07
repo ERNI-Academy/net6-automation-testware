@@ -16,12 +16,11 @@ public class AllureReport
 
     public AllureReport(JsonObject capabilities)
     {
-        if (capabilities == null) throw new ArgumentNullException(nameof(capabilities));
-        AllureCapabilities = JsonConvert.DeserializeObject<Capabilities>(capabilities.ToString());
 
-        if (AllureCapabilities == null) throw new ArgumentNullException(nameof(AllureCapabilities));
-        SetIssueTrackerBaseUrl(AllureCapabilities.IssueTrackerBaseUrl);
-        SetTestManagementSystemBaseUrl(AllureCapabilities.TestManagementSystemBaseUrl);
+        AllureCapabilities = JsonConvert.DeserializeObject<Capabilities>(capabilities.ToString()) ?? throw new ArgumentNullException(nameof(capabilities));
+
+        SetIssueTrackerBaseUrl(AllureCapabilities.IssueTrackerBaseUrl ?? throw new ArgumentNullException(nameof(AllureCapabilities.IssueTrackerBaseUrl)));
+        SetTestManagementSystemBaseUrl(AllureCapabilities.TestManagementSystemBaseUrl ?? throw new ArgumentNullException(nameof(AllureCapabilities.TestManagementSystemBaseUrl)));
     }
 
     public void AddAttachment(string path, string attachmentTitle)
