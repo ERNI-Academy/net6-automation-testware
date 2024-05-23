@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using TestWare.Core.Libraries;
-using TestWare.Engines.Selenium.Extras;
+using TestWare.Engines.Common.Extras;
 
 namespace TestWare.Engines.Selenium.Pages;
 

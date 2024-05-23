@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using TestWare.Engines.Selenium.Extras;
+using TestWare.Engines.Common.Extras;
 using TestWare.Engines.Selenium.Factory;
 
 namespace TestWare.Engines.Selenium.Pages;
