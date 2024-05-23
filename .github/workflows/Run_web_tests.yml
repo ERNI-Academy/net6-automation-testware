@@ -58,6 +58,12 @@ jobs:
             Configurations.1.Capabilities.1.Path: ${{ env.driverPathRaw }}
             Configurations.1.Capabilities.2.Driver: ${{ matrix.browser }}
             Configurations.1.Capabilities.2.Path: ${{ env.driverPathRaw }}
+            Configurations.1.Capabilities.3.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.3.Path: ${{ env.driverPathRaw }}
+            Configurations.1.Capabilities.4.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.4.Path: ${{ env.driverPathRaw }}
+            Configurations.1.Capabilities.5.Driver: ${{ matrix.browser }}
+            Configurations.1.Capabilities.5.Path: ${{ env.driverPathRaw }}
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Read configuration
           id: config_file
@@ -65,6 +71,7 @@ jobs:
           with:
             path: '.\TestConfiguration.Web.json'
         - name: Echo configuration.json
+          continue-on-error: true
           run: echo "${{ steps.config_file.outputs.content }}"
         - name: Run tests
           run: dotnet test TestWare.Samples.Selenium.Web.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
@@ -75,6 +82,12 @@ jobs:
             name: web-${{ matrix.browser }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
+        - name: Archive Testing artifacts - Allure
+          if: always()
+          uses: actions/upload-artifact@v2
+          with:
+              name: allure-results
+              path: '.\allure-results'
         - name: Test Report
           uses: dorny/test-reporter@v1
           if: success() || failure()
@@ -82,3 +95,11 @@ jobs:
             name: Report - WEB (${{ matrix.browser }} - ${{ matrix.os }})
             path: ${{ inputs.test_results_path }}/results.trx
             reporter: dotnet-trx
+          
+  allure-results:
+    needs: web-tests
+    if: always()
+    uses: ./.github/workflows/Allure_Report.yml
+    with:
+      artifact_name: allure-results
+      workflow: Run_web_tests.yml

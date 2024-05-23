@@ -83,6 +83,25 @@
           ]
         }
       ]
+    },
+    {
+      "Tag": "AllureConfiguration",
+      "Capabilities": [
+        {
+          "IssueTrackerBaseUrl": "https://www.myissuetracker.com/",
+          "TestManagementSystemBaseUrl": "https://www.mytms.com/",
+          "EnvironmentValues": [
+            {
+              "key": "System",
+              "value": "Windows"
+            },
+            {
+              "key": "WebDriver",
+              "value": "Chrome"
+            }
+          ]
+        }
+      ]
     }
   ],
   "TestResultPath": "C:\\workspace\\ERNI\\results\\"

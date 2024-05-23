@@ -29,6 +29,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\src\Core\TestWare.AllureReport\TestWare.AllureReport.csproj" />
 		<ProjectReference Include="..\..\src\Core\TestWare.TestReport\TestWare.ExtentReport.csproj" />
 		<ProjectReference Include="..\..\src\Engines\TestWare.Engines.Selenium\TestWare.Engines.Selenium.csproj" />
 	</ItemGroup>
@@ -40,6 +41,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Update="specflow.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	  <None Update="TestConfiguration.Web.json">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
