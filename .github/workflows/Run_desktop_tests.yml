@@ -24,7 +24,7 @@ jobs:
           uses: actions/setup-dotnet@v1
           with:
             dotnet-version: 6.0.x
-        - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
+        - uses: dawidd6/action-download-artifact@v3.1.4
           with:
             workflow: CI.yml
             name: testing-artifact-winappdriver
