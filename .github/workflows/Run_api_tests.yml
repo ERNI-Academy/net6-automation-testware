@@ -33,7 +33,7 @@ jobs:
         - name: Run tests
           run: dotnet test TestWare.Samples.API.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
         - name: Archive Testing results - API
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: results-API-${{ matrix.os }}
             path: ${{ inputs.test_results_path }}/results.trx

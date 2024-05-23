@@ -56,13 +56,13 @@ jobs:
           run: dotnet test TestWare.Samples.WinAppDriver.Desktop.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"  --filter TestCategory!=WindowsCalculator
         - name: Archive DESKTOP (${{ matrix.os }}) screenshots
           if: always()
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: desktop-${{ matrix.os }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
         - name: Archive Testing results - DESKTOP
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: results-DESKTOP-${{ matrix.os }}
             path: ${{ inputs.test_results_path }}/results.trx

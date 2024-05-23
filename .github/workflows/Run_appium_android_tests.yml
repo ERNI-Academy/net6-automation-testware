@@ -64,13 +64,13 @@ jobs:
         
         - name: Archive Mobile (${{ matrix.os }}) screenshots
           if: always()
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: appium-${{ matrix.os }}-android-screenshots
             path: |
               ${{ inputs.test_results_path }}
         - name: Archive Testing results - MOBILE_ANDROID
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: results-MOBILE_ANDROID-${{ matrix.os }}
             path: ${{ inputs.test_results_path }}/results.trx

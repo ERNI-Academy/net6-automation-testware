@@ -83,13 +83,13 @@ jobs:
             path: |
               ${{ inputs.test_results_path }}
         - name: Archive Testing results - WEB
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
             name: results-WEB-${{ matrix.browser }}
             path: ${{ inputs.test_results_path }}/results.trx
         - name: Archive Testing artifacts - Allure
           if: always()
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v4
           with:
               name: allure-results
               path: '.\allure-results'

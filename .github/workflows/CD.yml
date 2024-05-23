@@ -55,26 +55,11 @@ jobs:
     if: always()
     runs-on: ubuntu-latest
     steps:
-      - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
+      - uses: actions/download-artifact@v4
         with:
-          workflow: Run_api_tests.yml
+          pattern: results-*
           path: results
-      - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
-        with:
-          workflow: Run_web_tests.yml
-          path: results
-      - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
-        with:
-          workflow: Run_desktop_tests.yml
-          path: results
-      - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
-        with:
-          workflow: Run_appium_android_tests.yml
-          path: results
-      - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
-        with:
-          workflow: Run_appium_ios_tests.yml
-          path: results
+      
 
       - name: Publish Summary Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
