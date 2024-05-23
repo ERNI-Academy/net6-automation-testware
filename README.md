@@ -1,6 +1,6 @@
 [![Continuous-Integration](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml/badge.svg)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/CI.yml)
 
-[![SonarQube Scanner](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml/badge.svg?branch=main)](https://github.com/ERNI-Academy/net6-automation-testware/actions/workflows/Sonar_Scanner.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ERNI-Academy_net6-automation-testware&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ERNI-Academy_net6-automation-testware)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
