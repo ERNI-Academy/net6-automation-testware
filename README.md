@@ -150,9 +150,7 @@ Evidence collection:
             "Capabilities": [
                 {
                     "Name": "WebDriver",
-                    "Path": "C:\\workspace\\Drivers",
                     "Driver": "Chrome",
-                    "CommandTimeOutInMinutes": 5,
                     "Arguments": [
                         "--start-maximized"
                     ]
