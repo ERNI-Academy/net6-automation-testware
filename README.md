@@ -34,7 +34,7 @@ Testware provides capabilities to automate:
         <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>
         <img src="https://github.com/devicons/devicon/blob/master/icons/ie10/ie10-original.svg" title="IE" alt="IE" width="40" height="40"/>
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Microsoft_Edge_Dev_Icon_%282019%29.svg" title="Edge" alt="Edge" width="40" height="40"/>
-- **Websites** (using Selenoid)
+- **Websites** (using [Selenoid](https://aerokube.com/selenoid/latest/))
   - Supported Browsers:  
         <img src="https://github.com/devicons/devicon/blob/master/icons/chrome/chrome-original-wordmark.svg" title="Chrome" alt="Chrome" width="40" height="40"/>
         <img src="https://github.com/devicons/devicon/blob/master/icons/firefox/firefox-original-wordmark.svg" title="Firefox" alt="Firefox" width="40" height="40"/>
