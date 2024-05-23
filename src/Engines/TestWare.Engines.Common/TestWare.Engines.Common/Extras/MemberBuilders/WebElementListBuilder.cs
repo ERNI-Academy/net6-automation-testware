@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using OpenQA.Selenium;
+using TestWare.Engines.Common.Extras;
 
 namespace TestWare.Engines.Selenium.Extras.MemberBuilders;
 
