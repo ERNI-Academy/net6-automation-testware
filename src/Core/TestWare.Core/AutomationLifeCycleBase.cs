@@ -142,7 +142,7 @@ public abstract class AutomationLifeCycleBase : IAutomationLifeCycle
 
     protected virtual string ResultPathValidation(string path)
     {
-        path = Regex.Replace(path, @"[^a-zA-Z0-9- \\$:_]+", string.Empty, RegexOptions.Compiled);
+        path = Regex.Replace(path, @"[^a-zA-Z0-9- \\$:_]+", string.Empty, RegexOptions.Compiled, TimeSpan.FromSeconds(1));
         path = path.Length < 247 ? path : path[..244];
         return path;
     }
