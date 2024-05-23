@@ -4,6 +4,9 @@ namespace TestWare.Engines.Selenium.Factory;
 
 public class ChromeDriver : OpenQA.Selenium.Chrome.ChromeDriver, IBrowserDriver
 {
+    public ChromeDriver() : base()
+    {
+    }
     public ChromeDriver(ChromeOptions options) : base(options)
     {
     }

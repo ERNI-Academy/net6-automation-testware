@@ -4,6 +4,10 @@ namespace TestWare.Engines.Selenium.Factory;
 
 public class EdgeDriver : OpenQA.Selenium.Edge.EdgeDriver, IBrowserDriver
 {
+    public EdgeDriver() : base()
+    {
+    }
+
     public EdgeDriver(EdgeOptions options) : base(options)
     {
     }

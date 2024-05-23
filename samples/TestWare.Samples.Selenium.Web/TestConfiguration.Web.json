@@ -5,10 +5,8 @@
       "Capabilities": [
         {
           "Name": "WebDriver",
-          "Path": "C:\\workspace\\Drivers",
-          "Driver": "Chrome",
+          "Driver": "Firefox",
           "BaseUrl": "https://www.saucedemo.com/",
-          "CommandTimeOutInMinutes": 5,
           "Arguments": [
             "--start-maximized"
           ]
@@ -20,10 +18,8 @@
       "Capabilities": [
         {
           "Name": "browser1Chat",
-          "Path": "C:\\workspace\\Drivers",
           "Driver": "Chrome",
-          "BaseUrl": "https://stin.to/en",
-          "CommandTimeOutInMinutes": 5,
+          "BaseUrl": "https://www.chatzy.com/",
           "Arguments": [
             "-window-position=0,0",
             "--window-size=800,600"
@@ -31,31 +27,16 @@
         },
         {
           "Name": "browser2Chat",
-          "Path": "C:\\workspace\\Drivers",
-          "Driver": "Chrome",
-          "BaseUrl": "https://stin.to/en",
-          "CommandTimeOutInMinutes": 5,
-          "Arguments": [
-            "-window-position=800,0",
-            "--window-size=800,600"
-          ]
-        },
-        {
-          "Name": "browser3Chat",
-          "Path": "C:\\workspace\\Drivers",
           "Driver": "Firefox",
-          "BaseUrl": "https://stin.to/en",
-          "CommandTimeOutInMinutes": 5,
+          "BaseUrl": "https://www.chatzy.com/",
           "Arguments": [
             "--start-maximized"
           ]
         },
         {
           "Name": "browser1Swaglabs",
-          "Path": "C:\\workspace\\Drivers",
           "Driver": "Chrome",
           "BaseUrl": "https://www.saucedemo.com/",
-          "CommandTimeOutInMinutes": 5,
           "Arguments": [
             "-window-position=0,0",
             "--window-size=800,600"
@@ -63,10 +44,8 @@
         },
         {
           "Name": "browser2Swaglabs",
-          "Path": "C:\\workspace\\Drivers",
           "Driver": "Chrome",
           "BaseUrl": "https://www.saucedemo.com/",
-          "CommandTimeOutInMinutes": 5,
           "Arguments": [
             "-window-position=800,0",
             "--window-size=800,600"
@@ -74,10 +53,8 @@
         },
         {
           "Name": "browser3Swaglabs",
-          "Path": "C:\\workspace\\Drivers",
           "Driver": "Firefox",
           "BaseUrl": "https://www.saucedemo.com/",
-          "CommandTimeOutInMinutes": 5,
           "Arguments": [
             "--start-maximized"
           ]
