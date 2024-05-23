@@ -7,11 +7,12 @@
 
   <ItemGroup>
     <PackageReference Include="Appium.WebDriver" Version="5.0.0-beta01" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.1.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.21.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\TestWare.Core\TestWare.Core.csproj" />
+    <ProjectReference Include="..\TestWare.Engines.Common\TestWare.Engines.Common\TestWare.Engines.Common.csproj" />
   </ItemGroup>
 
 </Project>

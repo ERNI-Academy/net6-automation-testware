@@ -1,0 +1,65 @@
+{
+    "chrome": {
+        "default": "111.0",
+        "versions": {
+            "111.0": {
+                "image": "selenoid/chrome:111.0",
+                "port": "4444",
+                "volumes": ["/c/temp/downloads:/home/selenium/Downloads"],
+                "path": "/",
+                "tmpfs": {
+                    "/tmp": "size=128m"
+                }
+            },
+            "94.0": {
+                "image": "selenoid/chrome:94.0",
+                "port": "4444",
+                "volumes": ["/c/temp/downloads:/home/selenium/Downloads"],
+                "path": "/",
+                "tmpfs": {
+                    "/tmp": "size=128m"
+                }
+            }
+        }
+    },
+    "firefox": {
+        "default": "110.0",
+        "versions": {
+            "110.0": {
+                "image": "selenoid/firefox:110.0",
+                "port": "4444",
+                "volumes": ["/c/temp/downloads:/home/selenium/Downloads"],
+                "path": "/wd/hub",
+                "tmpfs": {
+                    "/tmp": "size=128m"
+                }
+            },
+            "92.0": {
+                "image": "selenoid/firefox:92.0",
+                "port": "4444",
+                "volumes": ["/c/temp/downloads:/home/selenium/Downloads"],
+                "path": "/wd/hub",
+                "tmpfs": {
+                    "/tmp": "size=128m"
+                }
+            }
+        }
+    },
+    "MicrosoftEdge": {
+        "default": "111.0",
+        "versions": {
+            "111.0": {
+                "image": "browsers/edge:111.0",
+                "port": "4444",
+                "volumes": ["/c/temp/downloads:/home/selenium/Downloads"],
+                "path": "/"
+            },
+            "94.0": {
+                "image": "browsers/edge:94.0",
+                "port": "4444",
+                "volumes": ["/c/temp/downloads:/home/selenium/Downloads"],
+                "path": "/"
+            }
+        }
+    }
+}

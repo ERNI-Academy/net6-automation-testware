@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium.Appium;
 using OpenQA.Selenium;
-using TestWare.Engines.Appium.Extras;
+using TestWare.Engines.Common.Extras;
 using TestWare.Engines.Appium.WinAppDriver.Factory;
 using TestWare.Engines.Appium.WinAppDriver.Pages;
 using Humanizer;

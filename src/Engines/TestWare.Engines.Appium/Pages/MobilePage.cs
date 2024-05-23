@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.MultiTouch;
 using System.Drawing;
-using TestWare.Engines.Appium.Extras;
+using TestWare.Engines.Common.Extras;
 using TestWare.Engines.Appium.Factory;
 using TestWare.Engines.Selenium.Pages;
 
