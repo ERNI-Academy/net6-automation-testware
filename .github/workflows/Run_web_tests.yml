@@ -82,7 +82,7 @@ jobs:
             name: web-${{ matrix.browser }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
-        - name: Archive Testing artifacts - WEB
+        - name: Archive Testing results - WEB
           uses: actions/upload-artifact@v2
           with:
             name: results-WEB-${{ matrix.os }}
