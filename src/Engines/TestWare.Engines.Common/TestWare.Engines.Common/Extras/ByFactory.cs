@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 
 namespace TestWare.Engines.Common.Extras;
 
@@ -37,6 +38,8 @@ internal static class ByFactory
                 return By.PartialLinkText(usingValue);
             case How.XPath:
                 return By.XPath(usingValue);
+            case How.AccessibilityId:
+                return MobileBy.AccessibilityId(usingValue);
             case How.Custom:
                 if (attribute.CustomFinderType == null)
                 {

@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Appium;
-using TestWare.Engines.Appium.Extras;
+using TestWare.Engines.Common.Extras;
 using TestWare.Engines.Appium.WinAppDriver.Factory;
 using TestWare.Engines.Appium.WinAppDriver.Pages;
 

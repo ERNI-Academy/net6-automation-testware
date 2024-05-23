@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using TestWare.Core.Libraries;
-using TestWare.Engines.Selenium.Extras;
+using TestWare.Engines.Common.Extras;
 using TestWare.Engines.Selenium.Factory;
 using TestWare.Engines.Selenium.Pages;
 

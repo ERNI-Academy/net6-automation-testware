@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using TestWare.Engines.Selenoid.Extras;
+using TestWare.Engines.Common.Extras;
 using TestWare.Engines.Selenoid.Factory;
 using TestWare.Engines.Selenoid.Pages;
 

@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TestWare.Engines.Appium\TestWare.Engines.Appium.csproj" />
-    <ProjectReference Include="..\TestWare.Engines.Selenium\TestWare.Engines.Selenium.csproj" />
+    <ProjectReference Include="..\TestWare.Engines.Common\TestWare.Engines.Common\TestWare.Engines.Common.csproj" />
   </ItemGroup>
 
 </Project>

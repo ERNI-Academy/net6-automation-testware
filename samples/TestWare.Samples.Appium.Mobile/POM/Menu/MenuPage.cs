@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 using TestWare.Engines.Appium.Pages;
-using TestWare.Engines.Appium.Extras;
+using TestWare.Engines.Common.Extras;
 using TestWare.Engines.Appium.Factory;
 
 namespace TestWare.Samples.Appium.Mobile.POM.Menu;

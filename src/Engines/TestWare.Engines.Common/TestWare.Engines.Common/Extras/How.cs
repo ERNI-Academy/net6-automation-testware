@@ -49,5 +49,10 @@ public enum How
     /// <summary>
     /// Finds by a custom <see cref="By"/> implementation.
     /// </summary>
-    Custom
+    Custom,
+
+    /// <summary>
+    /// Finds by <see cref="OpenQA.Selenium.Appium.MobileBy.AccessibilityId" />
+    /// </summary>
+    AccessibilityId
 }
