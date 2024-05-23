@@ -39,3 +39,8 @@ jobs:
             name: Report - API Tests - (${{ matrix.os }})
             path: ${{ inputs.test_results_path }}/results.trx
             reporter: dotnet-trx
+        - name: Publish Test Results
+          uses: EnricoMi/publish-unit-test-result-action@v2
+          if: always()
+          with:
+            files: ${{ inputs.test_results_path }}/results.trx
