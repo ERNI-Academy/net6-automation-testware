@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using TestWare.Engines.Selenoid.Extras;
+using TestWare.Engines.Common.Extras;
 
 namespace TestWare.Engines.Selenoid.Pages;
 

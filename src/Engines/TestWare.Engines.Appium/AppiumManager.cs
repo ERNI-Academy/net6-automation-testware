@@ -68,7 +68,7 @@ public class AppiumManager : EngineManagerBase, IEngineManager
             }
 
             var screenshot = ((ITakesScreenshot)appiumDriver).GetScreenshot();
-            screenshot.SaveAsFile(Path.Combine(destinationPath, $"{evidenceName}.png"), ScreenshotImageFormat.Png);
+            screenshot.SaveAsFile(Path.Combine(destinationPath, $"{evidenceName}.png"));
         }
         catch 
         {
