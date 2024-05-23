@@ -27,9 +27,7 @@ internal static class BrowserFactory
         ChromeOptions options = new();
         options.AddArguments(capabilities.Arguments);
 
-        var driver = new ChromeDriver(ChromeDriverService.CreateDefaultService(capabilities.Path),
-                                options,
-                                TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+        var driver = new ChromeDriver(options);
 
         driver.Navigate().GoToUrl(capabilities.BaseUrl);
 
@@ -41,9 +39,7 @@ internal static class BrowserFactory
         FirefoxOptions options = new();
         options.AddArguments(capabilities.Arguments);
 
-        var driver = new FirefoxDriver(FirefoxDriverService.CreateDefaultService(capabilities.Path),
-                                options,
-                                TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+        var driver = new FirefoxDriver(options);
 
         driver.Navigate().GoToUrl(capabilities.BaseUrl);
 
@@ -54,9 +50,7 @@ internal static class BrowserFactory
     {
         InternetExplorerOptions options = new();
 
-        var driver = new InternetExplorerDriver(InternetExplorerDriverService.CreateDefaultService(capabilities.Path),
-                                options,
-                                TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+        var driver = new InternetExplorerDriver(options);
 
         driver.Navigate().GoToUrl(capabilities.BaseUrl);
 
@@ -68,9 +62,7 @@ internal static class BrowserFactory
         EdgeOptions options = new();
         options.AddArguments(capabilities.Arguments);
 
-        var driver = new EdgeDriver(EdgeDriverService.CreateDefaultService(capabilities.Path),
-                                options,
-                                TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
+        var driver = new EdgeDriver(options);
 
         driver.Navigate().GoToUrl(capabilities.BaseUrl);
 
