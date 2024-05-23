@@ -82,24 +82,18 @@ jobs:
             name: web-${{ matrix.browser }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
+        - name: Archive Testing artifacts - WEB
+          uses: actions/upload-artifact@v2
+          with:
+            name: results-WEB-${{ matrix.os }}
+            path: ${{ inputs.test_results_path }}/results.trx
         - name: Archive Testing artifacts - Allure
           if: always()
           uses: actions/upload-artifact@v2
           with:
               name: allure-results
               path: '.\allure-results'
-        - name: Test Report
-          uses: dorny/test-reporter@v1
-          if: success() || failure()
-          with:
-            name: Report - WEB (${{ matrix.browser }} - ${{ matrix.os }})
-            path: ${{ inputs.test_results_path }}/results.trx
-            reporter: dotnet-trx
-        - name: Publish Test Results
-          uses: EnricoMi/publish-unit-test-result-action@v2
-          if: always()
-          with:
-            files: ${{ inputs.test_results_path }}/results.trx
+
           
   allure-results:
     needs: web-tests

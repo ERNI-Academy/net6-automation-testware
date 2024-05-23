@@ -61,10 +61,8 @@ jobs:
             name: desktop-${{ matrix.os }}-screenshots
             path: |
               ${{ inputs.test_results_path }}
-        - name: Test Report
-          uses: dorny/test-reporter@v1
-          if: success() || failure()
+        - name: Archive Testing results - DESKTOP
+          uses: actions/upload-artifact@v2
           with:
-            name: Report - Desktop Tests - (${{ matrix.os }})
+            name: results-DESKTOP-${{ matrix.os }}
             path: ${{ inputs.test_results_path }}/results.trx
-            reporter: dotnet-trx

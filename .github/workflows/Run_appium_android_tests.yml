@@ -69,10 +69,8 @@ jobs:
             name: appium-${{ matrix.os }}-android-screenshots
             path: |
               ${{ inputs.test_results_path }}
-        - name: Test Report
-          uses: dorny/test-reporter@v1
-          if: success() || failure()
+        - name: Archive Testing results - MOBILE_ANDROID
+          uses: actions/upload-artifact@v2
           with:
-            name: Report - Mobile Tests - (Android)
+            name: results-MOBILE_ANDROID-${{ matrix.os }}
             path: ${{ inputs.test_results_path }}/results.trx
-            reporter: dotnet-trx

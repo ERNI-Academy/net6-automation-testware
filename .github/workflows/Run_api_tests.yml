@@ -32,15 +32,8 @@ jobs:
           run: git init
         - name: Run tests
           run: dotnet test TestWare.Samples.API.dll --logger "trx;LogFileName=results.trx" --results-directory "${{ inputs.test_results_path }}"
-        - name: Test Report
-          uses: dorny/test-reporter@v1
-          if: success() || failure()
+        - name: Archive Testing results - API
+          uses: actions/upload-artifact@v2
           with:
-            name: Report - API Tests - (${{ matrix.os }})
+            name: results-API-${{ matrix.os }}
             path: ${{ inputs.test_results_path }}/results.trx
-            reporter: dotnet-trx
-        - name: Publish Test Results
-          uses: EnricoMi/publish-unit-test-result-action@v2
-          if: always()
-          with:
-            files: ${{ inputs.test_results_path }}/results.trx

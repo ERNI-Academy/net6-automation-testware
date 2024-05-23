@@ -44,3 +44,25 @@ jobs:
       environment: >-
         ["macOs-latest"]
       test_results_path: './results'
+      
+  publish-test-results:
+    needs: 
+        - api-tests
+        - web-tests
+        - desktop-tests
+        - android-tests
+        - ios-tests
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download All Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: results
+          pattern: results-*
+          merge-multiple: true
+
+      - name: Publish Summary Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          files: "results/**/*.trx"
