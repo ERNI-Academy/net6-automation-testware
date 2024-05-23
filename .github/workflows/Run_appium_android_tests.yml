@@ -24,9 +24,8 @@ jobs:
           uses: actions/setup-dotnet@v1
           with:
             dotnet-version: 6.0.x
-        - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
+        - uses: actions/download-artifact@v4
           with:
-            workflow: CI.yml
             name: testing-artifact-appium-mobile
         - name: Run git init
           run: git init
