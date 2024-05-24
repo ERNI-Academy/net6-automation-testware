@@ -41,7 +41,7 @@ jobs:
           id: AppiumStatus
           uses: fjogeleit/http-request-action@master
           with:
-            url: 'http://127.0.0.1:4723/wd/hub/status'
+            url: 'http://0.0.0.0:4723/wd/hub/status'
             method: 'GET'
         - name: Show Response
           run: echo "${{ steps.AppiumStatus.outputs.response }}"
