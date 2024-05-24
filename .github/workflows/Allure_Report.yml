@@ -22,6 +22,7 @@ jobs:
             with:
               pattern: allure-results-*
               path: allure-results
+              merge-multiple: true
 
           - name: Allure Report action from marketplace
             uses: simple-elf/allure-report-action@master
