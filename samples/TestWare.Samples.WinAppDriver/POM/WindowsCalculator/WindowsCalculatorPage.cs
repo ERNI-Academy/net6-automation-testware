@@ -16,19 +16,19 @@ public class WindowsCalculatorPage : WinAppDriverPage, IWindowsCalculatorPage
 {
 #nullable enable
 
-    [FindsBy(How = How.Name, Using = "Equals")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "Equals")]
     private IWebElement EqualsButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "Plus")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "Plus")]
     private IWebElement AdditionButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "Minus")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "Minus")]
     private IWebElement MinusButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "Multiply by")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "Multiply by")]
     private IWebElement MultiplyButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "Divide by")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "Divide by")]
     private IWebElement DivideButton { get; set; }
 #nullable disable
 

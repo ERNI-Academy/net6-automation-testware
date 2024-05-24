@@ -34,6 +34,9 @@ jobs:
           run: |
             npm install -g appium --unsafe-perm=true --allow-root
             appium -v
+        - name: Install WinAppDriver driver
+          run: |
+            appium driver install --source=npm appium-windows-driver
         - name: Run Appium Server
           run: cmd /c "start appium --log ${{ inputs.test_results_path }}/appium.log"
           shell: cmd

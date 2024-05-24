@@ -7,7 +7,7 @@ namespace TestWare.Samples.WinAppDriver.Desktop.POM.Notepad;
 
 public class NotepadPage : WinAppDriverPage, INotepadPage
 {
-    [FindsBy(How = How.ClassName, Using = "Edit")]
+    [MobileFindsBy(How = MobileHow.ClassName, Using = "Edit")]
     private IWebElement TextField { get; set; }
 
     public NotepadPage(IWindowsDriver driver) : base(driver)

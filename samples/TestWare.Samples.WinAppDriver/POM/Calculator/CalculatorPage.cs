@@ -14,22 +14,22 @@ public class CalculatorPage : WinAppDriverPage, ICalculatorPage
 {
     #nullable enable
 
-    [FindsBy(How = How.Name, Using = "=")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "=")]
     private IWebElement EqualsButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "+")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "+")]
     private IWebElement AdditionButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "-")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "-")]
     private IWebElement MinusButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "*")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "*")]
     private IWebElement MultiplyButton { get; set; }
 
-    [FindsBy(How = How.Name, Using = "/")]
+    [MobileFindsBy(How = MobileHow.Name, Using = "/")]
     private IWebElement DivideButton { get; set; }
 
-    [FindsBy(How = How.AccessibilityId, Using = "2010")]
+    [MobileFindsBy(How = MobileHow.AccessibilityId, Using = "2010")]
     private IWebElement ResultTextField { get; set; }
     #nullable disable
 

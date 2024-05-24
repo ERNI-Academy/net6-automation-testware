@@ -22,7 +22,8 @@ internal static class WindowsDriverFactory
         {
             App = "Root",
             DeviceName = "WindowsPC",
-            PlatformName = "Windows"
+            PlatformName = "Windows",
+            AutomationName = "Windows"
         };
 
         _rootDriver = new WindowsDriver(new Uri(capabilities.WinAppDriverUrl), appCapabilities, TimeSpan.FromSeconds(_waitForApplicationToOpen));
@@ -75,7 +76,10 @@ internal static class WindowsDriverFactory
             var topLevelWindowHandle = window?.GetAttribute("NativeWindowHandle");
             topLevelWindowHandle = int.Parse(topLevelWindowHandle).ToString("x"); // Convert to Hex
 
-            var appCapabilities = new AppiumOptions();
+            var appCapabilities = new AppiumOptions()
+            {
+                AutomationName = "Windows"
+            };
             appCapabilities.AddAdditionalAppiumOption("appTopLevelWindow", topLevelWindowHandle);
             driver = new WindowsDriver(new Uri(capabilities.WinAppDriverUrl), appCapabilities, TimeSpan.FromMinutes(capabilities.CommandTimeOutInMinutes));
         },
