@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri May 24 12:58:57 GMT 2024","Fri May 24 12:58:58 GMT 2024","957","","","","","","Logout",""
+"passed","Fri May 24 12:58:49 GMT 2024","Fri May 24 12:58:49 GMT 2024","589","","","","","","Login",""
+"passed","Fri May 24 12:59:53 GMT 2024","Fri May 24 12:59:58 GMT 2024","4654","","","","","","Chat between two users",""
+"passed","Fri May 24 12:58:40 GMT 2024","Fri May 24 12:58:41 GMT 2024","1397","","","","","","Login",""
+"passed","Fri May 24 12:59:18 GMT 2024","Fri May 24 12:59:19 GMT 2024","1480","","","","","","Login on multiple browsers",""
+"passed","Fri May 24 12:59:34 GMT 2024","Fri May 24 12:59:36 GMT 2024","1598","","","","","","Login on multiple browsers and logout browser2",""
