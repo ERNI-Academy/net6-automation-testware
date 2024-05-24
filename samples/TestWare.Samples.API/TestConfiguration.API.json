@@ -24,6 +24,25 @@
           "Timeout": 5000
         }
       ]
+    },
+    {
+      "Tag": "AllureConfiguration",
+      "Capabilities": [
+        {
+          "IssueTrackerBaseUrl": "https://www.myissuetracker.com/",
+          "TestManagementSystemBaseUrl": "https://www.mytms.com/",
+          "EnvironmentValues": [
+            {
+              "key": "System",
+              "value": "Windows"
+            },
+            {
+              "key": "Type",
+              "value": "API"
+            }
+          ]
+        }
+      ]
     }
   ],
   "TestResultPath": "C:\\workspace\\ERNI\\results\\"

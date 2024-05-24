@@ -1,4 +1,5 @@
-﻿using TestWare.Reporting.ExtentReport;
+﻿using TestWare.Reporting.AllureReport;
+using TestWare.Reporting.ExtentReport;
 
 namespace TestWare.Samples.WinAppDriver.Desktop;
 
@@ -9,6 +10,8 @@ public sealed class Hook
     private int _stepCounter;
     private static readonly LifeCycle _lifeCycle = new();
     private static ExtentReport _testReport;
+    private static AllureReport _allureReport;
+
 
     public Hook(TestContext testContext)
     {
@@ -60,6 +63,10 @@ public sealed class Hook
     {
         _lifeCycle.BeginTestExecution();
         _testReport = new ExtentReport(_lifeCycle.GetCurrentResultsDirectory());
+        var allureConfiguration = _lifeCycle.TestConfiguration.Configurations.First(x => x.Tag == "AllureConfiguration");
+        _allureReport = new AllureReport(allureConfiguration.Capabilities.FirstOrDefault());
+        _allureReport.CleanResultsFolder();
+        _allureReport.GenerateAllureEnvironmentFile();
     }
 
     [AfterTestRun]
@@ -90,6 +97,7 @@ public sealed class Hook
         foreach (var evidence in evidencesPath)
         {
             _testReport.AddScreenshotToStep(evidence);
+            _allureReport.AddAttachment(evidence, Path.GetFileNameWithoutExtension(evidence));
             _testContext.AddResultFile(evidence);
         }
     }

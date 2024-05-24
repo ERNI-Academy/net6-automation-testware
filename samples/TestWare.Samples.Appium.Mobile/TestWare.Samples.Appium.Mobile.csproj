@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Core\TestWare.AllureReport\TestWare.AllureReport.csproj" />
     <ProjectReference Include="..\..\src\Core\TestWare.Core\TestWare.Core.csproj" />
     <ProjectReference Include="..\..\src\Core\TestWare.TestReport\TestWare.ExtentReport.csproj" />
     <ProjectReference Include="..\..\src\Engines\TestWare.Engines.Appium\TestWare.Engines.Appium.csproj" />
@@ -30,6 +31,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ExternalResources\SwagLabs.apk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="specflow.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="TestConfiguration.Mobile.json">
