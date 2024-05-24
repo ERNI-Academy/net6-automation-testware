@@ -1,0 +1,140 @@
+[
+  {
+    "Request": {
+      "AlwaysMultipartFormData": false,
+      "Parameters": [
+        {
+          "Name": "name",
+          "Value": "Name",
+          "Type": 0,
+          "Encode": true,
+          "ContentType": null
+        }
+      ],
+      "Files": [],
+      "Method": 0,
+      "Timeout": 0,
+      "Resource": "",
+      "RequestFormat": 0,
+      "RootElement": null,
+      "OnBeforeDeserialization": null,
+      "OnBeforeRequest": null,
+      "OnAfterRequest": null,
+      "Attempts": 1,
+      "CompletionOption": 0,
+      "ResponseWriter": null,
+      "AdvancedResponseWriter": null
+    },
+    "ContentType": "application/json",
+    "ContentLength": 38,
+    "ContentEncoding": [],
+    "Content": "{\"count\":12369,\"name\":\"Name\",\"age\":46}",
+    "StatusCode": 200,
+    "IsSuccessful": true,
+    "StatusDescription": "OK",
+    "RawBytes": "eyJjb3VudCI6MTIzNjksIm5hbWUiOiJOYW1lIiwiYWdlIjo0Nn0=",
+    "ResponseUri": "https://api.agify.io/?name=Name",
+    "Server": "nginx/1.16.1",
+    "Cookies": [],
+    "Headers": [
+      {
+        "Name": "Server",
+        "Value": "nginx/1.16.1",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Date",
+        "Value": "Fri, 24 May 2024 15:35:16 GMT",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Connection",
+        "Value": "keep-alive",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Access-Control-Allow-Credentials",
+        "Value": "true",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Access-Control-Allow-Origin",
+        "Value": "*",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Access-Control-Expose-Headers",
+        "Value": "x-rate-limit-limit,x-rate-limit-remaining,x-rate-limit-reset",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Cache-Control",
+        "Value": "must-revalidate, max-age=0, private",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "x-rate-limit-limit",
+        "Value": "100",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "x-rate-limit-remaining",
+        "Value": "99",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "x-rate-limit-reset",
+        "Value": "30284",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Request-ID",
+        "Value": "F9J2smp2mpabeZUaFjfi",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      }
+    ],
+    "ContentHeaders": [
+      {
+        "Name": "Content-Type",
+        "Value": "application/json; charset=utf-8",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Content-Length",
+        "Value": "38",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      }
+    ],
+    "ResponseStatus": 1,
+    "ErrorMessage": null,
+    "ErrorException": null,
+    "Version": null,
+    "RootElement": null
+  }
+]

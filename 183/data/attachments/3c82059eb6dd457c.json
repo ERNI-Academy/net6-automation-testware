@@ -1,0 +1,148 @@
+[
+  {
+    "Request": {
+      "AlwaysMultipartFormData": false,
+      "Parameters": [],
+      "Files": [],
+      "Method": 0,
+      "Timeout": 0,
+      "Resource": "unkown/invalid",
+      "RequestFormat": 0,
+      "RootElement": null,
+      "OnBeforeDeserialization": null,
+      "OnBeforeRequest": null,
+      "OnAfterRequest": null,
+      "Attempts": 1,
+      "CompletionOption": 0,
+      "ResponseWriter": null,
+      "AdvancedResponseWriter": null
+    },
+    "ContentType": "application/json",
+    "ContentLength": 29,
+    "ContentEncoding": [],
+    "Content": "{\"error\":\"Unknown operation\"}",
+    "StatusCode": 400,
+    "IsSuccessful": false,
+    "StatusDescription": "Bad Request",
+    "RawBytes": "eyJlcnJvciI6IlVua25vd24gb3BlcmF0aW9uIn0=",
+    "ResponseUri": "https://newton.vercel.app/api/v2/unkown/invalid",
+    "Server": "Vercel",
+    "Cookies": [],
+    "Headers": [
+      {
+        "Name": "Access-Control-Allow-Headers",
+        "Value": "Origin, X-Requested-With, Content-Type, Accept",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Access-Control-Allow-Origin",
+        "Value": "*",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Age",
+        "Value": "0",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Cache-Control",
+        "Value": "public, must-revalidate, max-age=0",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Connection",
+        "Value": "keep-alive",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Date",
+        "Value": "Fri, 24 May 2024 15:35:17 GMT",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "ETag",
+        "Value": "\"1d-6/oWRiYwxAR1BjLB7ztUOlhZTLQ\"",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Server",
+        "Value": "Vercel",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Strict-Transport-Security",
+        "Value": "max-age=63072000; includeSubDomains; preload",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Nextjs-Page",
+        "Value": "/api/v2/[operation]/[data]",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Vercel-Cache",
+        "Value": "MISS",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Vercel-Id",
+        "Value": "sfo1::sfo1::65n2s-1716564917632-1a0d53d87721",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      }
+    ],
+    "ContentHeaders": [
+      {
+        "Name": "Content-Length",
+        "Value": "29",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Content-Type",
+        "Value": "application/json; charset=utf-8",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      }
+    ],
+    "ResponseStatus": 2,
+    "ErrorMessage": null,
+    "ErrorException": {
+      "TargetSite": null,
+      "Message": "Request failed with status code BadRequest",
+      "Data": {},
+      "InnerException": null,
+      "HelpLink": null,
+      "Source": null,
+      "HResult": -2146233088,
+      "StackTrace": null
+    },
+    "Version": null,
+    "RootElement": null
+  }
+]

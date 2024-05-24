@@ -1,0 +1,148 @@
+[
+  {
+    "Request": {
+      "AlwaysMultipartFormData": false,
+      "Parameters": [],
+      "Files": [],
+      "Method": 0,
+      "Timeout": 0,
+      "Resource": "sin/(pi",
+      "RequestFormat": 0,
+      "RootElement": null,
+      "OnBeforeDeserialization": null,
+      "OnBeforeRequest": null,
+      "OnAfterRequest": null,
+      "Attempts": 1,
+      "CompletionOption": 0,
+      "ResponseWriter": null,
+      "AdvancedResponseWriter": null
+    },
+    "ContentType": "application/json",
+    "ContentLength": 41,
+    "ContentEncoding": [],
+    "Content": "{\"error\":\"Unable to perform calculation\"}",
+    "StatusCode": 500,
+    "IsSuccessful": false,
+    "StatusDescription": "Internal Server Error",
+    "RawBytes": "eyJlcnJvciI6IlVuYWJsZSB0byBwZXJmb3JtIGNhbGN1bGF0aW9uIn0=",
+    "ResponseUri": "https://newton.vercel.app/api/v2/sin/(pi",
+    "Server": "Vercel",
+    "Cookies": [],
+    "Headers": [
+      {
+        "Name": "Access-Control-Allow-Headers",
+        "Value": "Origin, X-Requested-With, Content-Type, Accept",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Access-Control-Allow-Origin",
+        "Value": "*",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Age",
+        "Value": "0",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Cache-Control",
+        "Value": "public, must-revalidate, max-age=0",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Connection",
+        "Value": "keep-alive",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Date",
+        "Value": "Fri, 24 May 2024 15:35:17 GMT",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "ETag",
+        "Value": "\"29-QzlBDDWqOXFaR9BzhRS3hGlDYwQ\"",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Server",
+        "Value": "Vercel",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Strict-Transport-Security",
+        "Value": "max-age=63072000; includeSubDomains; preload",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Nextjs-Page",
+        "Value": "/api/v2/[operation]/[data]",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Vercel-Cache",
+        "Value": "MISS",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Vercel-Id",
+        "Value": "sfo1::sfo1::bhlcc-1716564917757-02a3ecef6e32",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      }
+    ],
+    "ContentHeaders": [
+      {
+        "Name": "Content-Length",
+        "Value": "41",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Content-Type",
+        "Value": "application/json; charset=utf-8",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      }
+    ],
+    "ResponseStatus": 2,
+    "ErrorMessage": null,
+    "ErrorException": {
+      "TargetSite": null,
+      "Message": "Request failed with status code InternalServerError",
+      "Data": {},
+      "InnerException": null,
+      "HelpLink": null,
+      "Source": null,
+      "HResult": -2146233088,
+      "StackTrace": null
+    },
+    "Version": null,
+    "RootElement": null
+  }
+]

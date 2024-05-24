@@ -1,0 +1,139 @@
+[
+  {
+    "Request": {
+      "AlwaysMultipartFormData": false,
+      "Parameters": [],
+      "Files": [],
+      "Method": 0,
+      "Timeout": 0,
+      "Resource": "simplify/23%2b23",
+      "RequestFormat": 0,
+      "RootElement": null,
+      "OnBeforeDeserialization": null,
+      "OnBeforeRequest": null,
+      "OnAfterRequest": null,
+      "Attempts": 1,
+      "CompletionOption": 0,
+      "ResponseWriter": null,
+      "AdvancedResponseWriter": null
+    },
+    "ContentType": "application/json",
+    "ContentLength": 59,
+    "ContentEncoding": [],
+    "Content": "{\"operation\":\"simplify\",\"expression\":\"23+23\",\"result\":\"46\"}",
+    "StatusCode": 200,
+    "IsSuccessful": true,
+    "StatusDescription": "OK",
+    "RawBytes": "eyJvcGVyYXRpb24iOiJzaW1wbGlmeSIsImV4cHJlc3Npb24iOiIyMysyMyIsInJlc3VsdCI6IjQ2In0=",
+    "ResponseUri": "https://newton.vercel.app/api/v2/simplify/23%2b23",
+    "Server": "Vercel",
+    "Cookies": [],
+    "Headers": [
+      {
+        "Name": "Access-Control-Allow-Headers",
+        "Value": "Origin, X-Requested-With, Content-Type, Accept",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Access-Control-Allow-Origin",
+        "Value": "*",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Age",
+        "Value": "0",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Cache-Control",
+        "Value": "public, must-revalidate, max-age=0",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Connection",
+        "Value": "keep-alive",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Date",
+        "Value": "Fri, 24 May 2024 15:35:16 GMT",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "ETag",
+        "Value": "\"3b-kYtO2NyvJDN/rc38OJ6n5F6AQgc\"",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Server",
+        "Value": "Vercel",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Strict-Transport-Security",
+        "Value": "max-age=63072000; includeSubDomains; preload",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Nextjs-Page",
+        "Value": "/api/v2/[operation]/[data]",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Vercel-Cache",
+        "Value": "MISS",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "X-Vercel-Id",
+        "Value": "sfo1::sfo1::4wqgm-1716564916801-2a263170c7c3",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      }
+    ],
+    "ContentHeaders": [
+      {
+        "Name": "Content-Length",
+        "Value": "59",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      },
+      {
+        "Name": "Content-Type",
+        "Value": "application/json; charset=utf-8",
+        "Type": 2,
+        "Encode": false,
+        "ContentType": null
+      }
+    ],
+    "ResponseStatus": 1,
+    "ErrorMessage": null,
+    "ErrorException": null,
+    "Version": null,
+    "RootElement": null
+  }
+]
