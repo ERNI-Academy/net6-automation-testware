@@ -91,11 +91,5 @@ jobs:
           if: always()
           uses: actions/upload-artifact@v4
           with:
-              name: allure-results-${{ matrix.browser }}
+              name: allure-results-WEB-${{ matrix.browser }}
               path: '.\allure-results'
-
-          
-  allure-results:
-    needs: web-tests
-    if: always()
-    uses: ./.github/workflows/Allure_Report.yml

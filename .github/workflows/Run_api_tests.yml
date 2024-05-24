@@ -37,3 +37,9 @@ jobs:
           with:
             name: results-API-${{ matrix.os }}
             path: ${{ inputs.test_results_path }}/results.trx
+        - name: Archive Testing artifacts - Allure
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+              name: allure-results-API-${{ matrix.os }}
+              path: '.\allure-results'

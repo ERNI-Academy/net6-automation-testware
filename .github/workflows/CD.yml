@@ -45,6 +45,16 @@ jobs:
         ["macOs-latest"]
       test_results_path: './results'
       
+  allure-results:
+    needs: 
+        - api-tests
+        - web-tests
+        - desktop-tests
+        - android-tests
+        - ios-tests
+    if: always()
+    uses: ./.github/workflows/Allure_Report.yml
+      
   publish-test-results:
     needs: 
         - api-tests
