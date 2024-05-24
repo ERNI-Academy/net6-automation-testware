@@ -54,9 +54,9 @@ jobs:
             Configurations.0.Capabilities.0.Name: "Appiumdriver"
             TestResultPath: ${{ inputs.test_results_path }}
         - name: Start Android Device and run tests
-          uses: reactivecircus/android-emulator-runner@v2
+          uses: reactivecircus/android-emulator-runner@v2.31.0
           with:
-            api-level: 29
+            api-level: 33
             force-avd-creation: false
             emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
             disable-animations: false
