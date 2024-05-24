@@ -99,6 +99,3 @@ jobs:
     needs: web-tests
     if: always()
     uses: ./.github/workflows/Allure_Report.yml
-    with:
-      artifact_name: allure-results
-      workflow: Run_web_tests.yml

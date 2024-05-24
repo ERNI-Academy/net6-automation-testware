@@ -1,13 +1,6 @@
 name: allure-report
 on:
   workflow_call:
-    inputs:
-      artifact_name:
-        required: true
-        type: string
-      workflow:
-        required: true
-        type: string
       
       
 jobs:
@@ -25,11 +18,10 @@ jobs:
               ref: gh-pages
               path: gh-pages
               
-          - uses: LexisNexis-Public-GHA/sbs-action-download-artifact@v2.13.1
+          - uses: actions/download-artifact@v4
             with:
-                workflow: ${{ inputs.workflow }}
-                name: ${{ inputs.artifact_name }}
-                path: allure-results
+              pattern: allure-results-*
+              path: allure-results
 
           - name: Allure Report action from marketplace
             uses: simple-elf/allure-report-action@master
