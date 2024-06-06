@@ -1,0 +1,73 @@
+{
+  "Scopes": [
+    {
+      "ScopeName": "swagLabs",
+      "CoreName": "Selenium",
+      "Config": {
+        "Driver": "Chrome",
+        "BaseUrl": "https://www.saucedemo.com/v1/",
+        "Service": "C:\\temp\\_drivers",
+        "Options": {
+          "arguments": [ "--incognito", "--start-maximized" ]
+        }
+      }
+    },
+    {
+      "ScopeName": "TheInternet-checkboxes",
+      "CoreName": "Selenium",
+      "Config": {
+        "Driver": "Firefox",
+        "BaseUrl": "https://the-internet.herokuapp.com/checkboxes"
+      }
+    },
+    {
+      "ScopeName": "TheInternet-tables",
+      "CoreName": "Selenium",
+      "Config": {
+        "Driver": "Firefox",
+        "BaseUrl": "https://the-internet.herokuapp.com/tables",
+        "ImplicitWaitSeconds": 30,
+        "Options": {
+          "BinaryLocation": "C:\\\\Program Files\\Firefox Nightly\\firefox.exe",
+          "EnableDevToolsProtocol": true,
+          "UseWebSocketUrl": true,
+          "Arguments": [ "-private" ]
+        }
+      }
+    },
+    {
+      "ScopeName": "PlaySwagLabs",
+      "CoreName": "Playwright",
+      "Config": {
+        "Browser": "Chromium",
+        "BaseUrl": "https://www.saucedemo.com/v1/",
+        "LaunchOptions": {
+          "channel": "msedge",
+          "args": [ "--start-maximized", "--incognito" ],
+          "headless": false,
+          "slowMo": 50
+        }
+      }
+    }
+  ],
+  "CockpitScopes": [
+    {
+      "ScopeName": "Local",
+      "CoreName": "ExtentReports",
+      "Config": {
+        "ReportPath": "C:\\Temp\\Results",
+        "ReportName": "CustomReport.html"
+      }
+    },
+    {
+      "ScopeName": "Remote",
+      "CoreName": "ReportPortal",
+      "Config": {
+        "Url": "https://demo.reportportal.io",
+        "ProjectName": "default_personal",
+        "ApiKey": "my-uuid_kW78nVfrTneCkE5NIggEdpnUoMrJ0cpb_ZpWMVDa2nlzpMF5YgJkYfIjox3LkI35"
+      }
+    }
+  ],
+  "EvidenceBasePath": "C:\\Temp\\Results"
+}

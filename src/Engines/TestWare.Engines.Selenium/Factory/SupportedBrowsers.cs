@@ -1,6 +1,12 @@
-﻿namespace TestWare.Engines.Selenium.Factory;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public enum SupportedBrowsers
+namespace TestWare.Engines.SeleniumEngine.Factory;
+
+internal enum SupportedBrowsers
 {
     Invalid = 0,
     Chrome = 1,

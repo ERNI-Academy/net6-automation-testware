@@ -4,8 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestWare.Core.Interfaces;
+namespace TestWare.Core;
 
-public interface ITestwareComponent
+public enum TestWareResult
 {
+    Pass,
+    Fail,
+    Skip,
+    Unkown,
 }
