@@ -5,5 +5,5 @@ public enum TestWareResult
     Pass,
     Fail,
     Skip,
-    Unkown,
+    Unknown,
 }

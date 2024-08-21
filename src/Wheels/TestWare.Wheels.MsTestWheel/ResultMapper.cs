@@ -13,6 +13,6 @@ public class ResultMapper {
         UnitTestOutcome.Timeout => TestWareResult.Fail,
         UnitTestOutcome.Aborted => TestWareResult.Skip,
         UnitTestOutcome.NotRunnable => TestWareResult.Skip,
-        _ => TestWareResult.Unkown,
+        _ => TestWareResult.Unknown,
     };
 } 
