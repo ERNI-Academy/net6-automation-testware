@@ -1,6 +1,4 @@
 
-using AventStack.ExtentReports.Model;
-using RazorEngine;
 using System.Reflection;
 using TestWare.Cockpits.ExtentReportsCockpit;
 using TestWare.Cockpits.ReportPortalCockpit;
@@ -27,8 +25,6 @@ public class Hooks
         TestWareProvider.RegisterTestWareComponents("TestConfig.json", extraAssemblies);
         var Reporter = TestWareProvider.GetTestWareComponent<ITestWareCockpit>();
         Reporter.Initialize();
-        //var a = TestWareProvider.GetTestWareComponent<ILoginPage>("swagLabs");
-        //var b = TestWareProvider.GetTestWareComponent<ILoginPage>("PlaySwagLabs");
     }
 
     [AssemblyCleanup]

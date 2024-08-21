@@ -8,7 +8,7 @@
         "BaseUrl": "https://www.saucedemo.com/v1/",
         "Service": "C:\\temp\\_drivers",
         "Options": {
-          "arguments": [ "--incognito", "--start-maximized" ]
+          "Arguments": [ "--incognito", "--start-maximized", "--disable-search-engine-choice-screen" ]
         }
       }
     },
@@ -43,7 +43,7 @@
         "BaseUrl": "https://www.saucedemo.com/v1/",
         "LaunchOptions": {
           "channel": "msedge",
-          "args": [ "--start-maximized", "--incognito" ],
+          "args": [ "--start-maximized", "--incognito", "--disable-search-engine-choice-screen" ],
           "headless": false,
           "slowMo": 50
         }

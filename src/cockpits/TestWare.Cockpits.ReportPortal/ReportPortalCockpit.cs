@@ -11,33 +11,33 @@ namespace TestWare.Cockpits.ReportPortalCockpit;
 public class ReportPortalCockpit : ITestWareCockpit
 {
     public const string Name = "ReportPortal";
-    public Service Reporter { get; set; }
-    private LaunchCreatedResponse Launch;
+    public Service? Reporter { get; set; }
+    private LaunchCreatedResponse? Launch;
     private Guid CurrentTestSuite;
     private Guid CurrentTestCase;
     private Guid CurrentTestStep;
-    private Dictionary<Guid, string> TestElements;
-    private string Url;
-    private string Project;
-    private string ApiKey;
+    private Dictionary<Guid, string>? TestElements;
+    private string? _url;
+    private string? _prouject;
+    private string? _apiKey;
 
     public ReportPortalCockpit() { }
 
     public ReportPortalCockpit(JsonObject config)
     {
-        Url = config["Url"].ToString();
-        Project = config["ProjectName"].ToString();
-        ApiKey = config["ApiKey"].ToString();
+        _url = config["Url"]!.ToString();
+        _prouject = config["ProjectName"]!.ToString();
+        _apiKey = config["ApiKey"]!.ToString();
     }
 
     public async void Dispose()
     {
-        await Reporter.Launch.FinishAsync(Launch.Uuid, new FinishLaunchRequest());
+        await Reporter!.Launch.FinishAsync(Launch!.Uuid, new FinishLaunchRequest());
     }
 
     public void Initialize()
     {
-        Reporter = new ReportPortal.Client.Service(new Uri(Url), Project, ApiKey);
+        Reporter = new ReportPortal.Client.Service(new Uri(_url), _prouject, _apiKey);
         var request = new StartLaunchRequest
         {
             Name = "LaunchName",
@@ -76,14 +76,14 @@ public class ReportPortalCockpit : ITestWareCockpit
     {
         var parent = type switch
         {
-            TestItemType.Test => TestElements[CurrentTestSuite],
-            TestItemType.Step => TestElements[CurrentTestCase],
+            TestItemType.Test => TestElements![CurrentTestSuite],
+            TestItemType.Step => TestElements![CurrentTestCase],
             _ => null
         };
 
         var request = new StartTestItemRequest
         {
-            LaunchUuid = Launch.Uuid,
+            LaunchUuid = Launch!.Uuid,
             Name = id,
             Type = type,
         };
@@ -91,12 +91,12 @@ public class ReportPortalCockpit : ITestWareCockpit
         TestItemCreatedResponse element;
 
         if (parent == null)
-            element = Reporter.TestItem.StartAsync(request).Result;
+            element = Reporter!.TestItem.StartAsync(request).Result;
         else
-            element = Reporter.TestItem.StartAsync(parent, request).Result;
+            element = Reporter!.TestItem.StartAsync(parent, request).Result;
 
         var guid = Guid.NewGuid();
-        TestElements.Add(guid, element.Uuid);
+        TestElements!.Add(guid, element.Uuid);
         return guid;
     }
 
@@ -113,13 +113,13 @@ public class ReportPortalCockpit : ITestWareCockpit
 
     private Guid AddActivity(Guid id, params string[] activity)
     {
-        var element = TestElements[id];
+        var element = TestElements![id];
         foreach (var act in activity)
         {
             if (Path.Exists(act))
             {
                 var mimeType = MimeTypes.MimeTypeMap.GetMimeType(act);
-                var response = Reporter.LogItem.CreateAsync(new CreateLogItemRequest
+                var response = Reporter!.LogItem.CreateAsync(new CreateLogItemRequest
                 {
                     TestItemUuid = element,
                     Text = act,
@@ -130,7 +130,7 @@ public class ReportPortalCockpit : ITestWareCockpit
             }
             else
             {
-                var response = Reporter.LogItem.CreateAsync(new CreateLogItemRequest
+                var response = Reporter!.LogItem.CreateAsync(new CreateLogItemRequest
                 {
                     TestItemUuid = element,
                     Text = act,
@@ -159,7 +159,7 @@ public class ReportPortalCockpit : ITestWareCockpit
 
     private Guid SetTestElementResult(Guid id, TestWareResult result, string details)
     {
-        var element = TestElements[id];
+        var element = TestElements![id];
 
         var status = result switch
         {
@@ -169,7 +169,7 @@ public class ReportPortalCockpit : ITestWareCockpit
             _ => Status.Warn
         };
 
-        var response = Reporter.TestItem.FinishAsync(element, new FinishTestItemRequest
+        var response = Reporter!.TestItem.FinishAsync(element, new FinishTestItemRequest
         {
             Status = status,
             Description = details

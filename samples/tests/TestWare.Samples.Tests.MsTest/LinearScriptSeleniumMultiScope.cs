@@ -1,7 +1,9 @@
 using OpenQA.Selenium;
 using TestWare.Core;
+using TestWare.Core.Attributes;
 using TestWare.Engines.SeleniumEngine;
 using TestWare.Engines.SeleniumEngine.Extensions;
+using TestWare.Wheels.MsTestWheel;
 
 namespace TestWare.Samples.Tests.MsTest;
 
@@ -40,7 +42,7 @@ public class LinearScriptSeleniumMultiScope : TestSuiteBase
         var headers = table.FindElements(By.XPath("./thead/tr/th"));
         var rows = table.FindElements(By.XPath("./tbody/tr"));
 
-        headers.Where(x => x.Text == "First Name").FirstOrDefault().Click();
+        headers.Where(x => x.Text == "First Name").First().Click();
         var firstNameHeaderIndex = headers.Select(x => x.Text).ToList().IndexOf("First Name");
 
         rows = table.FindElements(By.XPath("./tbody/tr"));

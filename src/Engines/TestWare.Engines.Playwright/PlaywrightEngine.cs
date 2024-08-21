@@ -13,23 +13,23 @@ namespace TestWare.Engines.PlaywrightEngine;
 public class PlaywrightEngine : ITestWareEngine
 {
     public const string Name = "Playwright";
-    private IPlaywright _Playwright;
-    public IBrowser Browser;
-    public IPage Page;
+    private IPlaywright? _Playwright;
+    public IBrowser? Browser;
+    public IPage? Page;
 
     private PlaywrightConfig Configuration { get; set; }
     public PlaywrightEngine() { }
 
     public PlaywrightEngine(JsonObject keyValuePairs)
     {
-        Configuration = JsonSerializer.Deserialize<PlaywrightConfig>(keyValuePairs);
+        Configuration = JsonSerializer.Deserialize<PlaywrightConfig>(keyValuePairs)!;
     }
 
     public string CollectEvidence(string destinationPath, string evidenceName)
     {
         var filePath = Path.Combine(destinationPath, $"{evidenceName}.png");
-        Directory.CreateDirectory(Path.GetDirectoryName(filePath));
-        Page.ScreenshotAsync(new() { Path = filePath }).Wait();
+        Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
+        Page!.ScreenshotAsync(new() { Path = filePath }).Wait();
         return filePath;
     }
     
@@ -57,12 +57,11 @@ public class PlaywrightEngine : ITestWareEngine
 
     public void StartRecordingEvidences()
     {
-        //throw new NotImplementedException();
+
     }
 
     public string StopRecordingEvidences(string destinationPath, string evidenceName)
     {
-        //throw new NotImplementedException();
         return "";
     }
 }

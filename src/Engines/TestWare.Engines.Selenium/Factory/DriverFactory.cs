@@ -39,7 +39,7 @@ internal class DriverFactory
             if (option.Key == "Arguments")
             {
                 var args = JsonSerializer.Deserialize<string[]>(option.Value);
-                options.GetType().GetMethod("AddArguments", [args.GetType()])?.Invoke(options, [args]);
+                options.GetType().GetMethod("AddArguments", [args?.GetType()!])?.Invoke(options, [args]);
             }
             else
             {

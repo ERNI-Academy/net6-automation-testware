@@ -1,0 +1,32 @@
+{
+  "Scopes": [
+    {
+      "ScopeName": "swagLabs",
+      "CoreName": "Selenium",
+      "Config": {
+        "Driver": "Chrome",
+        "BaseUrl": "https://www.saucedemo.com/v1/",
+        "Service": "C:\\temp\\_drivers",
+        "Options": {
+          "Arguments": [ "--incognito", "--start-maximized", "--disable-search-engine-choice-screen", "--remote-debugging-port=5959" ],
+          "DebuggerAddress": "localhost:5959"
+        }
+      }
+    },
+    {
+      "ScopeName": "PlaySwagLabs",
+      "CoreName": "Playwright",
+      "Config": {
+        "Browser": "Chromium",
+        "BaseUrl": "https://www.saucedemo.com/v1/",
+        "LaunchOptions": {
+          "channel": "chrome",
+          "args": [ "--start-maximized", "--incognito", "--disable-search-engine-choice-screen", "--remote-debugging-port=5959" ],
+          "headless": false,
+          "slowMo": 50
+        }
+      }
+    }
+  ],
+  "EvidenceBasePath": "C:\\Temp\\Results"
+}

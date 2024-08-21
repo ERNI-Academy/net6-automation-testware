@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\engines\TestWare.Engines.Playwright\TestWare.Engines.Playwright.csproj" />
     <ProjectReference Include="..\TestWare.Samples.Suts.SwagLabs.Interfaces\TestWare.Samples.Suts.SwagLabs.Interfaces.csproj" />
   </ItemGroup>
 

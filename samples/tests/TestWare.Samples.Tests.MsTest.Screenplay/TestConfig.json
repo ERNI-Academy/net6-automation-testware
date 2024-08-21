@@ -1,0 +1,19 @@
+{
+  "Scopes": [
+    {
+      "ScopeName": "PlaySwagLabs",
+      "CoreName": "Playwright",
+      "Config": {
+        "Browser": "Chromium",
+        "BaseUrl": "https://www.saucedemo.com/v1/",
+        "LaunchOptions": {
+          "channel": "msedge",
+          "args": [ "--start-maximized", "--incognito", "--disable-search-engine-choice-screen" ],
+          "headless": false,
+          "slowMo": 50
+        }
+      }
+    }
+  ],
+  "EvidenceBasePath": "C:\\Temp\\Results"
+}

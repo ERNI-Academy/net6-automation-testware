@@ -1,16 +1,9 @@
-using AventStack.ExtentReports.Model;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.EventHandlers;
 using OpenQA.Selenium;
-using RazorEngine;
-using System;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using TestWare.Cockpits.ExtentReportsCockpit;
-using TestWare.Core;
-using TestWare.Core.Configuration;
+using TestWare.Core.Attributes;
 using TestWare.Core.Interfaces;
 using TestWare.Engines.SeleniumEngine;
 using TestWare.Engines.SeleniumEngine.Extensions;
+using TestWare.Wheels.MsTestWheel;
 
 namespace TestWare.Samples.Tests.MsTest;
 
@@ -134,7 +127,7 @@ public class LinearScriptSeleniumSwagLabs : TestSuiteBase
                 Assert.AreEqual(args[1].ToString(), productQuantityList[cartProductIndex].Text);
                 Engine.Driver.FindElement(By.ClassName("checkout_button")).Click();
             }, productName, expectedQuantity)
-            .Step("Checkout: Personal Info",
+            .Step("Checkout Personal Info",
             () =>
             {
                 Engine.Driver.FindElement(By.Id("first-name")).SendKeys("Super");
@@ -142,7 +135,7 @@ public class LinearScriptSeleniumSwagLabs : TestSuiteBase
                 Engine.Driver.FindElement(By.Id("postal-code")).SendKeys("1234");
                 Engine.Driver.FindElement(By.ClassName("cart_button")).Click();
             })
-            .Step("Checkout: Overview",
+            .Step("Checkout Overview",
             args =>
             {
                 var overviewProducts = Engine.Driver.FindElements(By.ClassName("inventory_item_name"));

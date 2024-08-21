@@ -1,4 +1,5 @@
 ﻿using TestWare.Core.Interfaces;
+using TestWare.Engines.PlaywrightEngine;
 using TestWare.Samples.Suts.SwagLabs.Interfaces.POM;
 
 namespace TestWare.Samples.Suts.SwagLabs.Playwright.POM;
@@ -7,7 +8,7 @@ public class LoginPage : ILoginPage
 {
 
 
-    public LoginPage(ITestWareEngine engine)
+    public LoginPage(PlaywrightEngine engine)
     {
     }
 

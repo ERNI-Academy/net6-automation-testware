@@ -1,0 +1,17 @@
+{
+  "Scopes": [
+    {
+      "ScopeName": "swagLabs",
+      "CoreName": "ExtendedSelenium",
+      "Config": {
+        "Driver": "Chrome",
+        "BaseUrl": "https://www.saucedemo.com/v1/",
+        "Service": "C:\\temp\\_drivers",
+        "Options": {
+          "Arguments": [ "--incognito", "--start-maximized", "--disable-search-engine-choice-screen" ]
+        }
+      }
+    }
+  ],
+  "EvidenceBasePath": "C:\\Temp\\Results"
+}
