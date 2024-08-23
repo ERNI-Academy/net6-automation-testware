@@ -1,7 +1,6 @@
 
 using System.Reflection;
 using TestWare.Cockpits.ExtentReportsCockpit;
-using TestWare.Cockpits.ReportPortalCockpit;
 using TestWare.Core;
 using TestWare.Core.Interfaces;
 using TestWare.Samples.Suts.SwagLabs.Interfaces.POM;

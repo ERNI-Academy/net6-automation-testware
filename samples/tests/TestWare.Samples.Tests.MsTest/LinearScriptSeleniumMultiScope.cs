@@ -1,8 +1,6 @@
 using OpenQA.Selenium;
-using TestWare.Core;
 using TestWare.Core.Attributes;
 using TestWare.Engines.SeleniumEngine;
-using TestWare.Engines.SeleniumEngine.Extensions;
 using TestWare.Wheels.MsTestWheel;
 
 namespace TestWare.Samples.Tests.MsTest;

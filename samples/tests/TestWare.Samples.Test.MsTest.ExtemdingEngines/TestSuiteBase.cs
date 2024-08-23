@@ -3,7 +3,6 @@ using TestWare.Core.Interfaces;
 using TestWare.Core;
 using TestWare.Core.Configuration;
 using TestWare.Core.Attributes;
-using TestWare.Wheels.MsTestWheel;
 using System.Reflection;
 using TestWare.Samples.Suts.SwagLabs.Interfaces.POM;
 

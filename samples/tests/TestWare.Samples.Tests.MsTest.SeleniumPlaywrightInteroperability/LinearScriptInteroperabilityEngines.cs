@@ -1,6 +1,4 @@
-﻿using Microsoft.Playwright;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium;
 using TestWare.Core.Attributes;
 using TestWare.Core.Interfaces;
 using TestWare.Engines.PlaywrightEngine;

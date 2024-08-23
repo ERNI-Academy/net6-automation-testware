@@ -1,18 +1,5 @@
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.EventHandlers;
-using OpenQA.Selenium;
-using RazorEngine;
-using System;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-using TestWare.Cockpits.ExtentReportsCockpit;
-using TestWare.Core;
 using TestWare.Core.Attributes;
-using TestWare.Core.Configuration;
-using TestWare.Core.Interfaces;
-using TestWare.Engines.SeleniumEngine;
-using TestWare.Engines.SeleniumEngine.Extensions;
 using TestWare.Samples.Suts.SwagLabs.Interfaces.POM;
-using TestWare.Samples.Suts.SwagLabs.Playwright.POM;
 using TestWare.Wheels.MsTestWheel;
 
 namespace TestWare.Samples.Tests.MsTest;

@@ -5,7 +5,6 @@ using TestWare.Core.Configuration;
 using TestWare.Core.Attributes;
 using TestWare.Wheels.MsTestWheel;
 
-
 namespace TestWare.Samples.Tests.MsTest;
 
 
